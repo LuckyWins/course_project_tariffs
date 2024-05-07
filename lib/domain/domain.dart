@@ -5,6 +5,8 @@ export 'entities/app_tariffs_filter.dart';
 export 'entities/app_user.dart';
 export 'entities/app_users_filter.dart';
 export 'entities/failure.dart';
+export 'preferences/preferences_data_source.dart';
+export 'preferences/secure_storage_data_source.dart';
 export 'repositories/reservations_repository.dart';
 export 'repositories/tariffs_repository.dart';
 export 'repositories/users_repository.dart';

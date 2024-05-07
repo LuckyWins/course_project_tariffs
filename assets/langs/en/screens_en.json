@@ -1,0 +1,11 @@
+{
+  "signIn": {
+    "title": "Sign in",
+    "usernameField": {
+      "label": "Username"
+    },
+    "passwordField": {
+      "label": "Password"
+    }
+  }
+}

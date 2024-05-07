@@ -13,4 +13,8 @@ generate_models:
 	echo "### Generating sources"
 	dart run build_runner build
 
-.PHONY: pub_get generate_models_delete_conflicting generate_models
+# Runs `dart run slang` in core project
+generate_slang:
+	dart run slang
+
+.PHONY: pub_get generate_models_delete_conflicting generate_models generate_slang

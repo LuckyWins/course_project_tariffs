@@ -137,7 +137,7 @@ class _$AppTariffsFilterImpl implements _AppTariffsFilter {
       {this.titleQuery,
       this.creationDate,
       this.asc = true,
-      this.sort = AppTariffsSortType.id});
+      this.sort = AppTariffsSortType.creationDate});
 
   @override
   final String? titleQuery;

@@ -1,7 +1,9 @@
 import 'package:course_project/domain/domain.dart';
 
 abstract class ReservationsRepository {
-  Future<List<AppReservation>> getReservationsList();
+  Future<List<AppReservation>> getReservationsList(
+    AppReservationsFilter filter,
+  );
 
   Future<AppReservation?> getReservation(int id);
 

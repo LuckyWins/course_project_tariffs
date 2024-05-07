@@ -1,4 +1,5 @@
 import 'package:course_project/domain/domain.dart';
+import 'package:dartx/dartx.dart';
 import 'package:either_dart/either.dart';
 import 'package:isar/isar.dart';
 
@@ -47,7 +48,28 @@ class UsersRepositoryImpl extends UsersRepository {
   }
 
   @override
-  Future<List<AppUser>> getUsersList() => db.appUsers.where().findAll();
+  Future<List<AppUser>> getUsersList(AppUsersFilter filter) =>
+      db.appUsers.buildQuery<AppUser>(
+        filter: FilterGroup.and([
+          if (filter.usernameQuery.isNotNullOrBlank)
+            FilterCondition.contains(
+              property: 'username',
+              value: filter.usernameQuery!,
+              caseSensitive: false,
+            ),
+          if (filter.registrationDate != null)
+            FilterCondition.equalTo(
+              property: 'registrationDate',
+              value: filter.registrationDate,
+            ),
+        ]),
+        sortBy: [
+          SortProperty(
+            property: filter.sort.name,
+            sort: filter.asc ? Sort.asc : Sort.desc,
+          )
+        ],
+      ).findAll();
 
   @override
   Future<AppUser?> getUser(int id) =>

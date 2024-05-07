@@ -9,8 +9,39 @@ class ReservationsRepositoryImpl extends ReservationsRepository {
   });
 
   @override
-  Future<List<AppReservation>> getReservationsList() =>
-      db.appReservations.where().findAll();
+  Future<List<AppReservation>> getReservationsList(
+    AppReservationsFilter filter,
+  ) =>
+      db.appReservations.buildQuery<AppReservation>(
+        filter: FilterGroup.and([
+          if (filter.tariffId != null)
+            FilterCondition.equalTo(
+              property: 'tariffId',
+              value: filter.tariffId,
+            ),
+          if (filter.userId != null)
+            FilterCondition.equalTo(
+              property: 'userId',
+              value: filter.userId,
+            ),
+          if (filter.creationDate != null)
+            FilterCondition.equalTo(
+              property: 'creationDate',
+              value: filter.creationDate,
+            ),
+          if (filter.hours != null)
+            FilterCondition.equalTo(
+              property: 'hours',
+              value: filter.hours,
+            ),
+        ]),
+        sortBy: [
+          SortProperty(
+            property: filter.sort.name,
+            sort: filter.asc ? Sort.asc : Sort.desc,
+          )
+        ],
+      ).findAll();
 
   @override
   Future<AppReservation?> getReservation(int id) =>

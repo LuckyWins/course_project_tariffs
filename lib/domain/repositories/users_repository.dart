@@ -14,7 +14,7 @@ abstract class UsersRepository {
     required String hashedPassword,
   });
 
-  Future<List<AppUser>> getUsersList();
+  Future<List<AppUser>> getUsersList(AppUsersFilter filter);
 
   Future<AppUser?> getUser(int id);
 

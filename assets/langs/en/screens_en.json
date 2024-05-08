@@ -4,11 +4,19 @@
   },
   "signIn": {
     "title": "Sign in",
-    "proceedButton": "Log in"
+    "proceedButton": "Log in",
+    "signUpLabel": {
+      "text": "Don't have an account?",
+      "button": "Sign up"
+    }
   },
   "signUp": {
     "title": "Sign up",
-    "proceedButton": "Sign up"
+    "proceedButton": "Sign up",
+    "signInLabel": {
+      "text": "Already have an account?",
+      "button": "Sign in"
+    }
   },
   "tariffs": {
     "title": "Tariffs"

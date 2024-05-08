@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 24
+/// Strings: 28
 ///
-/// Built on 2024-05-08 at 14:20 UTC
+/// Built on 2024-05-08 at 15:06 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -293,6 +293,7 @@ class _TranslationsScreensSignInEn {
 	// Translations
 	String get title => TranslationOverrides.string(_root.$meta, 'screens.signIn.title', {}) ?? 'Sign in';
 	String get proceedButton => TranslationOverrides.string(_root.$meta, 'screens.signIn.proceedButton', {}) ?? 'Log in';
+	late final _TranslationsScreensSignInSignUpLabelEn signUpLabel = _TranslationsScreensSignInSignUpLabelEn._(_root);
 }
 
 // Path: screens.signUp
@@ -304,6 +305,7 @@ class _TranslationsScreensSignUpEn {
 	// Translations
 	String get title => TranslationOverrides.string(_root.$meta, 'screens.signUp.title', {}) ?? 'Sign up';
 	String get proceedButton => TranslationOverrides.string(_root.$meta, 'screens.signUp.proceedButton', {}) ?? 'Sign up';
+	late final _TranslationsScreensSignUpSignInLabelEn signInLabel = _TranslationsScreensSignUpSignInLabelEn._(_root);
 }
 
 // Path: screens.tariffs
@@ -403,6 +405,28 @@ class _TranslationsWidgetsMainWrapperEn {
 	};
 }
 
+// Path: screens.signIn.signUpLabel
+class _TranslationsScreensSignInSignUpLabelEn {
+	_TranslationsScreensSignInSignUpLabelEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get text => TranslationOverrides.string(_root.$meta, 'screens.signIn.signUpLabel.text', {}) ?? 'Don\'t have an account?';
+	String get button => TranslationOverrides.string(_root.$meta, 'screens.signIn.signUpLabel.button', {}) ?? 'Sign up';
+}
+
+// Path: screens.signUp.signInLabel
+class _TranslationsScreensSignUpSignInLabelEn {
+	_TranslationsScreensSignUpSignInLabelEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get text => TranslationOverrides.string(_root.$meta, 'screens.signUp.signInLabel.text', {}) ?? 'Already have an account?';
+	String get button => TranslationOverrides.string(_root.$meta, 'screens.signUp.signInLabel.button', {}) ?? 'Sign in';
+}
+
 // Path: widgets.loginField.errors
 class _TranslationsWidgetsLoginFieldErrorsEn {
 	_TranslationsWidgetsLoginFieldErrorsEn._(this._root);
@@ -445,8 +469,12 @@ extension on Translations {
 			case 'screens.splash.loadingMessage': return TranslationOverrides.string(_root.$meta, 'screens.splash.loadingMessage', {}) ?? 'Please wait';
 			case 'screens.signIn.title': return TranslationOverrides.string(_root.$meta, 'screens.signIn.title', {}) ?? 'Sign in';
 			case 'screens.signIn.proceedButton': return TranslationOverrides.string(_root.$meta, 'screens.signIn.proceedButton', {}) ?? 'Log in';
+			case 'screens.signIn.signUpLabel.text': return TranslationOverrides.string(_root.$meta, 'screens.signIn.signUpLabel.text', {}) ?? 'Don\'t have an account?';
+			case 'screens.signIn.signUpLabel.button': return TranslationOverrides.string(_root.$meta, 'screens.signIn.signUpLabel.button', {}) ?? 'Sign up';
 			case 'screens.signUp.title': return TranslationOverrides.string(_root.$meta, 'screens.signUp.title', {}) ?? 'Sign up';
 			case 'screens.signUp.proceedButton': return TranslationOverrides.string(_root.$meta, 'screens.signUp.proceedButton', {}) ?? 'Sign up';
+			case 'screens.signUp.signInLabel.text': return TranslationOverrides.string(_root.$meta, 'screens.signUp.signInLabel.text', {}) ?? 'Already have an account?';
+			case 'screens.signUp.signInLabel.button': return TranslationOverrides.string(_root.$meta, 'screens.signUp.signInLabel.button', {}) ?? 'Sign in';
 			case 'screens.tariffs.title': return TranslationOverrides.string(_root.$meta, 'screens.tariffs.title', {}) ?? 'Tariffs';
 			case 'screens.profile.title': return TranslationOverrides.string(_root.$meta, 'screens.profile.title', {}) ?? 'Profile';
 			case 'screens.reservations.title': return TranslationOverrides.string(_root.$meta, 'screens.reservations.title', {}) ?? 'Reservations';

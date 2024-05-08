@@ -4,6 +4,7 @@ import 'package:course_project/presentation/navigation.dart';
 import 'package:course_project/presentation/theme/theme.dart';
 import 'package:course_project/presentation/utils/utils.dart';
 import 'package:course_project/presentation/widgets/widgets.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,8 +20,8 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   final _authFormKey = GlobalKey<FormState>();
 
-  final _passwordController = TextEditingController(text: 'admin');
-  final _emailController = TextEditingController(text: '123456');
+  final _emailController = TextEditingController(text: 'admin');
+  final _passwordController = TextEditingController(text: '123456');
 
   final FocusNode _emailFocus = FocusNode();
   final FocusNode _passwordFocus = FocusNode();
@@ -58,46 +59,73 @@ class _SignInScreenState extends State<SignInScreen> {
                 )
               ],
             ),
-            body: FullScreen(
-              bottomSafe: false,
-              child: Padding(
-                padding: const EdgeInsets.all(24),
-                child: Form(
-                  key: _authFormKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      LoginField(
-                        label: context.t.widgets.loginField.label,
-                        controller: _emailController,
-                        focusNode: _emailFocus,
-                        onFieldSubmitted: (_) {
-                          _emailFocus.unfocus();
-                          FocusScope.of(context).requestFocus(_passwordFocus);
-                        },
-                        onSaved: (value) {
-                          _username = value;
-                        },
+            body: Column(
+              children: [
+                Expanded(
+                  child: FullScreen(
+                    bottomSafe: false,
+                    child: Padding(
+                      padding: const EdgeInsets.all(24),
+                      child: Form(
+                        key: _authFormKey,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            LoginField(
+                              label: context.t.widgets.loginField.label,
+                              controller: _emailController,
+                              focusNode: _emailFocus,
+                              onFieldSubmitted: (_) {
+                                _emailFocus.unfocus();
+                                FocusScope.of(context)
+                                    .requestFocus(_passwordFocus);
+                              },
+                              onSaved: (value) {
+                                _username = value;
+                              },
+                            ),
+                            const SizedBox(height: 20),
+                            PasswordField(
+                              controller: _passwordController,
+                              textInputAction: TextInputAction.done,
+                              label: context.t.widgets.passwordField.label,
+                              focusNode: _passwordFocus,
+                              autovalidateMode: null,
+                              onFieldSubmitted: (_) {
+                                _passwordFocus.unfocus();
+                              },
+                              onSaved: (value) {
+                                _password = value;
+                              },
+                            ),
+                            const SizedBox(height: 24),
+                            Text.rich(
+                              TextSpan(
+                                text:
+                                    '${context.t.screens.signIn.signUpLabel.text} ',
+                                children: [
+                                  TextSpan(
+                                    text: context
+                                        .t.screens.signIn.signUpLabel.button,
+                                    style: AppTextStyles.body1Link(context)
+                                        .copyWith(
+                                      color: context.colors.primary,
+                                    ),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = _onSignUpTap,
+                                  ),
+                                ],
+                              ),
+                              style: AppTextStyles.body1(context),
+                            ),
+                          ],
+                        ),
                       ),
-                      const SizedBox(height: 20),
-                      PasswordField(
-                        controller: _passwordController,
-                        textInputAction: TextInputAction.done,
-                        label: context.t.widgets.passwordField.label,
-                        focusNode: _passwordFocus,
-                        autovalidateMode: null,
-                        onFieldSubmitted: (_) {
-                          _passwordFocus.unfocus();
-                        },
-                        onSaved: (value) {
-                          _password = value;
-                        },
-                      ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
             bottomNavigationBar: AppBottomButtonWrapper(
               padding: const EdgeInsets.only(

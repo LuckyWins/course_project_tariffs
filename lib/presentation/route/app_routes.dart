@@ -1,5 +1,6 @@
 import 'package:course_project/domain/domain.dart';
 import 'package:course_project/presentation/screens/screens.dart';
+import 'package:course_project/presentation/utils/utils.dart';
 import 'package:course_project/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -26,12 +27,14 @@ class GoRouteClass {
   static Page<T> defaultPageBuilder<T>({
     required String? name,
     required Widget child,
+    bool withAnimation = true,
     required LocalKey? key,
   }) =>
-      MaterialPage<T>(
+      MaterialWithModalsPage<T>(
         name: name,
-        child: child,
+        builder: (context) => child,
         key: key,
+        withAnimation: withAnimation,
       );
 
   static final route = GoRouter(
@@ -53,6 +56,7 @@ class GoRouteClass {
         pageBuilder: (context, state) => defaultPageBuilder(
           name: state.name,
           key: state.pageKey,
+          withAnimation: false,
           child: const SignInScreen(),
         ),
       ),
@@ -62,6 +66,7 @@ class GoRouteClass {
         pageBuilder: (context, state) => defaultPageBuilder(
           name: state.name,
           key: state.pageKey,
+          withAnimation: false,
           child: const SignUpScreen(),
         ),
       ),
@@ -99,6 +104,7 @@ class GoRouteClass {
             pageBuilder: (context, state) => defaultPageBuilder(
               name: state.name,
               key: state.pageKey,
+              withAnimation: false,
               child: const TariffsScreen(),
             ),
           ),
@@ -109,6 +115,7 @@ class GoRouteClass {
             pageBuilder: (context, state) => defaultPageBuilder(
               name: state.name,
               key: state.pageKey,
+              withAnimation: false,
               child: const ReservationsScreen(),
             ),
           ),
@@ -119,6 +126,7 @@ class GoRouteClass {
             pageBuilder: (context, state) => defaultPageBuilder(
               name: state.name,
               key: state.pageKey,
+              withAnimation: false,
               child: const ProfileScreen(),
             ),
           ),

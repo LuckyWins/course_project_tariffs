@@ -17,8 +17,8 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    _checkCredentials();
     super.initState();
+    _checkCredentials();
   }
 
   @override
@@ -35,7 +35,9 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const SizedBox(width: double.maxFinite),
             const LoadingIndicator(
               color: Colors.white,
             ),

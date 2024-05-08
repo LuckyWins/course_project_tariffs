@@ -28,7 +28,7 @@ class PasswordField extends StatefulWidget {
     this.validator,
     this.controller,
     this.mandatory = true,
-    this.minLength = 7,
+    this.minLength = 6,
     this.maxLength = 20,
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
   });

@@ -18,6 +18,8 @@ abstract class UsersRepository {
 
   Future<AppUser?> getUser(int id);
 
+  Future<AppUser?> getUserByName(String username);
+
   /// create or update
   Future<void> updateProfile({
     required int userId,

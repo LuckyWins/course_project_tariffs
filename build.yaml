@@ -30,6 +30,7 @@ targets:
           timestamp: true
           maps:
             - models.theme.name
+            - widgets.mainWrapper.nav
           pluralization:
             auto: cardinal
             cardinal:

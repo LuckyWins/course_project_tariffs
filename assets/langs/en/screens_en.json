@@ -1,11 +1,22 @@
 {
+  "splash": {
+    "loadingMessage": "Please wait"
+  },
   "signIn": {
     "title": "Sign in",
-    "usernameField": {
-      "label": "Username"
-    },
-    "passwordField": {
-      "label": "Password"
-    }
+    "proceedButton": "Log in"
+  },
+  "signUp": {
+    "title": "Sign up",
+    "proceedButton": "Sign up"
+  },
+  "tariffs": {
+    "title": "Tariffs"
+  },
+  "profile": {
+    "title": "Profile"
+  },
+  "reservations": {
+    "title": "Reservations"
   }
 }

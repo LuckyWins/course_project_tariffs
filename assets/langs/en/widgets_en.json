@@ -1,0 +1,27 @@
+{
+  "loginField": {
+    "label": "Email",
+    "errors": {
+      "incorrect": "The email must be a valid email address"
+    }
+  },
+  "passwordField": {
+    "label": "Password",
+    "description": "Use {minLength} or more characters",
+    "errors": {
+      "minLength": "Password should be at least {minLength} characters"
+    }
+  },
+  "generalEditItem": {
+    "errors": {
+      "mandatory": "Required field"
+    }
+  },
+  "mainWrapper": {
+    "nav": {
+      "tariffs": "Tariffs",
+      "reservations": "Reservations",
+      "profile": "Profile"
+    }
+  }
+}

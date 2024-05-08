@@ -76,6 +76,10 @@ class UsersRepositoryImpl extends UsersRepository {
       db.appUsers.filter().idEqualTo(id).findFirst();
 
   @override
+  Future<AppUser?> getUserByName(String username) =>
+      db.appUsers.filter().usernameEqualTo(username).findFirst();
+
+  @override
   Future<void> updateProfile({
     required int userId,
     required AppUserProfile profile,

@@ -1,3 +1,6 @@
+import 'package:course_project/domain/domain.dart';
+import 'package:course_project/presentation/screens/screens.dart';
+import 'package:course_project/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -53,6 +56,15 @@ class GoRouteClass {
           child: const SignInScreen(),
         ),
       ),
+      GoRoute(
+        path: '/signUp',
+        name: RouteNames.signUp,
+        pageBuilder: (context, state) => defaultPageBuilder(
+          name: state.name,
+          key: state.pageKey,
+          child: const SignUpScreen(),
+        ),
+      ),
       // bottom nav bar
       ShellRoute(
         navigatorKey: _shellNavigator,
@@ -70,8 +82,12 @@ class GoRouteClass {
           //key: state.pageKey,
           currentTab: switch (state.uri.path) {
             final p when p.startsWith('/${RouteNames.tariffs}') =>
-              MenuTab.dashboard,
-            _ => MenuTab.dashboard,
+              MenuTab.tariffs,
+            final p when p.startsWith('/${RouteNames.reservations}') =>
+              MenuTab.reservations,
+            final p when p.startsWith('/${RouteNames.profile}') =>
+              MenuTab.profile,
+            _ => MenuTab.profile,
           },
           child: child,
         ),
@@ -86,6 +102,26 @@ class GoRouteClass {
               child: const TariffsScreen(),
             ),
           ),
+          GoRoute(
+            path: '/reservations',
+            parentNavigatorKey: _shellNavigator,
+            name: RouteNames.reservations,
+            pageBuilder: (context, state) => defaultPageBuilder(
+              name: state.name,
+              key: state.pageKey,
+              child: const ReservationsScreen(),
+            ),
+          ),
+          GoRoute(
+            path: '/profile',
+            parentNavigatorKey: _shellNavigator,
+            name: RouteNames.profile,
+            pageBuilder: (context, state) => defaultPageBuilder(
+              name: state.name,
+              key: state.pageKey,
+              child: const ProfileScreen(),
+            ),
+          ),
         ], // must be home page
       ),
     ],
@@ -95,4 +131,8 @@ class GoRouteClass {
       key: state.pageKey,
     ),
   );
+
+  static BuildContext? get withoutCtx => rootNavigator.currentContext;
+
+  static BuildContext? get shellNoCtx => _shellNavigator.currentContext;
 }

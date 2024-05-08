@@ -5,15 +5,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'preferences_data_source.dart';
 
-abstract interface class ISecureStorageDataSource {
-  Future<T?> read<T>(TypeStoreKey<T> typedStoreKey);
-
-  Future<bool> contains(TypeStoreKey typedStoreKey);
-
-  Future<void> write<T>(TypeStoreKey<T> typedStoreKey, T? value);
-}
-
-@Deprecated('use ISecureStorageDataSource')
 class SecureStorageDataSource {
   static FlutterSecureStorage get storage => const FlutterSecureStorage(
           aOptions: AndroidOptions(
@@ -64,8 +55,6 @@ class SecureStorageDataSource {
 }
 
 class SecureStorageKeys {
+  static final username = TypeStoreKey<String>('username');
   static final accessToken = TypeStoreKey<String>('accessToken');
-  static final uuid = TypeStoreKey<String>('uuid');
-  static final fcmToken = TypeStoreKey<String>('fcmToken');
-  static final onboardingStep = TypeStoreKey<String>('onboardingStep');
 }

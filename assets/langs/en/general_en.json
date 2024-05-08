@@ -1,3 +1,9 @@
 {
-  "unknownLabel": "Unknown"
+  "actions": {
+    "ok": "Ok"
+  },
+  "unknownLabel": "Unknown",
+  "errorModal": {
+    "title": "Error"
+  }
 }

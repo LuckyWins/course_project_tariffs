@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 7
+/// Strings: 24
 ///
-/// Built on 2024-05-07 at 21:18 UTC
+/// Built on 2024-05-08 at 14:20 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -29,7 +29,7 @@ final _buildConfig = BuildModelConfig(
 	keyMapCase: null,
 	paramCase: CaseStyle.camel,
 	stringInterpolation: StringInterpolation.braces,
-	maps: ['models.theme.name'],
+	maps: ['models.theme.name', 'widgets.mainWrapper.nav'],
 	pluralAuto: PluralAuto.cardinal,
 	pluralParameter: 'n',
 	pluralCardinal: ['someKey.apple'],
@@ -196,6 +196,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _TranslationsModelsEn models = _TranslationsModelsEn._(_root);
 	late final _TranslationsScreensEn screens = _TranslationsScreensEn._(_root);
 	late final _TranslationsGeneralEn general = _TranslationsGeneralEn._(_root);
+	late final _TranslationsWidgetsEn widgets = _TranslationsWidgetsEn._(_root);
+	late final _TranslationsExceptionsEn exceptions = _TranslationsExceptionsEn._(_root);
 }
 
 // Path: models
@@ -215,7 +217,12 @@ class _TranslationsScreensEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+	late final _TranslationsScreensSplashEn splash = _TranslationsScreensSplashEn._(_root);
 	late final _TranslationsScreensSignInEn signIn = _TranslationsScreensSignInEn._(_root);
+	late final _TranslationsScreensSignUpEn signUp = _TranslationsScreensSignUpEn._(_root);
+	late final _TranslationsScreensTariffsEn tariffs = _TranslationsScreensTariffsEn._(_root);
+	late final _TranslationsScreensProfileEn profile = _TranslationsScreensProfileEn._(_root);
+	late final _TranslationsScreensReservationsEn reservations = _TranslationsScreensReservationsEn._(_root);
 }
 
 // Path: general
@@ -225,7 +232,32 @@ class _TranslationsGeneralEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+	late final _TranslationsGeneralActionsEn actions = _TranslationsGeneralActionsEn._(_root);
 	String get unknownLabel => TranslationOverrides.string(_root.$meta, 'general.unknownLabel', {}) ?? 'Unknown';
+	late final _TranslationsGeneralErrorModalEn errorModal = _TranslationsGeneralErrorModalEn._(_root);
+}
+
+// Path: widgets
+class _TranslationsWidgetsEn {
+	_TranslationsWidgetsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _TranslationsWidgetsLoginFieldEn loginField = _TranslationsWidgetsLoginFieldEn._(_root);
+	late final _TranslationsWidgetsPasswordFieldEn passwordField = _TranslationsWidgetsPasswordFieldEn._(_root);
+	late final _TranslationsWidgetsGeneralEditItemEn generalEditItem = _TranslationsWidgetsGeneralEditItemEn._(_root);
+	late final _TranslationsWidgetsMainWrapperEn mainWrapper = _TranslationsWidgetsMainWrapperEn._(_root);
+}
+
+// Path: exceptions
+class _TranslationsExceptionsEn {
+	_TranslationsExceptionsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get network => TranslationOverrides.string(_root.$meta, 'exceptions.network', {}) ?? 'Failed to connect to server';
 }
 
 // Path: models.theme
@@ -242,6 +274,16 @@ class _TranslationsModelsThemeEn {
 	};
 }
 
+// Path: screens.splash
+class _TranslationsScreensSplashEn {
+	_TranslationsScreensSplashEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get loadingMessage => TranslationOverrides.string(_root.$meta, 'screens.splash.loadingMessage', {}) ?? 'Please wait';
+}
+
 // Path: screens.signIn
 class _TranslationsScreensSignInEn {
 	_TranslationsScreensSignInEn._(this._root);
@@ -250,28 +292,145 @@ class _TranslationsScreensSignInEn {
 
 	// Translations
 	String get title => TranslationOverrides.string(_root.$meta, 'screens.signIn.title', {}) ?? 'Sign in';
-	late final _TranslationsScreensSignInUsernameFieldEn usernameField = _TranslationsScreensSignInUsernameFieldEn._(_root);
-	late final _TranslationsScreensSignInPasswordFieldEn passwordField = _TranslationsScreensSignInPasswordFieldEn._(_root);
+	String get proceedButton => TranslationOverrides.string(_root.$meta, 'screens.signIn.proceedButton', {}) ?? 'Log in';
 }
 
-// Path: screens.signIn.usernameField
-class _TranslationsScreensSignInUsernameFieldEn {
-	_TranslationsScreensSignInUsernameFieldEn._(this._root);
+// Path: screens.signUp
+class _TranslationsScreensSignUpEn {
+	_TranslationsScreensSignUpEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get label => TranslationOverrides.string(_root.$meta, 'screens.signIn.usernameField.label', {}) ?? 'Username';
+	String get title => TranslationOverrides.string(_root.$meta, 'screens.signUp.title', {}) ?? 'Sign up';
+	String get proceedButton => TranslationOverrides.string(_root.$meta, 'screens.signUp.proceedButton', {}) ?? 'Sign up';
 }
 
-// Path: screens.signIn.passwordField
-class _TranslationsScreensSignInPasswordFieldEn {
-	_TranslationsScreensSignInPasswordFieldEn._(this._root);
+// Path: screens.tariffs
+class _TranslationsScreensTariffsEn {
+	_TranslationsScreensTariffsEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get label => TranslationOverrides.string(_root.$meta, 'screens.signIn.passwordField.label', {}) ?? 'Password';
+	String get title => TranslationOverrides.string(_root.$meta, 'screens.tariffs.title', {}) ?? 'Tariffs';
+}
+
+// Path: screens.profile
+class _TranslationsScreensProfileEn {
+	_TranslationsScreensProfileEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => TranslationOverrides.string(_root.$meta, 'screens.profile.title', {}) ?? 'Profile';
+}
+
+// Path: screens.reservations
+class _TranslationsScreensReservationsEn {
+	_TranslationsScreensReservationsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => TranslationOverrides.string(_root.$meta, 'screens.reservations.title', {}) ?? 'Reservations';
+}
+
+// Path: general.actions
+class _TranslationsGeneralActionsEn {
+	_TranslationsGeneralActionsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get ok => TranslationOverrides.string(_root.$meta, 'general.actions.ok', {}) ?? 'Ok';
+}
+
+// Path: general.errorModal
+class _TranslationsGeneralErrorModalEn {
+	_TranslationsGeneralErrorModalEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => TranslationOverrides.string(_root.$meta, 'general.errorModal.title', {}) ?? 'Error';
+}
+
+// Path: widgets.loginField
+class _TranslationsWidgetsLoginFieldEn {
+	_TranslationsWidgetsLoginFieldEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get label => TranslationOverrides.string(_root.$meta, 'widgets.loginField.label', {}) ?? 'Email';
+	late final _TranslationsWidgetsLoginFieldErrorsEn errors = _TranslationsWidgetsLoginFieldErrorsEn._(_root);
+}
+
+// Path: widgets.passwordField
+class _TranslationsWidgetsPasswordFieldEn {
+	_TranslationsWidgetsPasswordFieldEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get label => TranslationOverrides.string(_root.$meta, 'widgets.passwordField.label', {}) ?? 'Password';
+	String description({required Object minLength}) => TranslationOverrides.string(_root.$meta, 'widgets.passwordField.description', {'minLength': minLength}) ?? 'Use ${minLength} or more characters';
+	late final _TranslationsWidgetsPasswordFieldErrorsEn errors = _TranslationsWidgetsPasswordFieldErrorsEn._(_root);
+}
+
+// Path: widgets.generalEditItem
+class _TranslationsWidgetsGeneralEditItemEn {
+	_TranslationsWidgetsGeneralEditItemEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _TranslationsWidgetsGeneralEditItemErrorsEn errors = _TranslationsWidgetsGeneralEditItemErrorsEn._(_root);
+}
+
+// Path: widgets.mainWrapper
+class _TranslationsWidgetsMainWrapperEn {
+	_TranslationsWidgetsMainWrapperEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	Map<String, String> get nav => TranslationOverrides.map(_root.$meta, 'widgets.mainWrapper.nav') ?? {
+		'tariffs': 'Tariffs',
+		'reservations': 'Reservations',
+		'profile': 'Profile',
+	};
+}
+
+// Path: widgets.loginField.errors
+class _TranslationsWidgetsLoginFieldErrorsEn {
+	_TranslationsWidgetsLoginFieldErrorsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get incorrect => TranslationOverrides.string(_root.$meta, 'widgets.loginField.errors.incorrect', {}) ?? 'The email must be a valid email address';
+}
+
+// Path: widgets.passwordField.errors
+class _TranslationsWidgetsPasswordFieldErrorsEn {
+	_TranslationsWidgetsPasswordFieldErrorsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String minLength({required Object minLength}) => TranslationOverrides.string(_root.$meta, 'widgets.passwordField.errors.minLength', {'minLength': minLength}) ?? 'Password should be at least ${minLength} characters';
+}
+
+// Path: widgets.generalEditItem.errors
+class _TranslationsWidgetsGeneralEditItemErrorsEn {
+	_TranslationsWidgetsGeneralEditItemErrorsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get mandatory => TranslationOverrides.string(_root.$meta, 'widgets.generalEditItem.errors.mandatory', {}) ?? 'Required field';
 }
 
 /// Flat map(s) containing all translations.
@@ -283,10 +442,27 @@ extension on Translations {
 			case 'models.theme.name.light': return TranslationOverrides.string(_root.$meta, 'models.theme.name.light', {}) ?? 'Light mode';
 			case 'models.theme.name.dark': return TranslationOverrides.string(_root.$meta, 'models.theme.name.dark', {}) ?? 'Dark mode';
 			case 'models.theme.name.system': return TranslationOverrides.string(_root.$meta, 'models.theme.name.system', {}) ?? 'Automatic';
+			case 'screens.splash.loadingMessage': return TranslationOverrides.string(_root.$meta, 'screens.splash.loadingMessage', {}) ?? 'Please wait';
 			case 'screens.signIn.title': return TranslationOverrides.string(_root.$meta, 'screens.signIn.title', {}) ?? 'Sign in';
-			case 'screens.signIn.usernameField.label': return TranslationOverrides.string(_root.$meta, 'screens.signIn.usernameField.label', {}) ?? 'Username';
-			case 'screens.signIn.passwordField.label': return TranslationOverrides.string(_root.$meta, 'screens.signIn.passwordField.label', {}) ?? 'Password';
+			case 'screens.signIn.proceedButton': return TranslationOverrides.string(_root.$meta, 'screens.signIn.proceedButton', {}) ?? 'Log in';
+			case 'screens.signUp.title': return TranslationOverrides.string(_root.$meta, 'screens.signUp.title', {}) ?? 'Sign up';
+			case 'screens.signUp.proceedButton': return TranslationOverrides.string(_root.$meta, 'screens.signUp.proceedButton', {}) ?? 'Sign up';
+			case 'screens.tariffs.title': return TranslationOverrides.string(_root.$meta, 'screens.tariffs.title', {}) ?? 'Tariffs';
+			case 'screens.profile.title': return TranslationOverrides.string(_root.$meta, 'screens.profile.title', {}) ?? 'Profile';
+			case 'screens.reservations.title': return TranslationOverrides.string(_root.$meta, 'screens.reservations.title', {}) ?? 'Reservations';
+			case 'general.actions.ok': return TranslationOverrides.string(_root.$meta, 'general.actions.ok', {}) ?? 'Ok';
 			case 'general.unknownLabel': return TranslationOverrides.string(_root.$meta, 'general.unknownLabel', {}) ?? 'Unknown';
+			case 'general.errorModal.title': return TranslationOverrides.string(_root.$meta, 'general.errorModal.title', {}) ?? 'Error';
+			case 'widgets.loginField.label': return TranslationOverrides.string(_root.$meta, 'widgets.loginField.label', {}) ?? 'Email';
+			case 'widgets.loginField.errors.incorrect': return TranslationOverrides.string(_root.$meta, 'widgets.loginField.errors.incorrect', {}) ?? 'The email must be a valid email address';
+			case 'widgets.passwordField.label': return TranslationOverrides.string(_root.$meta, 'widgets.passwordField.label', {}) ?? 'Password';
+			case 'widgets.passwordField.description': return ({required Object minLength}) => TranslationOverrides.string(_root.$meta, 'widgets.passwordField.description', {'minLength': minLength}) ?? 'Use ${minLength} or more characters';
+			case 'widgets.passwordField.errors.minLength': return ({required Object minLength}) => TranslationOverrides.string(_root.$meta, 'widgets.passwordField.errors.minLength', {'minLength': minLength}) ?? 'Password should be at least ${minLength} characters';
+			case 'widgets.generalEditItem.errors.mandatory': return TranslationOverrides.string(_root.$meta, 'widgets.generalEditItem.errors.mandatory', {}) ?? 'Required field';
+			case 'widgets.mainWrapper.nav.tariffs': return TranslationOverrides.string(_root.$meta, 'widgets.mainWrapper.nav.tariffs', {}) ?? 'Tariffs';
+			case 'widgets.mainWrapper.nav.reservations': return TranslationOverrides.string(_root.$meta, 'widgets.mainWrapper.nav.reservations', {}) ?? 'Reservations';
+			case 'widgets.mainWrapper.nav.profile': return TranslationOverrides.string(_root.$meta, 'widgets.mainWrapper.nav.profile', {}) ?? 'Profile';
+			case 'exceptions.network': return TranslationOverrides.string(_root.$meta, 'exceptions.network', {}) ?? 'Failed to connect to server';
 			default: return null;
 		}
 	}

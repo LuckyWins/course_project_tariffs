@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:course_project/domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,10 +26,16 @@ class AppWrappersWidget extends StatelessWidget {
                 usersRepository: di.locator(),
               ),
             ),
+            BlocProvider<ProfileCubit>(
+              create: (context) => ProfileCubit(
+                usersRepository: di.locator(),
+              ),
+            ),
           ],
           child: BlocListener<AuthBloc, AuthState>(
             listener: (context, state) => state.mapOrNull(
               proceedSuccess: (state) {
+                unawaited(context.read<ProfileCubit>().init());
                 // TODO: init blocs
                 if (state.role == UserRole.admin) {
                   Navigation.toTariffs();

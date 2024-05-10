@@ -1,8 +1,11 @@
 import 'package:course_project/domain/domain.dart';
+import 'package:course_project/injection.dart' as di;
+import 'package:course_project/presentation/blocs/blocs.dart';
 import 'package:course_project/presentation/screens/screens.dart';
 import 'package:course_project/presentation/utils/utils.dart';
 import 'package:course_project/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'app_error_route_widget.dart';
@@ -90,9 +93,9 @@ class GoRouteClass {
               MenuTab.tariffs,
             final p when p.startsWith('/${RouteNames.reservations}') =>
               MenuTab.reservations,
-            final p when p.startsWith('/${RouteNames.profile}') =>
-              MenuTab.profile,
-            _ => MenuTab.profile,
+            final p when p.startsWith('/${RouteNames.settings}') =>
+              MenuTab.settings,
+            _ => MenuTab.settings,
           },
           child: child,
         ),
@@ -120,15 +123,32 @@ class GoRouteClass {
             ),
           ),
           GoRoute(
-            path: '/profile',
+            path: '/settings',
             parentNavigatorKey: _shellNavigator,
-            name: RouteNames.profile,
+            name: RouteNames.settings,
             pageBuilder: (context, state) => defaultPageBuilder(
               name: state.name,
               key: state.pageKey,
               withAnimation: false,
-              child: const ProfileScreen(),
+              child: const SettingsScreen(),
             ),
+            routes: [
+              GoRoute(
+                path: 'edit',
+                parentNavigatorKey: _shellNavigator,
+                name: RouteNames.profileEdit,
+                pageBuilder: (context, state) => defaultPageBuilder(
+                  name: state.name,
+                  key: state.pageKey,
+                  child: BlocProvider<ProfileEditCubit>(
+                    create: (context) => ProfileEditCubit(
+                      usersRepository: di.locator(),
+                    )..init(),
+                    child: const ProfileEditScreen(),
+                  ),
+                ),
+              ),
+            ],
           ),
         ], // must be home page
       ),

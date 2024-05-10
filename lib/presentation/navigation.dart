@@ -38,9 +38,15 @@ class Navigation {
     return GoRouteClass.withoutCtx!.goNamed(RouteNames.reservations);
   }
 
-  /// Navigate to [ProfileScreen]
-  static void toProfile() {
+  /// Navigate to [SettingsScreen]
+  static void toSettings() {
     beforeNavigate();
-    return GoRouteClass.withoutCtx!.goNamed(RouteNames.profile);
+    return GoRouteClass.withoutCtx!.goNamed(RouteNames.settings);
+  }
+
+  /// Navigate to [ProfileEditScreen]
+  static Future<void> toProfileEdit() {
+    beforeNavigate();
+    return GoRouteClass.withoutCtx!.pushNamed(RouteNames.profileEdit);
   }
 }

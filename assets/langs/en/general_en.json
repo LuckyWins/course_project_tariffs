@@ -1,6 +1,7 @@
 {
   "actions": {
-    "ok": "Ok"
+    "ok": "Ok",
+    "save": "Save"
   },
   "unknownLabel": "Unknown",
   "errorModal": {

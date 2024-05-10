@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 enum MenuTab {
   tariffs,
   reservations,
-  profile,
+  settings,
 }
 
 class MenuTabWrapper {

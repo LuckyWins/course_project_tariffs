@@ -22,7 +22,7 @@ class _MainScreenWrapperState extends State<MainScreenWrapper> {
   final destinations = [
     MenuTab.tariffs,
     MenuTab.reservations,
-    MenuTab.profile,
+    MenuTab.settings,
   ];
 
   @override
@@ -47,7 +47,7 @@ class _MainScreenWrapperState extends State<MainScreenWrapper> {
           switch (tab) {
             MenuTab.tariffs => Icons.account_balance_wallet_outlined,
             MenuTab.reservations => Icons.list_alt_rounded,
-            MenuTab.profile => Icons.people_rounded,
+            MenuTab.settings => Icons.settings_rounded,
           },
           color: context.colors.primary,
         ),
@@ -55,7 +55,7 @@ class _MainScreenWrapperState extends State<MainScreenWrapper> {
           switch (tab) {
             MenuTab.tariffs => Icons.account_balance_wallet_outlined,
             MenuTab.reservations => Icons.list_alt_rounded,
-            MenuTab.profile => Icons.people_rounded,
+            MenuTab.settings => Icons.settings_rounded,
           },
           color: context.colors.onSurfaceVariant,
         ),
@@ -67,7 +67,7 @@ class _MainScreenWrapperState extends State<MainScreenWrapper> {
     return switch (tab) {
       MenuTab.tariffs => Navigation.toTariffs(),
       MenuTab.reservations => Navigation.toReservations(),
-      MenuTab.profile => Navigation.toProfile(),
+      MenuTab.settings => Navigation.toSettings(),
     };
   }
 }

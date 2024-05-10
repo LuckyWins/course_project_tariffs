@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 28
+/// Strings: 34
 ///
-/// Built on 2024-05-08 at 15:06 UTC
+/// Built on 2024-05-10 at 19:46 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -221,7 +221,8 @@ class _TranslationsScreensEn {
 	late final _TranslationsScreensSignInEn signIn = _TranslationsScreensSignInEn._(_root);
 	late final _TranslationsScreensSignUpEn signUp = _TranslationsScreensSignUpEn._(_root);
 	late final _TranslationsScreensTariffsEn tariffs = _TranslationsScreensTariffsEn._(_root);
-	late final _TranslationsScreensProfileEn profile = _TranslationsScreensProfileEn._(_root);
+	late final _TranslationsScreensSettingsEn settings = _TranslationsScreensSettingsEn._(_root);
+	late final _TranslationsScreensProfileEditEn profileEdit = _TranslationsScreensProfileEditEn._(_root);
 	late final _TranslationsScreensReservationsEn reservations = _TranslationsScreensReservationsEn._(_root);
 }
 
@@ -318,14 +319,28 @@ class _TranslationsScreensTariffsEn {
 	String get title => TranslationOverrides.string(_root.$meta, 'screens.tariffs.title', {}) ?? 'Tariffs';
 }
 
-// Path: screens.profile
-class _TranslationsScreensProfileEn {
-	_TranslationsScreensProfileEn._(this._root);
+// Path: screens.settings
+class _TranslationsScreensSettingsEn {
+	_TranslationsScreensSettingsEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get title => TranslationOverrides.string(_root.$meta, 'screens.profile.title', {}) ?? 'Profile';
+	String get title => TranslationOverrides.string(_root.$meta, 'screens.settings.title', {}) ?? 'Settings';
+	String get username => TranslationOverrides.string(_root.$meta, 'screens.settings.username', {}) ?? 'Username';
+	late final _TranslationsScreensSettingsRealNameFieldEn realNameField = _TranslationsScreensSettingsRealNameFieldEn._(_root);
+	late final _TranslationsScreensSettingsBioFieldEn bioField = _TranslationsScreensSettingsBioFieldEn._(_root);
+}
+
+// Path: screens.profileEdit
+class _TranslationsScreensProfileEditEn {
+	_TranslationsScreensProfileEditEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => TranslationOverrides.string(_root.$meta, 'screens.profileEdit.title', {}) ?? 'Edit profile';
+	late final _TranslationsScreensProfileEditSnackEn snack = _TranslationsScreensProfileEditSnackEn._(_root);
 }
 
 // Path: screens.reservations
@@ -346,6 +361,7 @@ class _TranslationsGeneralActionsEn {
 
 	// Translations
 	String get ok => TranslationOverrides.string(_root.$meta, 'general.actions.ok', {}) ?? 'Ok';
+	String get save => TranslationOverrides.string(_root.$meta, 'general.actions.save', {}) ?? 'Save';
 }
 
 // Path: general.errorModal
@@ -401,7 +417,7 @@ class _TranslationsWidgetsMainWrapperEn {
 	Map<String, String> get nav => TranslationOverrides.map(_root.$meta, 'widgets.mainWrapper.nav') ?? {
 		'tariffs': 'Tariffs',
 		'reservations': 'Reservations',
-		'profile': 'Profile',
+		'settings': 'Settings',
 	};
 }
 
@@ -425,6 +441,36 @@ class _TranslationsScreensSignUpSignInLabelEn {
 	// Translations
 	String get text => TranslationOverrides.string(_root.$meta, 'screens.signUp.signInLabel.text', {}) ?? 'Already have an account?';
 	String get button => TranslationOverrides.string(_root.$meta, 'screens.signUp.signInLabel.button', {}) ?? 'Sign in';
+}
+
+// Path: screens.settings.realNameField
+class _TranslationsScreensSettingsRealNameFieldEn {
+	_TranslationsScreensSettingsRealNameFieldEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get label => TranslationOverrides.string(_root.$meta, 'screens.settings.realNameField.label', {}) ?? 'Real name';
+}
+
+// Path: screens.settings.bioField
+class _TranslationsScreensSettingsBioFieldEn {
+	_TranslationsScreensSettingsBioFieldEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get label => TranslationOverrides.string(_root.$meta, 'screens.settings.bioField.label', {}) ?? 'Bio';
+}
+
+// Path: screens.profileEdit.snack
+class _TranslationsScreensProfileEditSnackEn {
+	_TranslationsScreensProfileEditSnackEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get savedSuccessfully => TranslationOverrides.string(_root.$meta, 'screens.profileEdit.snack.savedSuccessfully', {}) ?? 'Your profile has been updated successfully';
 }
 
 // Path: widgets.loginField.errors
@@ -476,9 +522,15 @@ extension on Translations {
 			case 'screens.signUp.signInLabel.text': return TranslationOverrides.string(_root.$meta, 'screens.signUp.signInLabel.text', {}) ?? 'Already have an account?';
 			case 'screens.signUp.signInLabel.button': return TranslationOverrides.string(_root.$meta, 'screens.signUp.signInLabel.button', {}) ?? 'Sign in';
 			case 'screens.tariffs.title': return TranslationOverrides.string(_root.$meta, 'screens.tariffs.title', {}) ?? 'Tariffs';
-			case 'screens.profile.title': return TranslationOverrides.string(_root.$meta, 'screens.profile.title', {}) ?? 'Profile';
+			case 'screens.settings.title': return TranslationOverrides.string(_root.$meta, 'screens.settings.title', {}) ?? 'Settings';
+			case 'screens.settings.username': return TranslationOverrides.string(_root.$meta, 'screens.settings.username', {}) ?? 'Username';
+			case 'screens.settings.realNameField.label': return TranslationOverrides.string(_root.$meta, 'screens.settings.realNameField.label', {}) ?? 'Real name';
+			case 'screens.settings.bioField.label': return TranslationOverrides.string(_root.$meta, 'screens.settings.bioField.label', {}) ?? 'Bio';
+			case 'screens.profileEdit.title': return TranslationOverrides.string(_root.$meta, 'screens.profileEdit.title', {}) ?? 'Edit profile';
+			case 'screens.profileEdit.snack.savedSuccessfully': return TranslationOverrides.string(_root.$meta, 'screens.profileEdit.snack.savedSuccessfully', {}) ?? 'Your profile has been updated successfully';
 			case 'screens.reservations.title': return TranslationOverrides.string(_root.$meta, 'screens.reservations.title', {}) ?? 'Reservations';
 			case 'general.actions.ok': return TranslationOverrides.string(_root.$meta, 'general.actions.ok', {}) ?? 'Ok';
+			case 'general.actions.save': return TranslationOverrides.string(_root.$meta, 'general.actions.save', {}) ?? 'Save';
 			case 'general.unknownLabel': return TranslationOverrides.string(_root.$meta, 'general.unknownLabel', {}) ?? 'Unknown';
 			case 'general.errorModal.title': return TranslationOverrides.string(_root.$meta, 'general.errorModal.title', {}) ?? 'Error';
 			case 'widgets.loginField.label': return TranslationOverrides.string(_root.$meta, 'widgets.loginField.label', {}) ?? 'Email';
@@ -489,7 +541,7 @@ extension on Translations {
 			case 'widgets.generalEditItem.errors.mandatory': return TranslationOverrides.string(_root.$meta, 'widgets.generalEditItem.errors.mandatory', {}) ?? 'Required field';
 			case 'widgets.mainWrapper.nav.tariffs': return TranslationOverrides.string(_root.$meta, 'widgets.mainWrapper.nav.tariffs', {}) ?? 'Tariffs';
 			case 'widgets.mainWrapper.nav.reservations': return TranslationOverrides.string(_root.$meta, 'widgets.mainWrapper.nav.reservations', {}) ?? 'Reservations';
-			case 'widgets.mainWrapper.nav.profile': return TranslationOverrides.string(_root.$meta, 'widgets.mainWrapper.nav.profile', {}) ?? 'Profile';
+			case 'widgets.mainWrapper.nav.settings': return TranslationOverrides.string(_root.$meta, 'widgets.mainWrapper.nav.settings', {}) ?? 'Settings';
 			case 'exceptions.network': return TranslationOverrides.string(_root.$meta, 'exceptions.network', {}) ?? 'Failed to connect to server';
 			default: return null;
 		}

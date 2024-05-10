@@ -21,8 +21,21 @@
   "tariffs": {
     "title": "Tariffs"
   },
-  "profile": {
-    "title": "Profile"
+  "settings": {
+    "title": "Settings",
+    "username": "Username",
+    "realNameField": {
+      "label": "Real name"
+    },
+    "bioField": {
+      "label": "Bio"
+    }
+  },
+  "profileEdit": {
+    "title": "Edit profile",
+    "snack": {
+      "savedSuccessfully": "Your profile has been updated successfully"
+    }
   },
   "reservations": {
     "title": "Reservations"

@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 34
+/// Strings: 38
 ///
-/// Built on 2024-05-10 at 19:46 UTC
+/// Built on 2024-05-10 at 19:56 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -326,10 +326,12 @@ class _TranslationsScreensSettingsEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+	late final _TranslationsScreensSettingsModalEn modal = _TranslationsScreensSettingsModalEn._(_root);
 	String get title => TranslationOverrides.string(_root.$meta, 'screens.settings.title', {}) ?? 'Settings';
 	String get username => TranslationOverrides.string(_root.$meta, 'screens.settings.username', {}) ?? 'Username';
 	late final _TranslationsScreensSettingsRealNameFieldEn realNameField = _TranslationsScreensSettingsRealNameFieldEn._(_root);
 	late final _TranslationsScreensSettingsBioFieldEn bioField = _TranslationsScreensSettingsBioFieldEn._(_root);
+	String get logOutButton => TranslationOverrides.string(_root.$meta, 'screens.settings.logOutButton', {}) ?? 'Log out';
 }
 
 // Path: screens.profileEdit
@@ -443,6 +445,16 @@ class _TranslationsScreensSignUpSignInLabelEn {
 	String get button => TranslationOverrides.string(_root.$meta, 'screens.signUp.signInLabel.button', {}) ?? 'Sign in';
 }
 
+// Path: screens.settings.modal
+class _TranslationsScreensSettingsModalEn {
+	_TranslationsScreensSettingsModalEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _TranslationsScreensSettingsModalLogOutEn logOut = _TranslationsScreensSettingsModalLogOutEn._(_root);
+}
+
 // Path: screens.settings.realNameField
 class _TranslationsScreensSettingsRealNameFieldEn {
 	_TranslationsScreensSettingsRealNameFieldEn._(this._root);
@@ -503,6 +515,18 @@ class _TranslationsWidgetsGeneralEditItemErrorsEn {
 	String get mandatory => TranslationOverrides.string(_root.$meta, 'widgets.generalEditItem.errors.mandatory', {}) ?? 'Required field';
 }
 
+// Path: screens.settings.modal.logOut
+class _TranslationsScreensSettingsModalLogOutEn {
+	_TranslationsScreensSettingsModalLogOutEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => TranslationOverrides.string(_root.$meta, 'screens.settings.modal.logOut.title', {}) ?? 'Warning';
+	String get message => TranslationOverrides.string(_root.$meta, 'screens.settings.modal.logOut.message', {}) ?? 'Are you sure you want to log out?';
+	String get action => TranslationOverrides.string(_root.$meta, 'screens.settings.modal.logOut.action', {}) ?? 'Log out';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -522,10 +546,14 @@ extension on Translations {
 			case 'screens.signUp.signInLabel.text': return TranslationOverrides.string(_root.$meta, 'screens.signUp.signInLabel.text', {}) ?? 'Already have an account?';
 			case 'screens.signUp.signInLabel.button': return TranslationOverrides.string(_root.$meta, 'screens.signUp.signInLabel.button', {}) ?? 'Sign in';
 			case 'screens.tariffs.title': return TranslationOverrides.string(_root.$meta, 'screens.tariffs.title', {}) ?? 'Tariffs';
+			case 'screens.settings.modal.logOut.title': return TranslationOverrides.string(_root.$meta, 'screens.settings.modal.logOut.title', {}) ?? 'Warning';
+			case 'screens.settings.modal.logOut.message': return TranslationOverrides.string(_root.$meta, 'screens.settings.modal.logOut.message', {}) ?? 'Are you sure you want to log out?';
+			case 'screens.settings.modal.logOut.action': return TranslationOverrides.string(_root.$meta, 'screens.settings.modal.logOut.action', {}) ?? 'Log out';
 			case 'screens.settings.title': return TranslationOverrides.string(_root.$meta, 'screens.settings.title', {}) ?? 'Settings';
 			case 'screens.settings.username': return TranslationOverrides.string(_root.$meta, 'screens.settings.username', {}) ?? 'Username';
 			case 'screens.settings.realNameField.label': return TranslationOverrides.string(_root.$meta, 'screens.settings.realNameField.label', {}) ?? 'Real name';
 			case 'screens.settings.bioField.label': return TranslationOverrides.string(_root.$meta, 'screens.settings.bioField.label', {}) ?? 'Bio';
+			case 'screens.settings.logOutButton': return TranslationOverrides.string(_root.$meta, 'screens.settings.logOutButton', {}) ?? 'Log out';
 			case 'screens.profileEdit.title': return TranslationOverrides.string(_root.$meta, 'screens.profileEdit.title', {}) ?? 'Edit profile';
 			case 'screens.profileEdit.snack.savedSuccessfully': return TranslationOverrides.string(_root.$meta, 'screens.profileEdit.snack.savedSuccessfully', {}) ?? 'Your profile has been updated successfully';
 			case 'screens.reservations.title': return TranslationOverrides.string(_root.$meta, 'screens.reservations.title', {}) ?? 'Reservations';

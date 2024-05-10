@@ -1,6 +1,7 @@
 import 'package:course_project/generated/translations.g.dart';
 import 'package:course_project/presentation/blocs/blocs.dart';
 import 'package:course_project/presentation/navigation.dart';
+import 'package:course_project/presentation/utils/utils.dart';
 import 'package:course_project/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,6 +34,7 @@ class SettingsScreen extends StatelessWidget {
             builder: (context, state) => state.maybeMap(
               hasData: (state) => SingleChildScrollView(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     ListTile(
                       title: Text(context.t.screens.settings.username),
@@ -46,6 +48,13 @@ class SettingsScreen extends StatelessWidget {
                     ListTile(
                       title: Text(context.t.screens.settings.bioField.label),
                       subtitle: Text(state.data.profile?.bio ?? 'Empty'),
+                    ),
+                    TextButton(
+                      onPressed: () => _onLogOutTap(context),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(context.t.screens.settings.logOutButton),
+                      ),
                     ),
                   ],
                 ),
@@ -64,5 +73,15 @@ class SettingsScreen extends StatelessWidget {
 
   void _onEditProfileTap() {
     Navigation.toProfileEdit();
+  }
+
+  void _onLogOutTap(BuildContext context) {
+    Multiplatform.showMessage(
+      context: context,
+      title: context.t.screens.settings.modal.logOut.title,
+      message: context.t.screens.settings.modal.logOut.message,
+      buttonText: context.t.screens.settings.modal.logOut.action,
+      onTapAction: () => context.read<AuthBloc>().add(const AuthEvent.logOut()),
+    );
   }
 }

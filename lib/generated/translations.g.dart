@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 38
+/// Strings: 40
 ///
-/// Built on 2024-05-10 at 19:56 UTC
+/// Built on 2024-05-10 at 20:30 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -224,6 +224,7 @@ class _TranslationsScreensEn {
 	late final _TranslationsScreensSettingsEn settings = _TranslationsScreensSettingsEn._(_root);
 	late final _TranslationsScreensProfileEditEn profileEdit = _TranslationsScreensProfileEditEn._(_root);
 	late final _TranslationsScreensReservationsEn reservations = _TranslationsScreensReservationsEn._(_root);
+	late final _TranslationsScreensThemeSelectEn themeSelect = _TranslationsScreensThemeSelectEn._(_root);
 }
 
 // Path: general
@@ -331,6 +332,7 @@ class _TranslationsScreensSettingsEn {
 	String get username => TranslationOverrides.string(_root.$meta, 'screens.settings.username', {}) ?? 'Username';
 	late final _TranslationsScreensSettingsRealNameFieldEn realNameField = _TranslationsScreensSettingsRealNameFieldEn._(_root);
 	late final _TranslationsScreensSettingsBioFieldEn bioField = _TranslationsScreensSettingsBioFieldEn._(_root);
+	String get theme => TranslationOverrides.string(_root.$meta, 'screens.settings.theme', {}) ?? 'Theme';
 	String get logOutButton => TranslationOverrides.string(_root.$meta, 'screens.settings.logOutButton', {}) ?? 'Log out';
 }
 
@@ -353,6 +355,16 @@ class _TranslationsScreensReservationsEn {
 
 	// Translations
 	String get title => TranslationOverrides.string(_root.$meta, 'screens.reservations.title', {}) ?? 'Reservations';
+}
+
+// Path: screens.themeSelect
+class _TranslationsScreensThemeSelectEn {
+	_TranslationsScreensThemeSelectEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => TranslationOverrides.string(_root.$meta, 'screens.themeSelect.title', {}) ?? 'Theme';
 }
 
 // Path: general.actions
@@ -553,10 +565,12 @@ extension on Translations {
 			case 'screens.settings.username': return TranslationOverrides.string(_root.$meta, 'screens.settings.username', {}) ?? 'Username';
 			case 'screens.settings.realNameField.label': return TranslationOverrides.string(_root.$meta, 'screens.settings.realNameField.label', {}) ?? 'Real name';
 			case 'screens.settings.bioField.label': return TranslationOverrides.string(_root.$meta, 'screens.settings.bioField.label', {}) ?? 'Bio';
+			case 'screens.settings.theme': return TranslationOverrides.string(_root.$meta, 'screens.settings.theme', {}) ?? 'Theme';
 			case 'screens.settings.logOutButton': return TranslationOverrides.string(_root.$meta, 'screens.settings.logOutButton', {}) ?? 'Log out';
 			case 'screens.profileEdit.title': return TranslationOverrides.string(_root.$meta, 'screens.profileEdit.title', {}) ?? 'Edit profile';
 			case 'screens.profileEdit.snack.savedSuccessfully': return TranslationOverrides.string(_root.$meta, 'screens.profileEdit.snack.savedSuccessfully', {}) ?? 'Your profile has been updated successfully';
 			case 'screens.reservations.title': return TranslationOverrides.string(_root.$meta, 'screens.reservations.title', {}) ?? 'Reservations';
+			case 'screens.themeSelect.title': return TranslationOverrides.string(_root.$meta, 'screens.themeSelect.title', {}) ?? 'Theme';
 			case 'general.actions.ok': return TranslationOverrides.string(_root.$meta, 'general.actions.ok', {}) ?? 'Ok';
 			case 'general.actions.save': return TranslationOverrides.string(_root.$meta, 'general.actions.save', {}) ?? 'Save';
 			case 'general.unknownLabel': return TranslationOverrides.string(_root.$meta, 'general.unknownLabel', {}) ?? 'Unknown';

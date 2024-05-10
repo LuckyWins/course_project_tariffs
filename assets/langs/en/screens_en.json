@@ -37,6 +37,7 @@
     "bioField": {
       "label": "Bio"
     },
+    "theme": "Theme",
     "logOutButton": "Log out"
   },
   "profileEdit": {
@@ -47,5 +48,8 @@
   },
   "reservations": {
     "title": "Reservations"
+  },
+  "themeSelect": {
+    "title": "Theme"
   }
 }

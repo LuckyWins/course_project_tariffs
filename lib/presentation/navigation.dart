@@ -1,4 +1,6 @@
+import 'package:course_project/injection.dart' as di;
 import 'package:course_project/presentation/utils/utils.dart';
+import 'package:flutter/material.dart';
 
 import 'route/route.dart';
 import 'screens/screens.dart';
@@ -48,5 +50,17 @@ class Navigation {
   static Future<void> toProfileEdit() {
     beforeNavigate();
     return GoRouteClass.withoutCtx!.pushNamed(RouteNames.profileEdit);
+  }
+
+  /// Navigate to [ThemeSelectScreen]
+  static Future<void> toThemeSelect() {
+    beforeNavigate();
+    return Navigator.of(GoRouteClass.withoutCtx!).push(
+      MaterialPageRoute(
+        builder: (context) => ThemeSelectScreen(
+          settingsController: di.locator(),
+        ),
+      ),
+    );
   }
 }

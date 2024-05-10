@@ -3,12 +3,16 @@ import 'package:course_project/presentation/blocs/blocs.dart';
 import 'package:course_project/presentation/navigation.dart';
 import 'package:course_project/presentation/utils/utils.dart';
 import 'package:course_project/presentation/widgets/widgets.dart';
+import 'package:course_project/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SettingsScreen extends StatelessWidget {
+  final SettingsController settingsController;
+
   const SettingsScreen({
     super.key,
+    required this.settingsController,
   });
 
   @override
@@ -49,7 +53,17 @@ class SettingsScreen extends StatelessWidget {
                       title: Text(context.t.screens.settings.bioField.label),
                       subtitle: Text(state.data.profile?.bio ?? 'Empty'),
                     ),
+                    ListTile(
+                      onTap: _onThemeChangeTap,
+                      title: Text(context.t.screens.settings.theme),
+                      subtitle:
+                          Text(settingsController.themeMode.localName(context)),
+                    ),
                     TextButton(
+                      style: const ButtonStyle(
+                          padding: MaterialStatePropertyAll(
+                        EdgeInsets.symmetric(horizontal: 16),
+                      )),
                       onPressed: () => _onLogOutTap(context),
                       child: Align(
                         alignment: Alignment.centerLeft,
@@ -73,6 +87,10 @@ class SettingsScreen extends StatelessWidget {
 
   void _onEditProfileTap() {
     Navigation.toProfileEdit();
+  }
+
+  void _onThemeChangeTap() {
+    Navigation.toThemeSelect();
   }
 
   void _onLogOutTap(BuildContext context) {

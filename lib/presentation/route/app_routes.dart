@@ -130,7 +130,9 @@ class GoRouteClass {
               name: state.name,
               key: state.pageKey,
               withAnimation: false,
-              child: const SettingsScreen(),
+              child: SettingsScreen(
+                settingsController: di.locator(),
+              ),
             ),
             routes: [
               GoRoute(

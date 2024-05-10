@@ -1,3 +1,4 @@
+import 'package:course_project/domain/domain.dart';
 import 'package:course_project/injection.dart' as di;
 import 'package:course_project/presentation/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,15 @@ class Navigation {
   static void toTariffs() {
     beforeNavigate();
     return GoRouteClass.withoutCtx!.goNamed(RouteNames.tariffs);
+  }
+
+  /// Navigate to [TariffEditScreen]
+  static void toTariffEdit({AppTariff? data}) {
+    beforeNavigate();
+    return GoRouteClass.withoutCtx!.goNamed(
+      RouteNames.tariffEdit,
+      extra: data?.entity,
+    );
   }
 
   /// Navigate to [ReservationsScreen]

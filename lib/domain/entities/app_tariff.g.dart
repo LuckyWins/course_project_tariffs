@@ -914,3 +914,29 @@ extension AppTariffQueryProperty
     });
   }
 }
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$AppTariffEntityImpl _$$AppTariffEntityImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AppTariffEntityImpl(
+      id: (json['id'] as num).toInt(),
+      ownerId: (json['ownerId'] as num).toInt(),
+      creationDate: DateTime.parse(json['creationDate'] as String),
+      title: json['title'] as String,
+      price: (json['price'] as num).toDouble(),
+      description: json['description'] as String,
+    );
+
+Map<String, dynamic> _$$AppTariffEntityImplToJson(
+        _$AppTariffEntityImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'ownerId': instance.ownerId,
+      'creationDate': instance.creationDate.toIso8601String(),
+      'title': instance.title,
+      'price': instance.price,
+      'description': instance.description,
+    };

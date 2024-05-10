@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 40
+/// Strings: 55
 ///
-/// Built on 2024-05-10 at 20:30 UTC
+/// Built on 2024-05-10 at 22:52 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -221,6 +221,7 @@ class _TranslationsScreensEn {
 	late final _TranslationsScreensSignInEn signIn = _TranslationsScreensSignInEn._(_root);
 	late final _TranslationsScreensSignUpEn signUp = _TranslationsScreensSignUpEn._(_root);
 	late final _TranslationsScreensTariffsEn tariffs = _TranslationsScreensTariffsEn._(_root);
+	late final _TranslationsScreensTariffEditEn tariffEdit = _TranslationsScreensTariffEditEn._(_root);
 	late final _TranslationsScreensSettingsEn settings = _TranslationsScreensSettingsEn._(_root);
 	late final _TranslationsScreensProfileEditEn profileEdit = _TranslationsScreensProfileEditEn._(_root);
 	late final _TranslationsScreensReservationsEn reservations = _TranslationsScreensReservationsEn._(_root);
@@ -318,6 +319,22 @@ class _TranslationsScreensTariffsEn {
 
 	// Translations
 	String get title => TranslationOverrides.string(_root.$meta, 'screens.tariffs.title', {}) ?? 'Tariffs';
+	late final _TranslationsScreensTariffsItemEn item = _TranslationsScreensTariffsItemEn._(_root);
+}
+
+// Path: screens.tariffEdit
+class _TranslationsScreensTariffEditEn {
+	_TranslationsScreensTariffEditEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _TranslationsScreensTariffEditTitleEn title = _TranslationsScreensTariffEditTitleEn._(_root);
+	late final _TranslationsScreensTariffEditModalEn modal = _TranslationsScreensTariffEditModalEn._(_root);
+	late final _TranslationsScreensTariffEditSnackEn snack = _TranslationsScreensTariffEditSnackEn._(_root);
+	late final _TranslationsScreensTariffEditTitleFieldEn titleField = _TranslationsScreensTariffEditTitleFieldEn._(_root);
+	late final _TranslationsScreensTariffEditPriceFieldEn priceField = _TranslationsScreensTariffEditPriceFieldEn._(_root);
+	late final _TranslationsScreensTariffEditDescriptionFieldEn descriptionField = _TranslationsScreensTariffEditDescriptionFieldEn._(_root);
 }
 
 // Path: screens.settings
@@ -457,6 +474,83 @@ class _TranslationsScreensSignUpSignInLabelEn {
 	String get button => TranslationOverrides.string(_root.$meta, 'screens.signUp.signInLabel.button', {}) ?? 'Sign in';
 }
 
+// Path: screens.tariffs.item
+class _TranslationsScreensTariffsItemEn {
+	_TranslationsScreensTariffsItemEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get date => TranslationOverrides.string(_root.$meta, 'screens.tariffs.item.date', {}) ?? 'Date';
+	String get price => TranslationOverrides.string(_root.$meta, 'screens.tariffs.item.price', {}) ?? 'Price';
+	String get description => TranslationOverrides.string(_root.$meta, 'screens.tariffs.item.description', {}) ?? 'Description';
+}
+
+// Path: screens.tariffEdit.title
+class _TranslationsScreensTariffEditTitleEn {
+	_TranslationsScreensTariffEditTitleEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get add => TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.title.add', {}) ?? 'Add tariff';
+	String get edit => TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.title.edit', {}) ?? 'Edit tariff';
+}
+
+// Path: screens.tariffEdit.modal
+class _TranslationsScreensTariffEditModalEn {
+	_TranslationsScreensTariffEditModalEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _TranslationsScreensTariffEditModalDeleteConfirmationEn deleteConfirmation = _TranslationsScreensTariffEditModalDeleteConfirmationEn._(_root);
+}
+
+// Path: screens.tariffEdit.snack
+class _TranslationsScreensTariffEditSnackEn {
+	_TranslationsScreensTariffEditSnackEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get addSuccessfully => TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.snack.addSuccessfully', {}) ?? 'Your tariff has been added successfully';
+	String get editSuccessfully => TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.snack.editSuccessfully', {}) ?? 'Your tariff has been updated successfully';
+	String get deleteSuccessfully => TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.snack.deleteSuccessfully', {}) ?? 'Your tariff has been deleted successfully';
+}
+
+// Path: screens.tariffEdit.titleField
+class _TranslationsScreensTariffEditTitleFieldEn {
+	_TranslationsScreensTariffEditTitleFieldEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get label => TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.titleField.label', {}) ?? 'Title';
+}
+
+// Path: screens.tariffEdit.priceField
+class _TranslationsScreensTariffEditPriceFieldEn {
+	_TranslationsScreensTariffEditPriceFieldEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get label => TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.priceField.label', {}) ?? 'Price';
+	String get hint => TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.priceField.hint', {}) ?? '0';
+	late final _TranslationsScreensTariffEditPriceFieldErrorsEn errors = _TranslationsScreensTariffEditPriceFieldErrorsEn._(_root);
+}
+
+// Path: screens.tariffEdit.descriptionField
+class _TranslationsScreensTariffEditDescriptionFieldEn {
+	_TranslationsScreensTariffEditDescriptionFieldEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get label => TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.descriptionField.label', {}) ?? 'Description';
+}
+
 // Path: screens.settings.modal
 class _TranslationsScreensSettingsModalEn {
 	_TranslationsScreensSettingsModalEn._(this._root);
@@ -527,6 +621,27 @@ class _TranslationsWidgetsGeneralEditItemErrorsEn {
 	String get mandatory => TranslationOverrides.string(_root.$meta, 'widgets.generalEditItem.errors.mandatory', {}) ?? 'Required field';
 }
 
+// Path: screens.tariffEdit.modal.deleteConfirmation
+class _TranslationsScreensTariffEditModalDeleteConfirmationEn {
+	_TranslationsScreensTariffEditModalDeleteConfirmationEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get message => TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.modal.deleteConfirmation.message', {}) ?? 'Are you sure you want to delete tariff?';
+	String get action => TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.modal.deleteConfirmation.action', {}) ?? 'Yes';
+}
+
+// Path: screens.tariffEdit.priceField.errors
+class _TranslationsScreensTariffEditPriceFieldErrorsEn {
+	_TranslationsScreensTariffEditPriceFieldErrorsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get general => TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.priceField.errors.general', {}) ?? 'Incorrect amount';
+}
+
 // Path: screens.settings.modal.logOut
 class _TranslationsScreensSettingsModalLogOutEn {
 	_TranslationsScreensSettingsModalLogOutEn._(this._root);
@@ -558,6 +673,21 @@ extension on Translations {
 			case 'screens.signUp.signInLabel.text': return TranslationOverrides.string(_root.$meta, 'screens.signUp.signInLabel.text', {}) ?? 'Already have an account?';
 			case 'screens.signUp.signInLabel.button': return TranslationOverrides.string(_root.$meta, 'screens.signUp.signInLabel.button', {}) ?? 'Sign in';
 			case 'screens.tariffs.title': return TranslationOverrides.string(_root.$meta, 'screens.tariffs.title', {}) ?? 'Tariffs';
+			case 'screens.tariffs.item.date': return TranslationOverrides.string(_root.$meta, 'screens.tariffs.item.date', {}) ?? 'Date';
+			case 'screens.tariffs.item.price': return TranslationOverrides.string(_root.$meta, 'screens.tariffs.item.price', {}) ?? 'Price';
+			case 'screens.tariffs.item.description': return TranslationOverrides.string(_root.$meta, 'screens.tariffs.item.description', {}) ?? 'Description';
+			case 'screens.tariffEdit.title.add': return TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.title.add', {}) ?? 'Add tariff';
+			case 'screens.tariffEdit.title.edit': return TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.title.edit', {}) ?? 'Edit tariff';
+			case 'screens.tariffEdit.modal.deleteConfirmation.message': return TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.modal.deleteConfirmation.message', {}) ?? 'Are you sure you want to delete tariff?';
+			case 'screens.tariffEdit.modal.deleteConfirmation.action': return TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.modal.deleteConfirmation.action', {}) ?? 'Yes';
+			case 'screens.tariffEdit.snack.addSuccessfully': return TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.snack.addSuccessfully', {}) ?? 'Your tariff has been added successfully';
+			case 'screens.tariffEdit.snack.editSuccessfully': return TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.snack.editSuccessfully', {}) ?? 'Your tariff has been updated successfully';
+			case 'screens.tariffEdit.snack.deleteSuccessfully': return TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.snack.deleteSuccessfully', {}) ?? 'Your tariff has been deleted successfully';
+			case 'screens.tariffEdit.titleField.label': return TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.titleField.label', {}) ?? 'Title';
+			case 'screens.tariffEdit.priceField.label': return TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.priceField.label', {}) ?? 'Price';
+			case 'screens.tariffEdit.priceField.hint': return TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.priceField.hint', {}) ?? '0';
+			case 'screens.tariffEdit.priceField.errors.general': return TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.priceField.errors.general', {}) ?? 'Incorrect amount';
+			case 'screens.tariffEdit.descriptionField.label': return TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.descriptionField.label', {}) ?? 'Description';
 			case 'screens.settings.modal.logOut.title': return TranslationOverrides.string(_root.$meta, 'screens.settings.modal.logOut.title', {}) ?? 'Warning';
 			case 'screens.settings.modal.logOut.message': return TranslationOverrides.string(_root.$meta, 'screens.settings.modal.logOut.message', {}) ?? 'Are you sure you want to log out?';
 			case 'screens.settings.modal.logOut.action': return TranslationOverrides.string(_root.$meta, 'screens.settings.modal.logOut.action', {}) ?? 'Log out';

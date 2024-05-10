@@ -61,9 +61,10 @@ class SettingsScreen extends StatelessWidget {
                     ),
                     TextButton(
                       style: const ButtonStyle(
-                          padding: MaterialStatePropertyAll(
-                        EdgeInsets.symmetric(horizontal: 16),
-                      )),
+                        padding: MaterialStatePropertyAll(
+                          EdgeInsets.symmetric(horizontal: 16),
+                        ),
+                      ),
                       onPressed: () => _onLogOutTap(context),
                       child: Align(
                         alignment: Alignment.centerLeft,

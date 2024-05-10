@@ -19,7 +19,42 @@
     }
   },
   "tariffs": {
-    "title": "Tariffs"
+    "title": "Tariffs",
+    "item": {
+      "date": "Date",
+      "price": "Price",
+      "description": "Description"
+    }
+  },
+  "tariffEdit": {
+    "title": {
+      "add": "Add tariff",
+      "edit": "Edit tariff"
+    },
+    "modal": {
+      "deleteConfirmation": {
+        "message": "Are you sure you want to delete tariff?",
+        "action": "Yes"
+      }
+    },
+    "snack": {
+      "addSuccessfully": "Your tariff has been added successfully",
+      "editSuccessfully": "Your tariff has been updated successfully",
+      "deleteSuccessfully": "Your tariff has been deleted successfully"
+    },
+    "titleField": {
+      "label": "Title"
+    },
+    "priceField": {
+      "label": "Price",
+      "hint": "0",
+      "errors": {
+        "general": "Incorrect amount"
+      }
+    },
+    "descriptionField": {
+      "label": "Description"
+    }
   },
   "settings": {
     "modal": {

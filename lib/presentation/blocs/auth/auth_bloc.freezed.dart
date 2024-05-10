@@ -830,7 +830,7 @@ mixin _$AuthState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function(UserRole role) proceedSuccess,
+    required TResult Function(int id, UserRole role) proceedSuccess,
     required TResult Function() logOutSuccess,
     required TResult Function() noAuth,
   }) =>
@@ -840,7 +840,7 @@ mixin _$AuthState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function(UserRole role)? proceedSuccess,
+    TResult? Function(int id, UserRole role)? proceedSuccess,
     TResult? Function()? logOutSuccess,
     TResult? Function()? noAuth,
   }) =>
@@ -850,7 +850,7 @@ mixin _$AuthState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function(UserRole role)? proceedSuccess,
+    TResult Function(int id, UserRole role)? proceedSuccess,
     TResult Function()? logOutSuccess,
     TResult Function()? noAuth,
     required TResult orElse(),
@@ -947,7 +947,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function(UserRole role) proceedSuccess,
+    required TResult Function(int id, UserRole role) proceedSuccess,
     required TResult Function() logOutSuccess,
     required TResult Function() noAuth,
   }) {
@@ -960,7 +960,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function(UserRole role)? proceedSuccess,
+    TResult? Function(int id, UserRole role)? proceedSuccess,
     TResult? Function()? logOutSuccess,
     TResult? Function()? noAuth,
   }) {
@@ -973,7 +973,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function(UserRole role)? proceedSuccess,
+    TResult Function(int id, UserRole role)? proceedSuccess,
     TResult Function()? logOutSuccess,
     TResult Function()? noAuth,
     required TResult orElse(),
@@ -1073,7 +1073,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function(UserRole role) proceedSuccess,
+    required TResult Function(int id, UserRole role) proceedSuccess,
     required TResult Function() logOutSuccess,
     required TResult Function() noAuth,
   }) {
@@ -1086,7 +1086,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function(UserRole role)? proceedSuccess,
+    TResult? Function(int id, UserRole role)? proceedSuccess,
     TResult? Function()? logOutSuccess,
     TResult? Function()? noAuth,
   }) {
@@ -1099,7 +1099,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function(UserRole role)? proceedSuccess,
+    TResult Function(int id, UserRole role)? proceedSuccess,
     TResult Function()? logOutSuccess,
     TResult Function()? noAuth,
     required TResult orElse(),
@@ -1223,7 +1223,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function(UserRole role) proceedSuccess,
+    required TResult Function(int id, UserRole role) proceedSuccess,
     required TResult Function() logOutSuccess,
     required TResult Function() noAuth,
   }) {
@@ -1236,7 +1236,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function(UserRole role)? proceedSuccess,
+    TResult? Function(int id, UserRole role)? proceedSuccess,
     TResult? Function()? logOutSuccess,
     TResult? Function()? noAuth,
   }) {
@@ -1249,7 +1249,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function(UserRole role)? proceedSuccess,
+    TResult Function(int id, UserRole role)? proceedSuccess,
     TResult Function()? logOutSuccess,
     TResult Function()? noAuth,
     required TResult orElse(),
@@ -1319,7 +1319,7 @@ abstract class _$$ProceedSuccessImplCopyWith<$Res> {
           $Res Function(_$ProceedSuccessImpl) then) =
       __$$ProceedSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({UserRole role});
+  $Res call({int id, UserRole role});
 }
 
 /// @nodoc
@@ -1333,9 +1333,14 @@ class __$$ProceedSuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? role = null,
   }) {
     return _then(_$ProceedSuccessImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -1347,14 +1352,16 @@ class __$$ProceedSuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ProceedSuccessImpl implements _ProceedSuccess {
-  const _$ProceedSuccessImpl({required this.role});
+  const _$ProceedSuccessImpl({required this.id, required this.role});
 
+  @override
+  final int id;
   @override
   final UserRole role;
 
   @override
   String toString() {
-    return 'AuthState.proceedSuccess(role: $role)';
+    return 'AuthState.proceedSuccess(id: $id, role: $role)';
   }
 
   @override
@@ -1362,11 +1369,12 @@ class _$ProceedSuccessImpl implements _ProceedSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProceedSuccessImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.role, role) || other.role == role));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, role);
+  int get hashCode => Object.hash(runtimeType, id, role);
 
   @JsonKey(ignore: true)
   @override
@@ -1381,11 +1389,11 @@ class _$ProceedSuccessImpl implements _ProceedSuccess {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function(UserRole role) proceedSuccess,
+    required TResult Function(int id, UserRole role) proceedSuccess,
     required TResult Function() logOutSuccess,
     required TResult Function() noAuth,
   }) {
-    return proceedSuccess(role);
+    return proceedSuccess(id, role);
   }
 
   @override
@@ -1394,11 +1402,11 @@ class _$ProceedSuccessImpl implements _ProceedSuccess {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function(UserRole role)? proceedSuccess,
+    TResult? Function(int id, UserRole role)? proceedSuccess,
     TResult? Function()? logOutSuccess,
     TResult? Function()? noAuth,
   }) {
-    return proceedSuccess?.call(role);
+    return proceedSuccess?.call(id, role);
   }
 
   @override
@@ -1407,13 +1415,13 @@ class _$ProceedSuccessImpl implements _ProceedSuccess {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function(UserRole role)? proceedSuccess,
+    TResult Function(int id, UserRole role)? proceedSuccess,
     TResult Function()? logOutSuccess,
     TResult Function()? noAuth,
     required TResult orElse(),
   }) {
     if (proceedSuccess != null) {
-      return proceedSuccess(role);
+      return proceedSuccess(id, role);
     }
     return orElse();
   }
@@ -1463,9 +1471,11 @@ class _$ProceedSuccessImpl implements _ProceedSuccess {
 }
 
 abstract class _ProceedSuccess implements AuthState {
-  const factory _ProceedSuccess({required final UserRole role}) =
-      _$ProceedSuccessImpl;
+  const factory _ProceedSuccess(
+      {required final int id,
+      required final UserRole role}) = _$ProceedSuccessImpl;
 
+  int get id;
   UserRole get role;
   @JsonKey(ignore: true)
   _$$ProceedSuccessImplCopyWith<_$ProceedSuccessImpl> get copyWith =>
@@ -1513,7 +1523,7 @@ class _$LogOutSuccessImpl implements _LogOutSuccess {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function(UserRole role) proceedSuccess,
+    required TResult Function(int id, UserRole role) proceedSuccess,
     required TResult Function() logOutSuccess,
     required TResult Function() noAuth,
   }) {
@@ -1526,7 +1536,7 @@ class _$LogOutSuccessImpl implements _LogOutSuccess {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function(UserRole role)? proceedSuccess,
+    TResult? Function(int id, UserRole role)? proceedSuccess,
     TResult? Function()? logOutSuccess,
     TResult? Function()? noAuth,
   }) {
@@ -1539,7 +1549,7 @@ class _$LogOutSuccessImpl implements _LogOutSuccess {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function(UserRole role)? proceedSuccess,
+    TResult Function(int id, UserRole role)? proceedSuccess,
     TResult Function()? logOutSuccess,
     TResult Function()? noAuth,
     required TResult orElse(),
@@ -1639,7 +1649,7 @@ class _$NoAuthImpl implements _NoAuth {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function(UserRole role) proceedSuccess,
+    required TResult Function(int id, UserRole role) proceedSuccess,
     required TResult Function() logOutSuccess,
     required TResult Function() noAuth,
   }) {
@@ -1652,7 +1662,7 @@ class _$NoAuthImpl implements _NoAuth {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function(UserRole role)? proceedSuccess,
+    TResult? Function(int id, UserRole role)? proceedSuccess,
     TResult? Function()? logOutSuccess,
     TResult? Function()? noAuth,
   }) {
@@ -1665,7 +1675,7 @@ class _$NoAuthImpl implements _NoAuth {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function(UserRole role)? proceedSuccess,
+    TResult Function(int id, UserRole role)? proceedSuccess,
     TResult Function()? logOutSuccess,
     TResult Function()? noAuth,
     required TResult orElse(),

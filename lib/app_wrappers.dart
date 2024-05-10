@@ -31,6 +31,11 @@ class AppWrappersWidget extends StatelessWidget {
                 usersRepository: di.locator(),
               ),
             ),
+            BlocProvider<TariffsCubit>(
+              create: (context) => TariffsCubit(
+                tariffsRepository: di.locator(),
+              ),
+            ),
           ],
           child: BlocListener<AuthBloc, AuthState>(
             listener: (context, state) => state.mapOrNull(

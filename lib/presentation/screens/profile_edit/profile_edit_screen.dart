@@ -100,7 +100,8 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                     ),
                   ),
                   AppBottomButtonWrapper(
-                    child: BlocPrimaryButton<ProfileCubit, ProfileState>(
+                    child:
+                        BlocPrimaryButton<ProfileEditCubit, ProfileEditState>(
                       context.t.general.actions.save,
                       onTap: isEdit ? _onProceedTap : null,
                       builder: (context, state) => state.maybeMap(

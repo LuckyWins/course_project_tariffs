@@ -53,6 +53,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                 accessToken: user.hashedPassword,
               );
               emit(AuthState.proceedSuccess(
+                id: user.id,
                 role: user.role,
               ));
             },
@@ -65,6 +66,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
           if (user != null) {
             emit(AuthState.proceedSuccess(
+              id: user.id,
               role: user.role,
             ));
           } else {
@@ -100,6 +102,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                 accessToken: user.hashedPassword,
               );
               emit(AuthState.proceedSuccess(
+                id: user.id,
                 role: user.role,
               ));
             },

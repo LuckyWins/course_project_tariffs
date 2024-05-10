@@ -4,5 +4,6 @@ export 'settings/settings_screen.dart';
 export 'sign_in/sign_in_screen.dart';
 export 'sign_up/sign_up_screen.dart';
 export 'splash/splash_screen.dart';
+export 'tariff_edit/tariff_edit_screen.dart';
 export 'tariffs/tariffs_screen.dart';
 export 'theme_select/theme_select_screen.dart';

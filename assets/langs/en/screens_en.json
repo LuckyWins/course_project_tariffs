@@ -22,7 +22,7 @@
     "title": "Tariffs",
     "item": {
       "date": "Date",
-      "price": "Price",
+      "price(rich)": "BYN {value}/h",
       "description": "Description"
     }
   },

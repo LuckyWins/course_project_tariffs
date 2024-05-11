@@ -142,13 +142,14 @@ class _TariffsScreenState extends State<TariffsScreen> {
                 ),
               ),
               Text.rich(
-                style: AppTextStyles.body1B(context),
                 TextSpan(
-                  text: '${context.t.screens.tariffs.item.price}: ',
+                  style: AppTextStyles.body1(context),
                   children: [
-                    TextSpan(
-                      text: data.price.toString(),
-                      style: AppTextStyles.body1(context),
+                    context.t.screens.tariffs.item.price(
+                      value: TextSpan(
+                        text: data.price.toString(),
+                        style: AppTextStyles.body1B(context),
+                      ),
                     )
                   ],
                 ),

@@ -6,7 +6,7 @@
 /// Locales: 1
 /// Strings: 64
 ///
-/// Built on 2024-05-11 at 09:04 UTC
+/// Built on 2024-05-11 at 10:34 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -513,7 +513,11 @@ class _TranslationsScreensTariffsItemEn {
 
 	// Translations
 	String get date => TranslationOverrides.string(_root.$meta, 'screens.tariffs.item.date', {}) ?? 'Date';
-	String get price => TranslationOverrides.string(_root.$meta, 'screens.tariffs.item.price', {}) ?? 'Price';
+	TextSpan price({required InlineSpan value}) => TranslationOverridesFlutter.rich(_root.$meta, 'screens.tariffs.item.price', {'value': value}) ?? TextSpan(children: [
+		const TextSpan(text: 'BYN '),
+		value,
+		const TextSpan(text: '/h'),
+	]);
 	String get description => TranslationOverrides.string(_root.$meta, 'screens.tariffs.item.description', {}) ?? 'Description';
 }
 
@@ -727,7 +731,11 @@ extension on Translations {
 			case 'screens.signUp.signInLabel.button': return TranslationOverrides.string(_root.$meta, 'screens.signUp.signInLabel.button', {}) ?? 'Sign in';
 			case 'screens.tariffs.title': return TranslationOverrides.string(_root.$meta, 'screens.tariffs.title', {}) ?? 'Tariffs';
 			case 'screens.tariffs.item.date': return TranslationOverrides.string(_root.$meta, 'screens.tariffs.item.date', {}) ?? 'Date';
-			case 'screens.tariffs.item.price': return TranslationOverrides.string(_root.$meta, 'screens.tariffs.item.price', {}) ?? 'Price';
+			case 'screens.tariffs.item.price': return ({required InlineSpan value}) => TranslationOverridesFlutter.rich(_root.$meta, 'screens.tariffs.item.price', {'value': value}) ?? TextSpan(children: [
+				const TextSpan(text: 'BYN '),
+				value,
+				const TextSpan(text: '/h'),
+			]);
 			case 'screens.tariffs.item.description': return TranslationOverrides.string(_root.$meta, 'screens.tariffs.item.description', {}) ?? 'Description';
 			case 'screens.tariffsFilter.title': return TranslationOverrides.string(_root.$meta, 'screens.tariffsFilter.title', {}) ?? 'Filter';
 			case 'screens.tariffsFilter.titleField.label': return TranslationOverrides.string(_root.$meta, 'screens.tariffsFilter.titleField.label', {}) ?? 'Title';

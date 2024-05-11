@@ -4,6 +4,7 @@ import 'package:course_project/domain/domain.dart';
 import 'package:course_project/generated/translations.g.dart';
 import 'package:course_project/presentation/theme/theme.dart';
 import 'package:course_project/presentation/widgets/widgets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -91,4 +92,83 @@ class Multiplatform {
           ),
         ),
       );
+
+  static Future<DateTime?> showModalDatePicker({
+    required BuildContext context,
+    required DateTime initialDate,
+    required DateTime firstDate,
+    required DateTime lastDate,
+  }) {
+    if (isIOS) {
+      final normalHeight = MediaQuery.of(context).copyWith().size.height / 4;
+      const maxHeight = 180.0;
+      return showModalBottomSheet<DateTime>(
+        backgroundColor: context.colors.surface,
+        useRootNavigator: true,
+        context: context,
+        builder: (context) {
+          var selected = initialDate;
+          return Theme(
+            data: Theme.of(context).copyWith(textTheme: iosTextTheme),
+            child: SafeArea(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    color: context.colors.surface,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Text(
+                            context.t.general.actions.close,
+                            style: AppTextStyles.body1(context).copyWith(
+                              color: context.colors.error,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(),
+                        ),
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, selected),
+                          child: Text(
+                            context.t.general.actions.done,
+                            style: AppTextStyles.body1(context).copyWith(
+                              color: context.colors.primary,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    // height: 180,
+                    height: normalHeight > maxHeight ? maxHeight : normalHeight,
+                    child: CupertinoDatePicker(
+                      onDateTimeChanged: (selectedDate) {
+                        selected = selectedDate;
+                      },
+                      mode: CupertinoDatePickerMode.date,
+                      initialDateTime: initialDate,
+                      minimumDate: firstDate,
+                      maximumDate: lastDate,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          );
+        },
+      );
+    } else {
+      return showDatePicker(
+        context: context,
+        initialDate: initialDate,
+        firstDate: firstDate,
+        lastDate: lastDate,
+      );
+    }
+  }
 }

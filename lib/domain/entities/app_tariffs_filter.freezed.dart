@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+AppTariffsFilter _$AppTariffsFilterFromJson(Map<String, dynamic> json) {
+  return _AppTariffsFilter.fromJson(json);
+}
+
 /// @nodoc
 mixin _$AppTariffsFilter {
   String? get titleQuery => throw _privateConstructorUsedError;
@@ -21,6 +25,7 @@ mixin _$AppTariffsFilter {
   bool get asc => throw _privateConstructorUsedError;
   AppTariffsSortType get sort => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AppTariffsFilterCopyWith<AppTariffsFilter> get copyWith =>
       throw _privateConstructorUsedError;
@@ -131,13 +136,17 @@ class __$$AppTariffsFilterImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-class _$AppTariffsFilterImpl implements _AppTariffsFilter {
+@JsonSerializable()
+class _$AppTariffsFilterImpl extends _AppTariffsFilter {
   const _$AppTariffsFilterImpl(
       {this.titleQuery,
       this.creationDate,
       this.asc = true,
-      this.sort = AppTariffsSortType.creationDate});
+      this.sort = AppTariffsSortType.creationDate})
+      : super._();
+
+  factory _$AppTariffsFilterImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AppTariffsFilterImplFromJson(json);
 
   @override
   final String? titleQuery;
@@ -168,6 +177,7 @@ class _$AppTariffsFilterImpl implements _AppTariffsFilter {
             (identical(other.sort, sort) || other.sort == sort));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, titleQuery, creationDate, asc, sort);
@@ -178,14 +188,25 @@ class _$AppTariffsFilterImpl implements _AppTariffsFilter {
   _$$AppTariffsFilterImplCopyWith<_$AppTariffsFilterImpl> get copyWith =>
       __$$AppTariffsFilterImplCopyWithImpl<_$AppTariffsFilterImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AppTariffsFilterImplToJson(
+      this,
+    );
+  }
 }
 
-abstract class _AppTariffsFilter implements AppTariffsFilter {
+abstract class _AppTariffsFilter extends AppTariffsFilter {
   const factory _AppTariffsFilter(
       {final String? titleQuery,
       final DateTime? creationDate,
       final bool asc,
       final AppTariffsSortType sort}) = _$AppTariffsFilterImpl;
+  const _AppTariffsFilter._() : super._();
+
+  factory _AppTariffsFilter.fromJson(Map<String, dynamic> json) =
+      _$AppTariffsFilterImpl.fromJson;
 
   @override
   String? get titleQuery;

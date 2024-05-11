@@ -1,7 +1,11 @@
 {
   "actions": {
     "ok": "Ok",
-    "save": "Save"
+    "save": "Save",
+    "apply": "Apply",
+    "done": "Done",
+    "close": "Close",
+    "clear": "Clear"
   },
   "unknownLabel": "Unknown",
   "errorModal": {

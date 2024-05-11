@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:course_project/domain/domain.dart';
 import 'package:course_project/generated/translations.g.dart';
 import 'package:course_project/presentation/blocs/blocs.dart';
@@ -47,12 +49,27 @@ class _TariffsScreenState extends State<TariffsScreen> {
             ),
             BlocBuilder<TariffsCubit, TariffsState>(
               builder: (context, state) => state.maybeMap(
-                hasData: (state) => state.data.length > 1
-                    ? IconButton(
-                        onPressed: _onAddTariffTap,
-                        icon: const Icon(Icons.add_rounded),
-                      )
-                    : const SizedBox.shrink(),
+                hasData: (state) => IconButton(
+                  onPressed: () => _onFilterTap(state.filter),
+                  icon: Stack(
+                    children: [
+                      const Icon(Icons.filter_alt_rounded),
+                      if (!state.filter.isEmpty)
+                        Positioned(
+                          right: 2,
+                          bottom: 2,
+                          child: Container(
+                            width: 6,
+                            height: 6,
+                            decoration: BoxDecoration(
+                              color: context.colors.error,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                        )
+                    ],
+                  ),
+                ),
                 loading: (_) => const LoadingIndicator(),
                 orElse: SizedBox.shrink,
               ),
@@ -78,6 +95,16 @@ class _TariffsScreenState extends State<TariffsScreen> {
                 ],
               ),
             ),
+          ),
+        ),
+        floatingActionButton: BlocBuilder<TariffsCubit, TariffsState>(
+          builder: (context, state) => state.maybeMap(
+            hasData: (state) => FloatingActionButton.small(
+              onPressed: _onAddTariffTap,
+              child: const Icon(Icons.add_rounded),
+            ),
+            loading: (_) => const LoadingIndicator(),
+            orElse: SizedBox.shrink,
           ),
         ),
       );
@@ -176,6 +203,13 @@ class _TariffsScreenState extends State<TariffsScreen> {
         child: const Icon(Icons.sort),
       ),
     );
+  }
+
+  Future<void> _onFilterTap(AppTariffsFilter filter) async {
+    final value = await Navigation.toTariffsFilter(filter);
+    if (value != null) {
+      unawaited(context.read<TariffsCubit>().init(filter: value));
+    }
   }
 
   void _onAddTariffTap() {

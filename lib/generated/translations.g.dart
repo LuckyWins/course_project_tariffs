@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 57
+/// Strings: 64
 ///
-/// Built on 2024-05-11 at 07:51 UTC
+/// Built on 2024-05-11 at 08:57 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -222,6 +222,7 @@ class _TranslationsScreensEn {
 	late final _TranslationsScreensSignInEn signIn = _TranslationsScreensSignInEn._(_root);
 	late final _TranslationsScreensSignUpEn signUp = _TranslationsScreensSignUpEn._(_root);
 	late final _TranslationsScreensTariffsEn tariffs = _TranslationsScreensTariffsEn._(_root);
+	late final _TranslationsScreensTariffsFilterEn tariffsFilter = _TranslationsScreensTariffsFilterEn._(_root);
 	late final _TranslationsScreensTariffEditEn tariffEdit = _TranslationsScreensTariffEditEn._(_root);
 	late final _TranslationsScreensSettingsEn settings = _TranslationsScreensSettingsEn._(_root);
 	late final _TranslationsScreensProfileEditEn profileEdit = _TranslationsScreensProfileEditEn._(_root);
@@ -336,6 +337,18 @@ class _TranslationsScreensTariffsEn {
 	late final _TranslationsScreensTariffsItemEn item = _TranslationsScreensTariffsItemEn._(_root);
 }
 
+// Path: screens.tariffsFilter
+class _TranslationsScreensTariffsFilterEn {
+	_TranslationsScreensTariffsFilterEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => TranslationOverrides.string(_root.$meta, 'screens.tariffsFilter.title', {}) ?? 'Filter';
+	late final _TranslationsScreensTariffsFilterTitleFieldEn titleField = _TranslationsScreensTariffsFilterTitleFieldEn._(_root);
+	late final _TranslationsScreensTariffsFilterCreationDateFieldEn creationDateField = _TranslationsScreensTariffsFilterCreationDateFieldEn._(_root);
+}
+
 // Path: screens.tariffEdit
 class _TranslationsScreensTariffEditEn {
 	_TranslationsScreensTariffEditEn._(this._root);
@@ -407,6 +420,10 @@ class _TranslationsGeneralActionsEn {
 	// Translations
 	String get ok => TranslationOverrides.string(_root.$meta, 'general.actions.ok', {}) ?? 'Ok';
 	String get save => TranslationOverrides.string(_root.$meta, 'general.actions.save', {}) ?? 'Save';
+	String get apply => TranslationOverrides.string(_root.$meta, 'general.actions.apply', {}) ?? 'Apply';
+	String get done => TranslationOverrides.string(_root.$meta, 'general.actions.done', {}) ?? 'Done';
+	String get close => TranslationOverrides.string(_root.$meta, 'general.actions.close', {}) ?? 'Close';
+	String get clear => TranslationOverrides.string(_root.$meta, 'general.actions.clear', {}) ?? 'Clear';
 }
 
 // Path: general.errorModal
@@ -498,6 +515,26 @@ class _TranslationsScreensTariffsItemEn {
 	String get date => TranslationOverrides.string(_root.$meta, 'screens.tariffs.item.date', {}) ?? 'Date';
 	String get price => TranslationOverrides.string(_root.$meta, 'screens.tariffs.item.price', {}) ?? 'Price';
 	String get description => TranslationOverrides.string(_root.$meta, 'screens.tariffs.item.description', {}) ?? 'Description';
+}
+
+// Path: screens.tariffsFilter.titleField
+class _TranslationsScreensTariffsFilterTitleFieldEn {
+	_TranslationsScreensTariffsFilterTitleFieldEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get label => TranslationOverrides.string(_root.$meta, 'screens.tariffsFilter.titleField.label', {}) ?? 'Title';
+}
+
+// Path: screens.tariffsFilter.creationDateField
+class _TranslationsScreensTariffsFilterCreationDateFieldEn {
+	_TranslationsScreensTariffsFilterCreationDateFieldEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get label => TranslationOverrides.string(_root.$meta, 'screens.tariffsFilter.creationDateField.label', {}) ?? 'Creation date';
 }
 
 // Path: screens.tariffEdit.title
@@ -692,6 +729,9 @@ extension on Translations {
 			case 'screens.tariffs.item.date': return TranslationOverrides.string(_root.$meta, 'screens.tariffs.item.date', {}) ?? 'Date';
 			case 'screens.tariffs.item.price': return TranslationOverrides.string(_root.$meta, 'screens.tariffs.item.price', {}) ?? 'Price';
 			case 'screens.tariffs.item.description': return TranslationOverrides.string(_root.$meta, 'screens.tariffs.item.description', {}) ?? 'Description';
+			case 'screens.tariffsFilter.title': return TranslationOverrides.string(_root.$meta, 'screens.tariffsFilter.title', {}) ?? 'Filter';
+			case 'screens.tariffsFilter.titleField.label': return TranslationOverrides.string(_root.$meta, 'screens.tariffsFilter.titleField.label', {}) ?? 'Title';
+			case 'screens.tariffsFilter.creationDateField.label': return TranslationOverrides.string(_root.$meta, 'screens.tariffsFilter.creationDateField.label', {}) ?? 'Creation date';
 			case 'screens.tariffEdit.title.add': return TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.title.add', {}) ?? 'Add tariff';
 			case 'screens.tariffEdit.title.edit': return TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.title.edit', {}) ?? 'Edit tariff';
 			case 'screens.tariffEdit.modal.deleteConfirmation.message': return TranslationOverrides.string(_root.$meta, 'screens.tariffEdit.modal.deleteConfirmation.message', {}) ?? 'Are you sure you want to delete tariff?';
@@ -719,6 +759,10 @@ extension on Translations {
 			case 'screens.themeSelect.title': return TranslationOverrides.string(_root.$meta, 'screens.themeSelect.title', {}) ?? 'Theme';
 			case 'general.actions.ok': return TranslationOverrides.string(_root.$meta, 'general.actions.ok', {}) ?? 'Ok';
 			case 'general.actions.save': return TranslationOverrides.string(_root.$meta, 'general.actions.save', {}) ?? 'Save';
+			case 'general.actions.apply': return TranslationOverrides.string(_root.$meta, 'general.actions.apply', {}) ?? 'Apply';
+			case 'general.actions.done': return TranslationOverrides.string(_root.$meta, 'general.actions.done', {}) ?? 'Done';
+			case 'general.actions.close': return TranslationOverrides.string(_root.$meta, 'general.actions.close', {}) ?? 'Close';
+			case 'general.actions.clear': return TranslationOverrides.string(_root.$meta, 'general.actions.clear', {}) ?? 'Clear';
 			case 'general.unknownLabel': return TranslationOverrides.string(_root.$meta, 'general.unknownLabel', {}) ?? 'Unknown';
 			case 'general.errorModal.title': return TranslationOverrides.string(_root.$meta, 'general.errorModal.title', {}) ?? 'Error';
 			case 'widgets.loginField.label': return TranslationOverrides.string(_root.$meta, 'widgets.loginField.label', {}) ?? 'Email';

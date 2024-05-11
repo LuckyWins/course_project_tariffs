@@ -35,6 +35,15 @@ class Navigation {
     return GoRouteClass.withoutCtx!.goNamed(RouteNames.tariffs);
   }
 
+  /// Navigate to [TariffsFilterScreen]
+  static Future<AppTariffsFilter?> toTariffsFilter(AppTariffsFilter filter) {
+    beforeNavigate();
+    return GoRouteClass.withoutCtx!.pushNamed(
+      RouteNames.tariffsFilter,
+      extra: filter,
+    );
+  }
+
   /// Navigate to [TariffEditScreen]
   static void toTariffEdit({AppTariff? data}) {
     beforeNavigate();

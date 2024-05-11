@@ -26,6 +26,15 @@
       "description": "Description"
     }
   },
+  "tariffsFilter": {
+    "title": "Filter",
+    "titleField": {
+      "label": "Title"
+    },
+    "creationDateField": {
+      "label": "Creation date"
+    }
+  },
   "tariffEdit": {
     "title": {
       "add": "Add tariff",

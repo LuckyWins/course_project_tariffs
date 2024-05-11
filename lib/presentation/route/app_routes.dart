@@ -112,6 +112,21 @@ class GoRouteClass {
             ),
             routes: [
               GoRoute(
+                path: 'filter',
+                parentNavigatorKey: _shellNavigator,
+                name: RouteNames.tariffsFilter,
+                pageBuilder: (context, state) {
+                  final filter = state.extra as AppTariffsFilter;
+                  return defaultPageBuilder(
+                    name: state.name,
+                    key: state.pageKey,
+                    child: TariffsFilterScreen(
+                      filter: filter,
+                    ),
+                  );
+                },
+              ),
+              GoRoute(
                 path: 'edit',
                 parentNavigatorKey: _shellNavigator,
                 name: RouteNames.tariffEdit,

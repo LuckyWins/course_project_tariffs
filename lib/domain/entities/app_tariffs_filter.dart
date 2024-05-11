@@ -1,9 +1,12 @@
+import 'package:dartx/dartx.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'app_tariffs_filter.freezed.dart';
+part 'app_tariffs_filter.g.dart';
 
 @freezed
 class AppTariffsFilter with _$AppTariffsFilter {
+  const AppTariffsFilter._();
   const factory AppTariffsFilter({
     String? titleQuery,
     DateTime? creationDate,
@@ -11,7 +14,17 @@ class AppTariffsFilter with _$AppTariffsFilter {
     @Default(AppTariffsSortType.creationDate) AppTariffsSortType sort,
   }) = _AppTariffsFilter;
 
+  bool get isEmpty => titleQuery.isNullOrBlank && creationDate == null;
+
   factory AppTariffsFilter.empty() => const AppTariffsFilter();
+
+  factory AppTariffsFilter.fromJson(Map<String, dynamic> json) =>
+      _$AppTariffsFilterFromJson(json);
+
+  AppTariffsFilter clear() => copyWith(
+        titleQuery: null,
+        creationDate: null,
+      );
 }
 
 enum AppTariffsSortType {

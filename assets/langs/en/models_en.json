@@ -5,5 +5,11 @@
       "dark": "Dark mode",
       "system": "Automatic"
     }
+  },
+  "appTariffSortType": {
+    "name": {
+      "creationDate": "Creation date",
+      "price": "Price"
+    }
   }
 }

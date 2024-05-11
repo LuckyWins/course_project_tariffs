@@ -19,9 +19,9 @@ class TariffsCubit extends Cubit<TariffsState> {
   }) async {
     emit(const TariffsState.loading());
 
-    _filter ??= AppTariffsFilter.empty();
+    _filter = filter ?? _filter ?? AppTariffsFilter.empty();
     final data = await tariffsRepository.getTariffsList(_filter!);
 
-    emit(TariffsState.hasData(data));
+    emit(TariffsState.hasData(data, _filter!));
   }
 }

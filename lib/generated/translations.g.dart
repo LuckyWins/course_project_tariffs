@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 55
+/// Strings: 57
 ///
-/// Built on 2024-05-10 at 22:52 UTC
+/// Built on 2024-05-11 at 07:51 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -29,7 +29,7 @@ final _buildConfig = BuildModelConfig(
 	keyMapCase: null,
 	paramCase: CaseStyle.camel,
 	stringInterpolation: StringInterpolation.braces,
-	maps: ['models.theme.name', 'widgets.mainWrapper.nav'],
+	maps: ['models.theme.name', 'widgets.mainWrapper.nav', 'models.appTariffSortType.name'],
 	pluralAuto: PluralAuto.cardinal,
 	pluralParameter: 'n',
 	pluralCardinal: ['someKey.apple'],
@@ -208,6 +208,7 @@ class _TranslationsModelsEn {
 
 	// Translations
 	late final _TranslationsModelsThemeEn theme = _TranslationsModelsThemeEn._(_root);
+	late final _TranslationsModelsAppTariffSortTypeEn appTariffSortType = _TranslationsModelsAppTariffSortTypeEn._(_root);
 }
 
 // Path: screens
@@ -274,6 +275,19 @@ class _TranslationsModelsThemeEn {
 		'light': 'Light mode',
 		'dark': 'Dark mode',
 		'system': 'Automatic',
+	};
+}
+
+// Path: models.appTariffSortType
+class _TranslationsModelsAppTariffSortTypeEn {
+	_TranslationsModelsAppTariffSortTypeEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	Map<String, String> get name => TranslationOverrides.map(_root.$meta, 'models.appTariffSortType.name') ?? {
+		'creationDate': 'Creation date',
+		'price': 'Price',
 	};
 }
 
@@ -663,6 +677,8 @@ extension on Translations {
 			case 'models.theme.name.light': return TranslationOverrides.string(_root.$meta, 'models.theme.name.light', {}) ?? 'Light mode';
 			case 'models.theme.name.dark': return TranslationOverrides.string(_root.$meta, 'models.theme.name.dark', {}) ?? 'Dark mode';
 			case 'models.theme.name.system': return TranslationOverrides.string(_root.$meta, 'models.theme.name.system', {}) ?? 'Automatic';
+			case 'models.appTariffSortType.name.creationDate': return TranslationOverrides.string(_root.$meta, 'models.appTariffSortType.name.creationDate', {}) ?? 'Creation date';
+			case 'models.appTariffSortType.name.price': return TranslationOverrides.string(_root.$meta, 'models.appTariffSortType.name.price', {}) ?? 'Price';
 			case 'screens.splash.loadingMessage': return TranslationOverrides.string(_root.$meta, 'screens.splash.loadingMessage', {}) ?? 'Please wait';
 			case 'screens.signIn.title': return TranslationOverrides.string(_root.$meta, 'screens.signIn.title', {}) ?? 'Sign in';
 			case 'screens.signIn.proceedButton': return TranslationOverrides.string(_root.$meta, 'screens.signIn.proceedButton', {}) ?? 'Log in';

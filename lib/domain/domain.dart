@@ -7,6 +7,7 @@ export 'entities/app_users_filter.dart';
 export 'entities/dialog_type.dart';
 export 'entities/failure.dart';
 export 'entities/menu_tab.dart';
+export 'entities/sort_wrapper.dart';
 export 'preferences/preferences_data_source.dart';
 export 'preferences/secure_storage_data_source.dart';
 export 'repositories/reservations_repository.dart';

@@ -3,6 +3,7 @@ import 'package:course_project/generated/translations.g.dart';
 import 'package:course_project/presentation/blocs/blocs.dart';
 import 'package:course_project/presentation/navigation.dart';
 import 'package:course_project/presentation/theme/theme.dart';
+import 'package:course_project/presentation/utils/utils.dart';
 import 'package:course_project/presentation/widgets/widgets.dart';
 import 'package:dartx/dartx.dart';
 import 'package:flutter/material.dart';
@@ -39,14 +40,23 @@ class _TariffsScreenState extends State<TariffsScreen> {
           actions: [
             BlocBuilder<TariffsCubit, TariffsState>(
               builder: (context, state) => state.maybeMap(
-                hasData: (state) => IconButton(
-                  onPressed: _onAddTariffTap,
-                  icon: const Icon(Icons.add_rounded),
-                ),
+                hasData: (state) => _sortWidget(state.filter),
                 loading: (_) => const LoadingIndicator(),
                 orElse: SizedBox.shrink,
               ),
-            )
+            ),
+            BlocBuilder<TariffsCubit, TariffsState>(
+              builder: (context, state) => state.maybeMap(
+                hasData: (state) => state.data.length > 1
+                    ? IconButton(
+                        onPressed: _onAddTariffTap,
+                        icon: const Icon(Icons.add_rounded),
+                      )
+                    : const SizedBox.shrink(),
+                loading: (_) => const LoadingIndicator(),
+                orElse: SizedBox.shrink,
+              ),
+            ),
           ],
         ),
         body: Padding(
@@ -136,6 +146,36 @@ class _TariffsScreenState extends State<TariffsScreen> {
 
   void _onEditTariffTap(AppTariff data) {
     Navigation.toTariffEdit(data: data);
+  }
+
+  Widget _sortWidget(AppTariffsFilter filter) {
+    final values = SortWrapperGenerator.generate(AppTariffsSortType.values);
+    return PopupMenuButton<SortWrapper>(
+      initialValue:
+          SortWrapper<AppTariffsSortType>(asc: filter.asc, sort: filter.sort),
+      onSelected: (value) {
+        context.read<TariffsCubit>().init(
+                filter: filter.copyWith(
+              asc: value.asc,
+              sort: value.sort,
+            ));
+      },
+      itemBuilder: (context) => values
+          .map((e) => PopupMenuItem(
+                value: e,
+                child: Text(
+                  '${e.sort.localName(context)} ${e.asc ? "ASC" : "DESC"}',
+                  style: e.asc == filter.asc && e.sort == filter.sort
+                      ? AppTextStyles.body1B(context)
+                      : AppTextStyles.body1(context),
+                ),
+              ))
+          .toList(),
+      child: RotatedBox(
+        quarterTurns: filter.asc ? 2 : 0,
+        child: const Icon(Icons.sort),
+      ),
+    );
   }
 
   void _onAddTariffTap() {

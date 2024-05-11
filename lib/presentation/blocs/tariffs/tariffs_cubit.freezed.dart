@@ -19,19 +19,20 @@ mixin _$TariffsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<AppTariff> data) hasData,
+    required TResult Function(List<AppTariff> data, AppTariffsFilter filter)
+        hasData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<AppTariff> data)? hasData,
+    TResult? Function(List<AppTariff> data, AppTariffsFilter filter)? hasData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<AppTariff> data)? hasData,
+    TResult Function(List<AppTariff> data, AppTariffsFilter filter)? hasData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +114,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<AppTariff> data) hasData,
+    required TResult Function(List<AppTariff> data, AppTariffsFilter filter)
+        hasData,
   }) {
     return loading();
   }
@@ -122,7 +124,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<AppTariff> data)? hasData,
+    TResult? Function(List<AppTariff> data, AppTariffsFilter filter)? hasData,
   }) {
     return loading?.call();
   }
@@ -131,7 +133,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<AppTariff> data)? hasData,
+    TResult Function(List<AppTariff> data, AppTariffsFilter filter)? hasData,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -182,7 +184,9 @@ abstract class _$$HasDataImplCopyWith<$Res> {
           _$HasDataImpl value, $Res Function(_$HasDataImpl) then) =
       __$$HasDataImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<AppTariff> data});
+  $Res call({List<AppTariff> data, AppTariffsFilter filter});
+
+  $AppTariffsFilterCopyWith<$Res> get filter;
 }
 
 /// @nodoc
@@ -197,20 +201,33 @@ class __$$HasDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = null,
+    Object? filter = null,
   }) {
     return _then(_$HasDataImpl(
       null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<AppTariff>,
+      null == filter
+          ? _value.filter
+          : filter // ignore: cast_nullable_to_non_nullable
+              as AppTariffsFilter,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AppTariffsFilterCopyWith<$Res> get filter {
+    return $AppTariffsFilterCopyWith<$Res>(_value.filter, (value) {
+      return _then(_value.copyWith(filter: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$HasDataImpl implements _HasData {
-  const _$HasDataImpl(final List<AppTariff> data) : _data = data;
+  const _$HasDataImpl(final List<AppTariff> data, this.filter) : _data = data;
 
   final List<AppTariff> _data;
   @override
@@ -221,8 +238,11 @@ class _$HasDataImpl implements _HasData {
   }
 
   @override
+  final AppTariffsFilter filter;
+
+  @override
   String toString() {
-    return 'TariffsState.hasData(data: $data)';
+    return 'TariffsState.hasData(data: $data, filter: $filter)';
   }
 
   @override
@@ -230,12 +250,13 @@ class _$HasDataImpl implements _HasData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HasDataImpl &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality().equals(other._data, _data) &&
+            (identical(other.filter, filter) || other.filter == filter));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_data), filter);
 
   @JsonKey(ignore: true)
   @override
@@ -247,29 +268,30 @@ class _$HasDataImpl implements _HasData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<AppTariff> data) hasData,
+    required TResult Function(List<AppTariff> data, AppTariffsFilter filter)
+        hasData,
   }) {
-    return hasData(data);
+    return hasData(data, filter);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<AppTariff> data)? hasData,
+    TResult? Function(List<AppTariff> data, AppTariffsFilter filter)? hasData,
   }) {
-    return hasData?.call(data);
+    return hasData?.call(data, filter);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<AppTariff> data)? hasData,
+    TResult Function(List<AppTariff> data, AppTariffsFilter filter)? hasData,
     required TResult orElse(),
   }) {
     if (hasData != null) {
-      return hasData(data);
+      return hasData(data, filter);
     }
     return orElse();
   }
@@ -307,9 +329,12 @@ class _$HasDataImpl implements _HasData {
 }
 
 abstract class _HasData implements TariffsState {
-  const factory _HasData(final List<AppTariff> data) = _$HasDataImpl;
+  const factory _HasData(
+          final List<AppTariff> data, final AppTariffsFilter filter) =
+      _$HasDataImpl;
 
   List<AppTariff> get data;
+  AppTariffsFilter get filter;
   @JsonKey(ignore: true)
   _$$HasDataImplCopyWith<_$HasDataImpl> get copyWith =>
       throw _privateConstructorUsedError;

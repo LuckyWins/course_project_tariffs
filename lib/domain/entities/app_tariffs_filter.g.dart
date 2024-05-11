@@ -9,6 +9,7 @@ part of 'app_tariffs_filter.dart';
 _$AppTariffsFilterImpl _$$AppTariffsFilterImplFromJson(
         Map<String, dynamic> json) =>
     _$AppTariffsFilterImpl(
+      ownerId: (json['ownerId'] as num).toInt(),
       titleQuery: json['titleQuery'] as String?,
       creationDate: json['creationDate'] == null
           ? null
@@ -21,6 +22,7 @@ _$AppTariffsFilterImpl _$$AppTariffsFilterImplFromJson(
 Map<String, dynamic> _$$AppTariffsFilterImplToJson(
         _$AppTariffsFilterImpl instance) =>
     <String, dynamic>{
+      'ownerId': instance.ownerId,
       'titleQuery': instance.titleQuery,
       'creationDate': instance.creationDate?.toIso8601String(),
       'asc': instance.asc,

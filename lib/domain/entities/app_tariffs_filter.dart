@@ -8,6 +8,7 @@ part 'app_tariffs_filter.g.dart';
 class AppTariffsFilter with _$AppTariffsFilter {
   const AppTariffsFilter._();
   const factory AppTariffsFilter({
+    required int ownerId,
     String? titleQuery,
     DateTime? creationDate,
     @Default(true) bool asc,
@@ -16,7 +17,8 @@ class AppTariffsFilter with _$AppTariffsFilter {
 
   bool get isEmpty => titleQuery.isNullOrBlank && creationDate == null;
 
-  factory AppTariffsFilter.empty() => const AppTariffsFilter();
+  factory AppTariffsFilter.empty(int ownerId) =>
+      AppTariffsFilter(ownerId: ownerId);
 
   factory AppTariffsFilter.fromJson(Map<String, dynamic> json) =>
       _$AppTariffsFilterFromJson(json);

@@ -10,16 +10,22 @@ class TariffsCubit extends Cubit<TariffsState> {
 
   AppTariffsFilter? _filter;
 
+  late int _userId;
+
   TariffsCubit({
     required this.tariffsRepository,
   }) : super(const TariffsState.loading());
+
+  void setUserId(int id) {
+    _userId = id;
+  }
 
   Future<void> init({
     AppTariffsFilter? filter,
   }) async {
     emit(const TariffsState.loading());
 
-    _filter = filter ?? _filter ?? AppTariffsFilter.empty();
+    _filter = filter ?? _filter ?? AppTariffsFilter.empty(_userId);
     final data = await tariffsRepository.getTariffsList(_filter!);
 
     emit(TariffsState.hasData(data, _filter!));

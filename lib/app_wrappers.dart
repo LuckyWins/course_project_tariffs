@@ -40,6 +40,7 @@ class AppWrappersWidget extends StatelessWidget {
           child: BlocListener<AuthBloc, AuthState>(
             listener: (context, state) => state.mapOrNull(
               proceedSuccess: (state) {
+                context.read<TariffsCubit>().setUserId(state.id);
                 unawaited(context.read<ProfileCubit>().init());
                 // TODO: init blocs
                 if (state.role == UserRole.admin) {

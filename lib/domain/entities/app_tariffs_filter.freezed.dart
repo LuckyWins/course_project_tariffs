@@ -20,6 +20,7 @@ AppTariffsFilter _$AppTariffsFilterFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppTariffsFilter {
+  int get ownerId => throw _privateConstructorUsedError;
   String? get titleQuery => throw _privateConstructorUsedError;
   DateTime? get creationDate => throw _privateConstructorUsedError;
   bool get asc => throw _privateConstructorUsedError;
@@ -38,7 +39,8 @@ abstract class $AppTariffsFilterCopyWith<$Res> {
       _$AppTariffsFilterCopyWithImpl<$Res, AppTariffsFilter>;
   @useResult
   $Res call(
-      {String? titleQuery,
+      {int ownerId,
+      String? titleQuery,
       DateTime? creationDate,
       bool asc,
       AppTariffsSortType sort});
@@ -57,12 +59,17 @@ class _$AppTariffsFilterCopyWithImpl<$Res, $Val extends AppTariffsFilter>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? ownerId = null,
     Object? titleQuery = freezed,
     Object? creationDate = freezed,
     Object? asc = null,
     Object? sort = null,
   }) {
     return _then(_value.copyWith(
+      ownerId: null == ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as int,
       titleQuery: freezed == titleQuery
           ? _value.titleQuery
           : titleQuery // ignore: cast_nullable_to_non_nullable
@@ -92,7 +99,8 @@ abstract class _$$AppTariffsFilterImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? titleQuery,
+      {int ownerId,
+      String? titleQuery,
       DateTime? creationDate,
       bool asc,
       AppTariffsSortType sort});
@@ -109,12 +117,17 @@ class __$$AppTariffsFilterImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? ownerId = null,
     Object? titleQuery = freezed,
     Object? creationDate = freezed,
     Object? asc = null,
     Object? sort = null,
   }) {
     return _then(_$AppTariffsFilterImpl(
+      ownerId: null == ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as int,
       titleQuery: freezed == titleQuery
           ? _value.titleQuery
           : titleQuery // ignore: cast_nullable_to_non_nullable
@@ -139,7 +152,8 @@ class __$$AppTariffsFilterImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AppTariffsFilterImpl extends _AppTariffsFilter {
   const _$AppTariffsFilterImpl(
-      {this.titleQuery,
+      {required this.ownerId,
+      this.titleQuery,
       this.creationDate,
       this.asc = true,
       this.sort = AppTariffsSortType.creationDate})
@@ -148,6 +162,8 @@ class _$AppTariffsFilterImpl extends _AppTariffsFilter {
   factory _$AppTariffsFilterImpl.fromJson(Map<String, dynamic> json) =>
       _$$AppTariffsFilterImplFromJson(json);
 
+  @override
+  final int ownerId;
   @override
   final String? titleQuery;
   @override
@@ -161,7 +177,7 @@ class _$AppTariffsFilterImpl extends _AppTariffsFilter {
 
   @override
   String toString() {
-    return 'AppTariffsFilter(titleQuery: $titleQuery, creationDate: $creationDate, asc: $asc, sort: $sort)';
+    return 'AppTariffsFilter(ownerId: $ownerId, titleQuery: $titleQuery, creationDate: $creationDate, asc: $asc, sort: $sort)';
   }
 
   @override
@@ -169,6 +185,7 @@ class _$AppTariffsFilterImpl extends _AppTariffsFilter {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppTariffsFilterImpl &&
+            (identical(other.ownerId, ownerId) || other.ownerId == ownerId) &&
             (identical(other.titleQuery, titleQuery) ||
                 other.titleQuery == titleQuery) &&
             (identical(other.creationDate, creationDate) ||
@@ -180,7 +197,7 @@ class _$AppTariffsFilterImpl extends _AppTariffsFilter {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, titleQuery, creationDate, asc, sort);
+      Object.hash(runtimeType, ownerId, titleQuery, creationDate, asc, sort);
 
   @JsonKey(ignore: true)
   @override
@@ -199,7 +216,8 @@ class _$AppTariffsFilterImpl extends _AppTariffsFilter {
 
 abstract class _AppTariffsFilter extends AppTariffsFilter {
   const factory _AppTariffsFilter(
-      {final String? titleQuery,
+      {required final int ownerId,
+      final String? titleQuery,
       final DateTime? creationDate,
       final bool asc,
       final AppTariffsSortType sort}) = _$AppTariffsFilterImpl;
@@ -208,6 +226,8 @@ abstract class _AppTariffsFilter extends AppTariffsFilter {
   factory _AppTariffsFilter.fromJson(Map<String, dynamic> json) =
       _$AppTariffsFilterImpl.fromJson;
 
+  @override
+  int get ownerId;
   @override
   String? get titleQuery;
   @override

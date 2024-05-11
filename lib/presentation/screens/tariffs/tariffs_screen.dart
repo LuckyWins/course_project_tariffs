@@ -30,7 +30,7 @@ class _TariffsScreenState extends State<TariffsScreen> {
             hasData: (_) => false,
             orElse: () => true,
           )) {
-        context.read<TariffsCubit>().init(filter: AppTariffsFilter.empty());
+        context.read<TariffsCubit>().init();
       }
     });
   }
@@ -182,10 +182,11 @@ class _TariffsScreenState extends State<TariffsScreen> {
           SortWrapper<AppTariffsSortType>(asc: filter.asc, sort: filter.sort),
       onSelected: (value) {
         context.read<TariffsCubit>().init(
-                filter: filter.copyWith(
-              asc: value.asc,
-              sort: value.sort,
-            ));
+              filter: filter.copyWith(
+                asc: value.asc,
+                sort: value.sort,
+              ),
+            );
       },
       itemBuilder: (context) => values
           .map((e) => PopupMenuItem(
@@ -208,7 +209,9 @@ class _TariffsScreenState extends State<TariffsScreen> {
   Future<void> _onFilterTap(AppTariffsFilter filter) async {
     final value = await Navigation.toTariffsFilter(filter);
     if (value != null) {
-      unawaited(context.read<TariffsCubit>().init(filter: value));
+      unawaited(context.read<TariffsCubit>().init(
+            filter: value,
+          ));
     }
   }
 

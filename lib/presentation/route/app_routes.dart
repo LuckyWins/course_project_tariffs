@@ -132,17 +132,13 @@ class GoRouteClass {
                 name: RouteNames.tariffEdit,
                 pageBuilder: (context, state) {
                   final initialTariff = state.extra as AppTariffEntity?;
-                  final userId = context
-                      .read<AuthBloc>()
-                      .state
-                      .mapOrNull(proceedSuccess: (state) => state.id);
                   return defaultPageBuilder(
                     name: state.name,
                     key: state.pageKey,
                     child: BlocProvider<TariffEditCubit>(
                       create: (context) => TariffEditCubit(
                         tariffsRepository: di.locator(),
-                        userId: userId!,
+                        userId: context.userId,
                         initialTariff: initialTariff,
                       ),
                       child: TariffEditScreen(

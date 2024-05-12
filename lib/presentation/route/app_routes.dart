@@ -162,6 +162,21 @@ class GoRouteClass {
             ),
             routes: [
               GoRoute(
+                path: 'filter',
+                parentNavigatorKey: _shellNavigator,
+                name: RouteNames.reservationsFilter,
+                pageBuilder: (context, state) {
+                  final filter = state.extra as AppReservationsFilter;
+                  return defaultPageBuilder(
+                    name: state.name,
+                    key: state.pageKey,
+                    child: ReservationsFilterScreen(
+                      filter: filter,
+                    ),
+                  );
+                },
+              ),
+              GoRoute(
                 path: 'edit',
                 parentNavigatorKey: _shellNavigator,
                 name: RouteNames.reservationEdit,

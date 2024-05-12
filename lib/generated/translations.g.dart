@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 90
+/// Strings: 94
 ///
-/// Built on 2024-05-12 at 21:36 UTC
+/// Built on 2024-05-12 at 22:02 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -229,6 +229,7 @@ class _TranslationsScreensEn {
 	late final _TranslationsScreensSettingsEn settings = _TranslationsScreensSettingsEn._(_root);
 	late final _TranslationsScreensProfileEditEn profileEdit = _TranslationsScreensProfileEditEn._(_root);
 	late final _TranslationsScreensReservationsEn reservations = _TranslationsScreensReservationsEn._(_root);
+	late final _TranslationsScreensReservationsFilterEn reservationsFilter = _TranslationsScreensReservationsFilterEn._(_root);
 	late final _TranslationsScreensReservationEditEn reservationEdit = _TranslationsScreensReservationEditEn._(_root);
 	late final _TranslationsScreensReservationViewEn reservationView = _TranslationsScreensReservationViewEn._(_root);
 	late final _TranslationsScreensThemeSelectEn themeSelect = _TranslationsScreensThemeSelectEn._(_root);
@@ -432,6 +433,19 @@ class _TranslationsScreensReservationsEn {
 	// Translations
 	String get title => TranslationOverrides.string(_root.$meta, 'screens.reservations.title', {}) ?? 'Reservations';
 	late final _TranslationsScreensReservationsItemEn item = _TranslationsScreensReservationsItemEn._(_root);
+}
+
+// Path: screens.reservationsFilter
+class _TranslationsScreensReservationsFilterEn {
+	_TranslationsScreensReservationsFilterEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => TranslationOverrides.string(_root.$meta, 'screens.reservationsFilter.title', {}) ?? 'Filter';
+	late final _TranslationsScreensReservationsFilterStartDateFieldEn startDateField = _TranslationsScreensReservationsFilterStartDateFieldEn._(_root);
+	late final _TranslationsScreensReservationsFilterHoursFieldEn hoursField = _TranslationsScreensReservationsFilterHoursFieldEn._(_root);
+	late final _TranslationsScreensReservationsFilterStatusFieldEn statusField = _TranslationsScreensReservationsFilterStatusFieldEn._(_root);
 }
 
 // Path: screens.reservationEdit
@@ -732,6 +746,36 @@ class _TranslationsScreensReservationsItemEn {
 	String get status => TranslationOverrides.string(_root.$meta, 'screens.reservations.item.status', {}) ?? 'Status';
 }
 
+// Path: screens.reservationsFilter.startDateField
+class _TranslationsScreensReservationsFilterStartDateFieldEn {
+	_TranslationsScreensReservationsFilterStartDateFieldEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get label => TranslationOverrides.string(_root.$meta, 'screens.reservationsFilter.startDateField.label', {}) ?? 'Start date';
+}
+
+// Path: screens.reservationsFilter.hoursField
+class _TranslationsScreensReservationsFilterHoursFieldEn {
+	_TranslationsScreensReservationsFilterHoursFieldEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get label => TranslationOverrides.string(_root.$meta, 'screens.reservationsFilter.hoursField.label', {}) ?? 'Hours';
+}
+
+// Path: screens.reservationsFilter.statusField
+class _TranslationsScreensReservationsFilterStatusFieldEn {
+	_TranslationsScreensReservationsFilterStatusFieldEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get label => TranslationOverrides.string(_root.$meta, 'screens.reservationsFilter.statusField.label', {}) ?? 'Status';
+}
+
 // Path: screens.reservationEdit.title
 class _TranslationsScreensReservationEditTitleEn {
 	_TranslationsScreensReservationEditTitleEn._(this._root);
@@ -932,6 +976,10 @@ extension on Translations {
 			case 'screens.reservations.item.hours': return TranslationOverrides.string(_root.$meta, 'screens.reservations.item.hours', {}) ?? 'Time';
 			case 'screens.reservations.item.cost': return TranslationOverrides.string(_root.$meta, 'screens.reservations.item.cost', {}) ?? 'Cost';
 			case 'screens.reservations.item.status': return TranslationOverrides.string(_root.$meta, 'screens.reservations.item.status', {}) ?? 'Status';
+			case 'screens.reservationsFilter.title': return TranslationOverrides.string(_root.$meta, 'screens.reservationsFilter.title', {}) ?? 'Filter';
+			case 'screens.reservationsFilter.startDateField.label': return TranslationOverrides.string(_root.$meta, 'screens.reservationsFilter.startDateField.label', {}) ?? 'Start date';
+			case 'screens.reservationsFilter.hoursField.label': return TranslationOverrides.string(_root.$meta, 'screens.reservationsFilter.hoursField.label', {}) ?? 'Hours';
+			case 'screens.reservationsFilter.statusField.label': return TranslationOverrides.string(_root.$meta, 'screens.reservationsFilter.statusField.label', {}) ?? 'Status';
 			case 'screens.reservationEdit.title.add': return TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.title.add', {}) ?? 'Add reservation';
 			case 'screens.reservationEdit.title.edit': return TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.title.edit', {}) ?? 'Edit reservation';
 			case 'screens.reservationEdit.modal.cancelConfirmation.message': return TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.modal.cancelConfirmation.message', {}) ?? 'Are you sure you want to cancel reservation?';

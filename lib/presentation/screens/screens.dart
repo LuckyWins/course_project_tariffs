@@ -2,6 +2,7 @@ export 'profile_edit/profile_edit_screen.dart';
 export 'reservation_edit/reservation_edit_screen.dart';
 export 'reservation_view/reservation_view_screen.dart';
 export 'reservations/reservations_screen.dart';
+export 'reservations_filter/reservations_filter_screen.dart';
 export 'settings/settings_screen.dart';
 export 'sign_in/sign_in_screen.dart';
 export 'sign_up/sign_up_screen.dart';

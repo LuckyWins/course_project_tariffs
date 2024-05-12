@@ -61,6 +61,16 @@ class Navigation {
     return GoRouteClass.withoutCtx!.goNamed(RouteNames.reservations);
   }
 
+  /// Navigate to [ReservationsFilterScreen]
+  static Future<AppReservationsFilter?> toReservationsFilter(
+      AppReservationsFilter filter) {
+    beforeNavigate();
+    return GoRouteClass.withoutCtx!.pushNamed(
+      RouteNames.reservationsFilter,
+      extra: filter,
+    );
+  }
+
   /// Navigate to [ReservationEditScreen]
   static Future<void> toReservationEdit({
     AppReservation? data,

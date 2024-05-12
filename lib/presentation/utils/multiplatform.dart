@@ -180,4 +180,115 @@ class Multiplatform {
         context: context,
         initialTime: TimeOfDay.fromDateTime(initialDate),
       );
+
+  static Future<T?> showDropdown<T>({
+    required BuildContext context,
+    String? title,
+    String? message,
+    required List<T> items,
+    required Widget Function(T value) itemBuilder,
+
+    /// current value
+    T? value,
+    bool isDismissible = true,
+    bool draggable = true,
+  }) {
+    Widget list(ScrollController? controller) => ListView.builder(
+          controller: controller,
+          shrinkWrap: !draggable,
+          physics: !draggable ? const NeverScrollableScrollPhysics() : null,
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            final e = items[index];
+
+            return InkWell(
+              // behavior: HitTestBehavior.translucent,
+              onTap: () => Navigator.pop(context, e),
+              child: Container(
+                // padding: const EdgeInsets.symmetric(vertical: 12),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6),
+                  color: value == e ? context.colors.surfaceVariant : null,
+                ),
+                child: DefaultTextStyle(
+                  style: AppTextStyles.body1(context),
+                  child: itemBuilder(e),
+                ),
+              ),
+            );
+          },
+        );
+    Widget child(BuildContext context, ScrollController? controller) =>
+        Container(
+          padding: EdgeInsets.only(
+            left: 24,
+            top: 12,
+            right: 24,
+            bottom: MediaQuery.of(context).viewInsets.bottom +
+                MediaQuery.of(context).viewPadding.bottom +
+                16,
+          ),
+          decoration: BoxDecoration(
+            color: context.colors.surface,
+            borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(28),
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const SizedBox(height: 24),
+              if (title != null)
+                Text(
+                  title,
+                  style: AppTextStyles.body1(context),
+                  // textAlign: TextAlign.center,
+                ),
+              if (message != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 6),
+                  child: Text(
+                    message, style: AppTextStyles.caption(context),
+                    // textAlign: TextAlign.center,
+                  ),
+                ),
+              if (title != null || message != null)
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 12),
+                  child: Divider(),
+                ),
+              if (draggable)
+                Expanded(
+                  child: list(controller),
+                ),
+              if (!draggable) list(controller),
+            ],
+          ),
+        );
+    return showModalBottomSheet<T>(
+      context: context,
+      isDismissible: isDismissible,
+      useRootNavigator: true,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      builder: (context) => GestureDetector(
+        onTap: isDismissible ? () => Navigator.of(context).pop() : null,
+        child: Container(
+          color: const Color.fromRGBO(0, 0, 0, 0.001),
+          child: draggable
+              ? DraggableScrollableSheet(
+                  initialChildSize: 0.5,
+                  minChildSize: 0.4,
+                  maxChildSize: 0.75,
+                  builder: child,
+                )
+              : child(context, null),
+        ),
+      ),
+    );
+  }
 }

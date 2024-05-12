@@ -24,7 +24,7 @@ mixin _$AppReservationsFilter {
   int? get tariffId => throw _privateConstructorUsedError;
   int? get tariffOwnerId => throw _privateConstructorUsedError;
   int? get userId => throw _privateConstructorUsedError;
-  DateTime? get creationDate => throw _privateConstructorUsedError;
+  DateTime? get startDate => throw _privateConstructorUsedError;
   int? get hours => throw _privateConstructorUsedError;
   AppReservationStatus? get status => throw _privateConstructorUsedError;
   bool get asc => throw _privateConstructorUsedError;
@@ -46,7 +46,7 @@ abstract class $AppReservationsFilterCopyWith<$Res> {
       {int? tariffId,
       int? tariffOwnerId,
       int? userId,
-      DateTime? creationDate,
+      DateTime? startDate,
       int? hours,
       AppReservationStatus? status,
       bool asc,
@@ -70,7 +70,7 @@ class _$AppReservationsFilterCopyWithImpl<$Res,
     Object? tariffId = freezed,
     Object? tariffOwnerId = freezed,
     Object? userId = freezed,
-    Object? creationDate = freezed,
+    Object? startDate = freezed,
     Object? hours = freezed,
     Object? status = freezed,
     Object? asc = null,
@@ -89,9 +89,9 @@ class _$AppReservationsFilterCopyWithImpl<$Res,
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int?,
-      creationDate: freezed == creationDate
-          ? _value.creationDate
-          : creationDate // ignore: cast_nullable_to_non_nullable
+      startDate: freezed == startDate
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       hours: freezed == hours
           ? _value.hours
@@ -126,7 +126,7 @@ abstract class _$$AppReservationsFilterImplCopyWith<$Res>
       {int? tariffId,
       int? tariffOwnerId,
       int? userId,
-      DateTime? creationDate,
+      DateTime? startDate,
       int? hours,
       AppReservationStatus? status,
       bool asc,
@@ -148,7 +148,7 @@ class __$$AppReservationsFilterImplCopyWithImpl<$Res>
     Object? tariffId = freezed,
     Object? tariffOwnerId = freezed,
     Object? userId = freezed,
-    Object? creationDate = freezed,
+    Object? startDate = freezed,
     Object? hours = freezed,
     Object? status = freezed,
     Object? asc = null,
@@ -167,9 +167,9 @@ class __$$AppReservationsFilterImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int?,
-      creationDate: freezed == creationDate
-          ? _value.creationDate
-          : creationDate // ignore: cast_nullable_to_non_nullable
+      startDate: freezed == startDate
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       hours: freezed == hours
           ? _value.hours
@@ -198,7 +198,7 @@ class _$AppReservationsFilterImpl extends _AppReservationsFilter {
       {this.tariffId,
       this.tariffOwnerId,
       this.userId,
-      this.creationDate,
+      this.startDate,
       this.hours,
       this.status,
       this.asc = true,
@@ -215,7 +215,7 @@ class _$AppReservationsFilterImpl extends _AppReservationsFilter {
   @override
   final int? userId;
   @override
-  final DateTime? creationDate;
+  final DateTime? startDate;
   @override
   final int? hours;
   @override
@@ -229,7 +229,7 @@ class _$AppReservationsFilterImpl extends _AppReservationsFilter {
 
   @override
   String toString() {
-    return 'AppReservationsFilter(tariffId: $tariffId, tariffOwnerId: $tariffOwnerId, userId: $userId, creationDate: $creationDate, hours: $hours, status: $status, asc: $asc, sort: $sort)';
+    return 'AppReservationsFilter(tariffId: $tariffId, tariffOwnerId: $tariffOwnerId, userId: $userId, startDate: $startDate, hours: $hours, status: $status, asc: $asc, sort: $sort)';
   }
 
   @override
@@ -242,8 +242,8 @@ class _$AppReservationsFilterImpl extends _AppReservationsFilter {
             (identical(other.tariffOwnerId, tariffOwnerId) ||
                 other.tariffOwnerId == tariffOwnerId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.creationDate, creationDate) ||
-                other.creationDate == creationDate) &&
+            (identical(other.startDate, startDate) ||
+                other.startDate == startDate) &&
             (identical(other.hours, hours) || other.hours == hours) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.asc, asc) || other.asc == asc) &&
@@ -253,7 +253,7 @@ class _$AppReservationsFilterImpl extends _AppReservationsFilter {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, tariffId, tariffOwnerId, userId,
-      creationDate, hours, status, asc, sort);
+      startDate, hours, status, asc, sort);
 
   @JsonKey(ignore: true)
   @override
@@ -275,7 +275,7 @@ abstract class _AppReservationsFilter extends AppReservationsFilter {
       {final int? tariffId,
       final int? tariffOwnerId,
       final int? userId,
-      final DateTime? creationDate,
+      final DateTime? startDate,
       final int? hours,
       final AppReservationStatus? status,
       final bool asc,
@@ -292,7 +292,7 @@ abstract class _AppReservationsFilter extends AppReservationsFilter {
   @override
   int? get userId;
   @override
-  DateTime? get creationDate;
+  DateTime? get startDate;
   @override
   int? get hours;
   @override

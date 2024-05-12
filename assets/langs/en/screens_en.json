@@ -99,6 +99,18 @@
       "status": "Status"
     }
   },
+  "reservationsFilter": {
+    "title": "Filter",
+    "startDateField": {
+      "label": "Start date"
+    },
+    "hoursField": {
+      "label": "Hours"
+    },
+    "statusField": {
+      "label": "Status"
+    }
+  },
   "reservationEdit": {
     "title": {
       "add": "Add reservation",

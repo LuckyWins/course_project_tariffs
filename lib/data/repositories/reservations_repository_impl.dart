@@ -24,18 +24,18 @@ class ReservationsRepositoryImpl extends ReservationsRepository {
               property: 'userId',
               value: filter.userId,
             ),
-          if (filter.creationDate != null)
+          if (filter.startDate != null)
             FilterCondition.between(
-              property: 'creationDate',
+              property: 'startDate',
               lower: DateTime(
-                filter.creationDate!.year,
-                filter.creationDate!.month,
-                filter.creationDate!.day,
+                filter.startDate!.year,
+                filter.startDate!.month,
+                filter.startDate!.day,
               ),
               upper: DateTime(
-                filter.creationDate!.year,
-                filter.creationDate!.month,
-                filter.creationDate!.day,
+                filter.startDate!.year,
+                filter.startDate!.month,
+                filter.startDate!.day,
                 23,
                 59,
                 59,
@@ -45,6 +45,11 @@ class ReservationsRepositoryImpl extends ReservationsRepository {
             FilterCondition.equalTo(
               property: 'hours',
               value: filter.hours,
+            ),
+          if (filter.status != null)
+            FilterCondition.equalTo(
+              property: 'status',
+              value: filter.status,
             ),
         ]),
         sortBy: [

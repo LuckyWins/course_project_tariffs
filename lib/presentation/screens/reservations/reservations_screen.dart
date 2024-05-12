@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:course_project/domain/domain.dart';
 import 'package:course_project/generated/translations.g.dart';
 import 'package:course_project/presentation/blocs/blocs.dart';
@@ -41,6 +43,33 @@ class _ReservationsScreenState extends State<ReservationsScreen> {
             BlocBuilder<ReservationsCubit, ReservationsState>(
               builder: (context, state) => state.maybeMap(
                 hasData: (state) => _sortWidget(state.filter),
+                loading: (_) => const LoadingIndicator(),
+                orElse: SizedBox.shrink,
+              ),
+            ),
+            BlocBuilder<ReservationsCubit, ReservationsState>(
+              builder: (context, state) => state.maybeMap(
+                hasData: (state) => IconButton(
+                  onPressed: () => _onFilterTap(state.filter),
+                  icon: Stack(
+                    children: [
+                      const Icon(Icons.filter_alt_rounded),
+                      if (!state.filter.isEmpty)
+                        Positioned(
+                          right: 2,
+                          bottom: 2,
+                          child: Container(
+                            width: 6,
+                            height: 6,
+                            decoration: BoxDecoration(
+                              color: context.colors.error,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                        )
+                    ],
+                  ),
+                ),
                 loading: (_) => const LoadingIndicator(),
                 orElse: SizedBox.shrink,
               ),
@@ -107,6 +136,15 @@ class _ReservationsScreenState extends State<ReservationsScreen> {
         key: Key('reservation#${data.id}'),
         onItemTap: _onItemTap,
       );
+
+  Future<void> _onFilterTap(AppReservationsFilter filter) async {
+    final value = await Navigation.toReservationsFilter(filter);
+    if (value != null) {
+      unawaited(context.read<ReservationsCubit>().init(
+            filter: value,
+          ));
+    }
+  }
 
   void _onItemTap(AppReservation data) {
     if (context.isAdmin) {

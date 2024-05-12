@@ -15,7 +15,7 @@ class AppTariffsFilter with _$AppTariffsFilter {
     @Default(AppTariffsSortType.creationDate) AppTariffsSortType sort,
   }) = _AppTariffsFilter;
 
-  bool get isEmpty => titleQuery.isNotNullOrBlank || creationDate != null;
+  bool get isEmpty => !(titleQuery.isNotNullOrBlank || creationDate != null);
 
   factory AppTariffsFilter.empty(int ownerId) =>
       AppTariffsFilter(ownerId: ownerId);

@@ -11,14 +11,14 @@ class AppReservationsFilter with _$AppReservationsFilter {
     int? tariffId,
     int? tariffOwnerId,
     int? userId,
-    DateTime? creationDate,
+    DateTime? startDate,
     int? hours,
     AppReservationStatus? status,
     @Default(true) bool asc,
     @Default(AppReservationsSortType.creationDate) AppReservationsSortType sort,
   }) = _AppReservationsFilter;
 
-  bool get isEmpty => creationDate != null && hours != null;
+  bool get isEmpty => !(startDate != null || hours != null || status != null);
 
   factory AppReservationsFilter.emptyUser({
     required int userId,
@@ -38,8 +38,9 @@ class AppReservationsFilter with _$AppReservationsFilter {
       _$AppReservationsFilterFromJson(json);
 
   AppReservationsFilter clear() => copyWith(
-        creationDate: null,
+        startDate: null,
         hours: null,
+        status: null,
       );
 }
 

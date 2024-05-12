@@ -12,9 +12,9 @@ _$AppReservationsFilterImpl _$$AppReservationsFilterImplFromJson(
       tariffId: (json['tariffId'] as num?)?.toInt(),
       tariffOwnerId: (json['tariffOwnerId'] as num?)?.toInt(),
       userId: (json['userId'] as num?)?.toInt(),
-      creationDate: json['creationDate'] == null
+      startDate: json['startDate'] == null
           ? null
-          : DateTime.parse(json['creationDate'] as String),
+          : DateTime.parse(json['startDate'] as String),
       hours: (json['hours'] as num?)?.toInt(),
       status:
           $enumDecodeNullable(_$AppReservationStatusEnumMap, json['status']),
@@ -30,7 +30,7 @@ Map<String, dynamic> _$$AppReservationsFilterImplToJson(
       'tariffId': instance.tariffId,
       'tariffOwnerId': instance.tariffOwnerId,
       'userId': instance.userId,
-      'creationDate': instance.creationDate?.toIso8601String(),
+      'startDate': instance.startDate?.toIso8601String(),
       'hours': instance.hours,
       'status': _$AppReservationStatusEnumMap[instance.status],
       'asc': instance.asc,

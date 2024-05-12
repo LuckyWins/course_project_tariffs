@@ -25,9 +25,21 @@ class ReservationsRepositoryImpl extends ReservationsRepository {
               value: filter.userId,
             ),
           if (filter.creationDate != null)
-            FilterCondition.equalTo(
+            FilterCondition.between(
               property: 'creationDate',
-              value: filter.creationDate,
+              lower: DateTime(
+                filter.creationDate!.year,
+                filter.creationDate!.month,
+                filter.creationDate!.day,
+              ),
+              upper: DateTime(
+                filter.creationDate!.year,
+                filter.creationDate!.month,
+                filter.creationDate!.day,
+                23,
+                59,
+                59,
+              ),
             ),
           if (filter.hours != null)
             FilterCondition.equalTo(

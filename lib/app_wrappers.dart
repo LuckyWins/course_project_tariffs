@@ -36,11 +36,17 @@ class AppWrappersWidget extends StatelessWidget {
                 tariffsRepository: di.locator(),
               ),
             ),
+            BlocProvider<ReservationsCubit>(
+              create: (context) => ReservationsCubit(
+                reservationsRepository: di.locator(),
+              ),
+            ),
           ],
           child: BlocListener<AuthBloc, AuthState>(
             listener: (context, state) => state.mapOrNull(
               proceedSuccess: (state) {
                 context.read<TariffsCubit>().setUserId(state.id);
+                context.read<ReservationsCubit>().setUser(state.id, state.role);
                 unawaited(context.read<ProfileCubit>().init());
                 // TODO: init blocs
                 if (state.role == UserRole.admin) {
@@ -51,6 +57,8 @@ class AppWrappersWidget extends StatelessWidget {
                 return null;
               },
               logOutSuccess: (state) {
+                context.read<TariffsCubit>().onLogOut();
+                context.read<ReservationsCubit>().onLogOut();
                 Navigation.toSignIn();
                 return null;
               },

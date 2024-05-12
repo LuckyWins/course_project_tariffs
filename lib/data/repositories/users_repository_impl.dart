@@ -62,6 +62,10 @@ class UsersRepositoryImpl extends UsersRepository {
               property: 'registrationDate',
               value: filter.registrationDate,
             ),
+          const FilterCondition.equalTo(
+            property: 'role',
+            value: UserRole.user,
+          ),
         ]),
         sortBy: [
           SortProperty(

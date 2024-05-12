@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 64
+/// Strings: 73
 ///
-/// Built on 2024-05-11 at 10:34 UTC
+/// Built on 2024-05-12 at 11:37 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -227,7 +227,10 @@ class _TranslationsScreensEn {
 	late final _TranslationsScreensSettingsEn settings = _TranslationsScreensSettingsEn._(_root);
 	late final _TranslationsScreensProfileEditEn profileEdit = _TranslationsScreensProfileEditEn._(_root);
 	late final _TranslationsScreensReservationsEn reservations = _TranslationsScreensReservationsEn._(_root);
+	late final _TranslationsScreensReservationEditEn reservationEdit = _TranslationsScreensReservationEditEn._(_root);
+	late final _TranslationsScreensReservationViewEn reservationView = _TranslationsScreensReservationViewEn._(_root);
 	late final _TranslationsScreensThemeSelectEn themeSelect = _TranslationsScreensThemeSelectEn._(_root);
+	late final _TranslationsScreensUserSelectEn userSelect = _TranslationsScreensUserSelectEn._(_root);
 }
 
 // Path: general
@@ -401,6 +404,28 @@ class _TranslationsScreensReservationsEn {
 	String get title => TranslationOverrides.string(_root.$meta, 'screens.reservations.title', {}) ?? 'Reservations';
 }
 
+// Path: screens.reservationEdit
+class _TranslationsScreensReservationEditEn {
+	_TranslationsScreensReservationEditEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _TranslationsScreensReservationEditTitleEn title = _TranslationsScreensReservationEditTitleEn._(_root);
+	late final _TranslationsScreensReservationEditModalEn modal = _TranslationsScreensReservationEditModalEn._(_root);
+	late final _TranslationsScreensReservationEditSnackEn snack = _TranslationsScreensReservationEditSnackEn._(_root);
+}
+
+// Path: screens.reservationView
+class _TranslationsScreensReservationViewEn {
+	_TranslationsScreensReservationViewEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String title({required Object id}) => TranslationOverrides.string(_root.$meta, 'screens.reservationView.title', {'id': id}) ?? 'Reservation #${id}';
+}
+
 // Path: screens.themeSelect
 class _TranslationsScreensThemeSelectEn {
 	_TranslationsScreensThemeSelectEn._(this._root);
@@ -409,6 +434,16 @@ class _TranslationsScreensThemeSelectEn {
 
 	// Translations
 	String get title => TranslationOverrides.string(_root.$meta, 'screens.themeSelect.title', {}) ?? 'Theme';
+}
+
+// Path: screens.userSelect
+class _TranslationsScreensUserSelectEn {
+	_TranslationsScreensUserSelectEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => TranslationOverrides.string(_root.$meta, 'screens.userSelect.title', {}) ?? 'Select user';
 }
 
 // Path: general.actions
@@ -646,6 +681,39 @@ class _TranslationsScreensProfileEditSnackEn {
 	String get savedSuccessfully => TranslationOverrides.string(_root.$meta, 'screens.profileEdit.snack.savedSuccessfully', {}) ?? 'Your profile has been updated successfully';
 }
 
+// Path: screens.reservationEdit.title
+class _TranslationsScreensReservationEditTitleEn {
+	_TranslationsScreensReservationEditTitleEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get add => TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.title.add', {}) ?? 'Add reservation';
+	String get edit => TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.title.edit', {}) ?? 'Edit reservation';
+}
+
+// Path: screens.reservationEdit.modal
+class _TranslationsScreensReservationEditModalEn {
+	_TranslationsScreensReservationEditModalEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _TranslationsScreensReservationEditModalCancelConfirmationEn cancelConfirmation = _TranslationsScreensReservationEditModalCancelConfirmationEn._(_root);
+}
+
+// Path: screens.reservationEdit.snack
+class _TranslationsScreensReservationEditSnackEn {
+	_TranslationsScreensReservationEditSnackEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get addSuccessfully => TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.snack.addSuccessfully', {}) ?? 'Your reservation has been added successfully';
+	String get editSuccessfully => TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.snack.editSuccessfully', {}) ?? 'Your reservation has been updated successfully';
+	String get cancelSuccessfully => TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.snack.cancelSuccessfully', {}) ?? 'Your reservation has been cancelled successfully';
+}
+
 // Path: widgets.loginField.errors
 class _TranslationsWidgetsLoginFieldErrorsEn {
 	_TranslationsWidgetsLoginFieldErrorsEn._(this._root);
@@ -709,6 +777,17 @@ class _TranslationsScreensSettingsModalLogOutEn {
 	String get action => TranslationOverrides.string(_root.$meta, 'screens.settings.modal.logOut.action', {}) ?? 'Log out';
 }
 
+// Path: screens.reservationEdit.modal.cancelConfirmation
+class _TranslationsScreensReservationEditModalCancelConfirmationEn {
+	_TranslationsScreensReservationEditModalCancelConfirmationEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get message => TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.modal.cancelConfirmation.message', {}) ?? 'Are you sure you want to cancel reservation?';
+	String get action => TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.modal.cancelConfirmation.action', {}) ?? 'Yes';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -764,7 +843,16 @@ extension on Translations {
 			case 'screens.profileEdit.title': return TranslationOverrides.string(_root.$meta, 'screens.profileEdit.title', {}) ?? 'Edit profile';
 			case 'screens.profileEdit.snack.savedSuccessfully': return TranslationOverrides.string(_root.$meta, 'screens.profileEdit.snack.savedSuccessfully', {}) ?? 'Your profile has been updated successfully';
 			case 'screens.reservations.title': return TranslationOverrides.string(_root.$meta, 'screens.reservations.title', {}) ?? 'Reservations';
+			case 'screens.reservationEdit.title.add': return TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.title.add', {}) ?? 'Add reservation';
+			case 'screens.reservationEdit.title.edit': return TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.title.edit', {}) ?? 'Edit reservation';
+			case 'screens.reservationEdit.modal.cancelConfirmation.message': return TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.modal.cancelConfirmation.message', {}) ?? 'Are you sure you want to cancel reservation?';
+			case 'screens.reservationEdit.modal.cancelConfirmation.action': return TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.modal.cancelConfirmation.action', {}) ?? 'Yes';
+			case 'screens.reservationEdit.snack.addSuccessfully': return TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.snack.addSuccessfully', {}) ?? 'Your reservation has been added successfully';
+			case 'screens.reservationEdit.snack.editSuccessfully': return TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.snack.editSuccessfully', {}) ?? 'Your reservation has been updated successfully';
+			case 'screens.reservationEdit.snack.cancelSuccessfully': return TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.snack.cancelSuccessfully', {}) ?? 'Your reservation has been cancelled successfully';
+			case 'screens.reservationView.title': return ({required Object id}) => TranslationOverrides.string(_root.$meta, 'screens.reservationView.title', {'id': id}) ?? 'Reservation #${id}';
 			case 'screens.themeSelect.title': return TranslationOverrides.string(_root.$meta, 'screens.themeSelect.title', {}) ?? 'Theme';
+			case 'screens.userSelect.title': return TranslationOverrides.string(_root.$meta, 'screens.userSelect.title', {}) ?? 'Select user';
 			case 'general.actions.ok': return TranslationOverrides.string(_root.$meta, 'general.actions.ok', {}) ?? 'Ok';
 			case 'general.actions.save': return TranslationOverrides.string(_root.$meta, 'general.actions.save', {}) ?? 'Save';
 			case 'general.actions.apply': return TranslationOverrides.string(_root.$meta, 'general.actions.apply', {}) ?? 'Apply';

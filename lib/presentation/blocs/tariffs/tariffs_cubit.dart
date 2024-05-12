@@ -30,4 +30,8 @@ class TariffsCubit extends Cubit<TariffsState> {
 
     emit(TariffsState.hasData(data, _filter!));
   }
+
+  void onLogOut() {
+    _filter = null;
+  }
 }

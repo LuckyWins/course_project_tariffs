@@ -93,7 +93,30 @@
   "reservations": {
     "title": "Reservations"
   },
+  "reservationEdit": {
+    "title": {
+      "add": "Add reservation",
+      "edit": "Edit reservation"
+    },
+    "modal": {
+      "cancelConfirmation": {
+        "message": "Are you sure you want to cancel reservation?",
+        "action": "Yes"
+      }
+    },
+    "snack": {
+      "addSuccessfully": "Your reservation has been added successfully",
+      "editSuccessfully": "Your reservation has been updated successfully",
+      "cancelSuccessfully": "Your reservation has been cancelled successfully"
+    }
+  },
+  "reservationView": {
+    "title": "Reservation #{id}"
+  },
   "themeSelect": {
     "title": "Theme"
+  },
+  "userSelect": {
+    "title": "Select user"
   }
 }

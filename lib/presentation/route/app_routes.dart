@@ -160,6 +160,59 @@ class GoRouteClass {
               withAnimation: false,
               child: const ReservationsScreen(),
             ),
+            routes: [
+              GoRoute(
+                path: 'edit',
+                parentNavigatorKey: _shellNavigator,
+                name: RouteNames.reservationEdit,
+                pageBuilder: (context, state) {
+                  final initialReservation =
+                      state.extra as AppReservationEntity?;
+                  return defaultPageBuilder(
+                    name: state.name,
+                    key: state.pageKey,
+                    child: BlocProvider<ReservationEditCubit>(
+                      create: (context) => ReservationEditCubit(
+                        reservationsRepository: di.locator(),
+                        tariffId: initialReservation?.tariffId ??
+                            int.parse(state.uri.queryParameters['tariffId']!),
+                        tariffOwnerId: initialReservation?.tariffOwnerId ??
+                            int.parse(
+                                state.uri.queryParameters['tariffOwnerId']!),
+                        userId: initialReservation?.userId ??
+                            int.tryParse(state.uri.queryParameters['userId']!),
+                        initialReservation: initialReservation,
+                      ),
+                      child: ReservationEditScreen(
+                        isEdit: initialReservation != null,
+                        isAdmin: context.isAdmin,
+                      ),
+                    ),
+                  );
+                },
+              ),
+              GoRoute(
+                path: 'view',
+                parentNavigatorKey: _shellNavigator,
+                name: RouteNames.reservationView,
+                pageBuilder: (context, state) {
+                  final reservation = state.extra as AppReservationEntity;
+                  return defaultPageBuilder(
+                    name: state.name,
+                    key: state.pageKey,
+                    child: BlocProvider<ReservationViewCubit>(
+                      create: (context) => ReservationViewCubit(
+                        reservationsRepository: di.locator(),
+                        reservation: reservation,
+                      ),
+                      child: ReservationViewScreen(
+                        id: reservation.id,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
           GoRoute(
             path: '/settings',

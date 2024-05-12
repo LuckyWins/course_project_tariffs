@@ -27,13 +27,29 @@ const AppReservationSchema = CollectionSchema(
       name: r'hours',
       type: IsarType.long,
     ),
-    r'tariffId': PropertySchema(
+    r'startDate': PropertySchema(
       id: 2,
+      name: r'startDate',
+      type: IsarType.dateTime,
+    ),
+    r'status': PropertySchema(
+      id: 3,
+      name: r'status',
+      type: IsarType.string,
+      enumMap: _AppReservationstatusEnumValueMap,
+    ),
+    r'tariffId': PropertySchema(
+      id: 4,
       name: r'tariffId',
       type: IsarType.long,
     ),
+    r'tariffOwnerId': PropertySchema(
+      id: 5,
+      name: r'tariffOwnerId',
+      type: IsarType.long,
+    ),
     r'userId': PropertySchema(
-      id: 3,
+      id: 6,
       name: r'userId',
       type: IsarType.long,
     )
@@ -58,6 +74,7 @@ int _appReservationEstimateSize(
   Map<Type, List<int>> allOffsets,
 ) {
   var bytesCount = offsets.last;
+  bytesCount += 3 + object.status.name.length * 3;
   return bytesCount;
 }
 
@@ -69,8 +86,11 @@ void _appReservationSerialize(
 ) {
   writer.writeDateTime(offsets[0], object.creationDate);
   writer.writeLong(offsets[1], object.hours);
-  writer.writeLong(offsets[2], object.tariffId);
-  writer.writeLong(offsets[3], object.userId);
+  writer.writeDateTime(offsets[2], object.startDate);
+  writer.writeString(offsets[3], object.status.name);
+  writer.writeLong(offsets[4], object.tariffId);
+  writer.writeLong(offsets[5], object.tariffOwnerId);
+  writer.writeLong(offsets[6], object.userId);
 }
 
 AppReservation _appReservationDeserialize(
@@ -83,8 +103,13 @@ AppReservation _appReservationDeserialize(
   object.creationDate = reader.readDateTime(offsets[0]);
   object.hours = reader.readLong(offsets[1]);
   object.id = id;
-  object.tariffId = reader.readLong(offsets[2]);
-  object.userId = reader.readLong(offsets[3]);
+  object.startDate = reader.readDateTime(offsets[2]);
+  object.status =
+      _AppReservationstatusValueEnumMap[reader.readStringOrNull(offsets[3])] ??
+          AppReservationStatus.active;
+  object.tariffId = reader.readLong(offsets[4]);
+  object.tariffOwnerId = reader.readLong(offsets[5]);
+  object.userId = reader.readLong(offsets[6]);
   return object;
 }
 
@@ -100,13 +125,30 @@ P _appReservationDeserializeProp<P>(
     case 1:
       return (reader.readLong(offset)) as P;
     case 2:
-      return (reader.readLong(offset)) as P;
+      return (reader.readDateTime(offset)) as P;
     case 3:
+      return (_AppReservationstatusValueEnumMap[
+              reader.readStringOrNull(offset)] ??
+          AppReservationStatus.active) as P;
+    case 4:
+      return (reader.readLong(offset)) as P;
+    case 5:
+      return (reader.readLong(offset)) as P;
+    case 6:
       return (reader.readLong(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
 }
+
+const _AppReservationstatusEnumValueMap = {
+  r'active': r'active',
+  r'cancelled': r'cancelled',
+};
+const _AppReservationstatusValueEnumMap = {
+  r'active': AppReservationStatus.active,
+  r'cancelled': AppReservationStatus.cancelled,
+};
 
 Id _appReservationGetId(AppReservation object) {
   return object.id;
@@ -372,6 +414,198 @@ extension AppReservationQueryFilter
   }
 
   QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
+      startDateEqualTo(DateTime value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'startDate',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
+      startDateGreaterThan(
+    DateTime value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'startDate',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
+      startDateLessThan(
+    DateTime value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'startDate',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
+      startDateBetween(
+    DateTime lower,
+    DateTime upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'startDate',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
+      statusEqualTo(
+    AppReservationStatus value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'status',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
+      statusGreaterThan(
+    AppReservationStatus value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'status',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
+      statusLessThan(
+    AppReservationStatus value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'status',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
+      statusBetween(
+    AppReservationStatus lower,
+    AppReservationStatus upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'status',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
+      statusStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'status',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
+      statusEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'status',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
+      statusContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'status',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
+      statusMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'status',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
+      statusIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'status',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
+      statusIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'status',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
       tariffIdEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -419,6 +653,62 @@ extension AppReservationQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
         property: r'tariffId',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
+      tariffOwnerIdEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'tariffOwnerId',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
+      tariffOwnerIdGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'tariffOwnerId',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
+      tariffOwnerIdLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'tariffOwnerId',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterFilterCondition>
+      tariffOwnerIdBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'tariffOwnerId',
         lower: lower,
         includeLower: includeLower,
         upper: upper,
@@ -518,6 +808,32 @@ extension AppReservationQuerySortBy
     });
   }
 
+  QueryBuilder<AppReservation, AppReservation, QAfterSortBy> sortByStartDate() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'startDate', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterSortBy>
+      sortByStartDateDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'startDate', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterSortBy> sortByStatus() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'status', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterSortBy>
+      sortByStatusDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'status', Sort.desc);
+    });
+  }
+
   QueryBuilder<AppReservation, AppReservation, QAfterSortBy> sortByTariffId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'tariffId', Sort.asc);
@@ -528,6 +844,20 @@ extension AppReservationQuerySortBy
       sortByTariffIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'tariffId', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterSortBy>
+      sortByTariffOwnerId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'tariffOwnerId', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterSortBy>
+      sortByTariffOwnerIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'tariffOwnerId', Sort.desc);
     });
   }
 
@@ -585,6 +915,32 @@ extension AppReservationQuerySortThenBy
     });
   }
 
+  QueryBuilder<AppReservation, AppReservation, QAfterSortBy> thenByStartDate() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'startDate', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterSortBy>
+      thenByStartDateDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'startDate', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterSortBy> thenByStatus() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'status', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterSortBy>
+      thenByStatusDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'status', Sort.desc);
+    });
+  }
+
   QueryBuilder<AppReservation, AppReservation, QAfterSortBy> thenByTariffId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'tariffId', Sort.asc);
@@ -595,6 +951,20 @@ extension AppReservationQuerySortThenBy
       thenByTariffIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'tariffId', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterSortBy>
+      thenByTariffOwnerId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'tariffOwnerId', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QAfterSortBy>
+      thenByTariffOwnerIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'tariffOwnerId', Sort.desc);
     });
   }
 
@@ -627,9 +997,30 @@ extension AppReservationQueryWhereDistinct
     });
   }
 
+  QueryBuilder<AppReservation, AppReservation, QDistinct>
+      distinctByStartDate() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'startDate');
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QDistinct> distinctByStatus(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'status', caseSensitive: caseSensitive);
+    });
+  }
+
   QueryBuilder<AppReservation, AppReservation, QDistinct> distinctByTariffId() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'tariffId');
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservation, QDistinct>
+      distinctByTariffOwnerId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'tariffOwnerId');
     });
   }
 
@@ -661,9 +1052,28 @@ extension AppReservationQueryProperty
     });
   }
 
+  QueryBuilder<AppReservation, DateTime, QQueryOperations> startDateProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'startDate');
+    });
+  }
+
+  QueryBuilder<AppReservation, AppReservationStatus, QQueryOperations>
+      statusProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'status');
+    });
+  }
+
   QueryBuilder<AppReservation, int, QQueryOperations> tariffIdProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'tariffId');
+    });
+  }
+
+  QueryBuilder<AppReservation, int, QQueryOperations> tariffOwnerIdProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'tariffOwnerId');
     });
   }
 
@@ -673,3 +1083,38 @@ extension AppReservationQueryProperty
     });
   }
 }
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$AppReservationEntityImpl _$$AppReservationEntityImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AppReservationEntityImpl(
+      id: (json['id'] as num).toInt(),
+      tariffId: (json['tariffId'] as num).toInt(),
+      tariffOwnerId: (json['tariffOwnerId'] as num).toInt(),
+      userId: (json['userId'] as num).toInt(),
+      creationDate: DateTime.parse(json['creationDate'] as String),
+      startDate: DateTime.parse(json['startDate'] as String),
+      hours: (json['hours'] as num).toInt(),
+      status: $enumDecode(_$AppReservationStatusEnumMap, json['status']),
+    );
+
+Map<String, dynamic> _$$AppReservationEntityImplToJson(
+        _$AppReservationEntityImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'tariffId': instance.tariffId,
+      'tariffOwnerId': instance.tariffOwnerId,
+      'userId': instance.userId,
+      'creationDate': instance.creationDate.toIso8601String(),
+      'startDate': instance.startDate.toIso8601String(),
+      'hours': instance.hours,
+      'status': _$AppReservationStatusEnumMap[instance.status]!,
+    };
+
+const _$AppReservationStatusEnumMap = {
+  AppReservationStatus.active: 'active',
+  AppReservationStatus.cancelled: 'cancelled',
+};

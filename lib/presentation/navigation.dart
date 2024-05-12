@@ -1,7 +1,9 @@
 import 'package:course_project/domain/domain.dart';
 import 'package:course_project/injection.dart' as di;
+import 'package:course_project/presentation/blocs/blocs.dart';
 import 'package:course_project/presentation/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'route/route.dart';
 import 'screens/screens.dart';
@@ -59,6 +61,34 @@ class Navigation {
     return GoRouteClass.withoutCtx!.goNamed(RouteNames.reservations);
   }
 
+  /// Navigate to [ReservationEditScreen]
+  static Future<void> toReservationEdit({
+    AppReservation? data,
+    int? tariffId,
+    int? tariffOwnerId,
+    int? userId,
+  }) {
+    beforeNavigate();
+    return GoRouteClass.withoutCtx!.pushNamed(
+      RouteNames.reservationEdit,
+      extra: data?.entity,
+      queryParameters: {
+        'tariffId': tariffId?.toString(),
+        'tariffOwnerId': tariffOwnerId?.toString(),
+        if (userId != null) 'userId': userId.toString(),
+      },
+    );
+  }
+
+  /// Navigate to [ReservationViewScreen]
+  static void toReservationView(AppReservation data) {
+    beforeNavigate();
+    return GoRouteClass.withoutCtx!.goNamed(
+      RouteNames.reservationView,
+      extra: data.entity,
+    );
+  }
+
   /// Navigate to [SettingsScreen]
   static void toSettings() {
     beforeNavigate();
@@ -78,6 +108,25 @@ class Navigation {
       MaterialPageRoute(
         builder: (context) => ThemeSelectScreen(
           settingsController: di.locator(),
+        ),
+      ),
+    );
+  }
+
+  /// Navigate to [UserSelectScreen]
+  static Future<AppUser?> userSelect({
+    int? selectedId,
+  }) {
+    beforeNavigate();
+    return Navigator.of(GoRouteClass.withoutCtx!).push(
+      MaterialPageRoute(
+        builder: (context) => BlocProvider<UsersListCubit>(
+          create: (context) => UsersListCubit(
+            usersRepository: di.locator(),
+          ),
+          child: UserSelectScreen(
+            selectedId: selectedId,
+          ),
         ),
       ),
     );

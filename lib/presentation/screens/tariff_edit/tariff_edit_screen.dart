@@ -1,6 +1,7 @@
 import 'package:course_project/domain/domain.dart';
 import 'package:course_project/generated/translations.g.dart';
 import 'package:course_project/presentation/blocs/blocs.dart';
+import 'package:course_project/presentation/navigation.dart';
 import 'package:course_project/presentation/theme/theme.dart';
 import 'package:course_project/presentation/utils/utils.dart';
 import 'package:course_project/presentation/widgets/widgets.dart';
@@ -94,6 +95,13 @@ class _TariffEditScreenState extends State<TariffEditScreen> {
               actions: [
                 if (widget.isEdit && _tariff != null)
                   IconButton(
+                    onPressed: _onAddReservationTap,
+                    icon: const Icon(
+                      Icons.emoji_people_rounded,
+                    ),
+                  ),
+                if (widget.isEdit && _tariff != null)
+                  IconButton(
                     onPressed: _onDeleteTap,
                     icon: Icon(
                       Icons.delete_rounded,
@@ -110,7 +118,7 @@ class _TariffEditScreenState extends State<TariffEditScreen> {
                         child: SingleChildScrollView(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 8),
+                                horizontal: 16, vertical: 24),
                             child: Form(
                               key: _formKey,
                               child: Column(
@@ -183,6 +191,13 @@ class _TariffEditScreenState extends State<TariffEditScreen> {
       );
       context.read<TariffEditCubit>().update(data);
     }
+  }
+
+  void _onAddReservationTap() {
+    Navigation.toReservationEdit(
+      tariffId: _tariff!.id,
+      tariffOwnerId: _tariff!.ownerId,
+    );
   }
 
   void _onDeleteTap() {

@@ -97,20 +97,22 @@ class _TariffsScreenState extends State<TariffsScreen> {
             ),
           ),
         ),
-        floatingActionButton: BlocBuilder<TariffsCubit, TariffsState>(
-          builder: (context, state) => state.maybeMap(
-            hasData: (state) => FloatingActionButton.small(
-              onPressed: _onAddTariffTap,
-              child: const Icon(Icons.add_rounded),
-            ),
-            loading: (_) => const LoadingIndicator(),
-            orElse: SizedBox.shrink,
-          ),
-        ),
+        floatingActionButton: context.isAdmin
+            ? BlocBuilder<TariffsCubit, TariffsState>(
+                builder: (context, state) => state.maybeMap(
+                  hasData: (state) => FloatingActionButton.small(
+                    onPressed: _onAddTariffTap,
+                    child: const Icon(Icons.add_rounded),
+                  ),
+                  loading: (_) => const LoadingIndicator(),
+                  orElse: SizedBox.shrink,
+                ),
+              )
+            : null,
       );
 
   Widget _itemWidget(AppTariff data) => InkWell(
-        onTap: () => _onEditTariffTap(data),
+        onTap: () => _onItemTap(data),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Column(
@@ -172,8 +174,16 @@ class _TariffsScreenState extends State<TariffsScreen> {
         ),
       );
 
-  void _onEditTariffTap(AppTariff data) {
-    Navigation.toTariffEdit(data: data);
+  void _onItemTap(AppTariff data) {
+    if (context.isAdmin) {
+      Navigation.toTariffEdit(data: data);
+    } else {
+      Navigation.toReservationEdit(
+        tariffId: data.id,
+        tariffOwnerId: data.ownerId,
+        userId: context.userId,
+      );
+    }
   }
 
   Widget _sortWidget(AppTariffsFilter filter) {

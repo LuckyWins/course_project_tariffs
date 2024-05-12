@@ -11,5 +11,11 @@
       "creationDate": "Creation date",
       "price": "Price"
     }
+  },
+  "appReservationStatus": {
+    "name": {
+      "active": "Active",
+      "cancelled": "Cancelled"
+    }
   }
 }

@@ -1,4 +1,5 @@
 export 'app_actions.dart';
+export 'app_reservation_status_util.dart';
 export 'app_tariffs_sort_type_util.dart';
 export 'auth_bloc_util.dart';
 export 'multiplatform.dart';

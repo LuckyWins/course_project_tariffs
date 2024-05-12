@@ -95,7 +95,8 @@
     "item": {
       "startDate": "Date",
       "hours": "Time",
-      "cost": "Cost"
+      "cost": "Cost",
+      "status": "Status"
     }
   },
   "reservationEdit": {
@@ -126,7 +127,11 @@
     "hoursSelectLabel": "Reservation hours"
   },
   "reservationView": {
-    "title": "Reservation #{id}"
+    "title": "Reservation #{id}",
+    "creationDateLabel": "Creation date",
+    "usernameLabel": "Username",
+    "cancelButton": "Cancel",
+    "alreadyCancelLabel": "Already cancelled"
   },
   "themeSelect": {
     "title": "Theme"

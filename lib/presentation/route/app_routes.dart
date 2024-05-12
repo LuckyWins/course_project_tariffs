@@ -211,11 +211,25 @@ class GoRouteClass {
                   return defaultPageBuilder(
                     name: state.name,
                     key: state.pageKey,
-                    child: BlocProvider<ReservationViewCubit>(
-                      create: (context) => ReservationViewCubit(
-                        reservationsRepository: di.locator(),
-                        reservation: reservation,
-                      ),
+                    child: MultiBlocProvider(
+                      providers: [
+                        BlocProvider<ReservationViewCubit>(
+                          create: (context) => ReservationViewCubit(
+                            reservationsRepository: di.locator(),
+                            reservation: reservation,
+                          ),
+                        ),
+                        BlocProvider<UserDataCubit>(
+                          create: (context) => UserDataCubit(
+                            usersRepository: di.locator(),
+                          ),
+                        ),
+                        BlocProvider<TariffDataCubit>(
+                          create: (context) => TariffDataCubit(
+                            tariffsRepository: di.locator(),
+                          ),
+                        ),
+                      ],
                       child: ReservationViewScreen(
                         id: reservation.id,
                       ),

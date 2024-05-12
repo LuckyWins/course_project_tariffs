@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 81
+/// Strings: 88
 ///
-/// Built on 2024-05-12 at 20:51 UTC
+/// Built on 2024-05-12 at 21:24 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -29,7 +29,7 @@ final _buildConfig = BuildModelConfig(
 	keyMapCase: null,
 	paramCase: CaseStyle.camel,
 	stringInterpolation: StringInterpolation.braces,
-	maps: ['models.theme.name', 'widgets.mainWrapper.nav', 'models.appTariffSortType.name'],
+	maps: ['models.theme.name', 'widgets.mainWrapper.nav', 'models.appTariffSortType.name', 'models.appReservationStatus.name'],
 	pluralAuto: PluralAuto.cardinal,
 	pluralParameter: 'n',
 	pluralCardinal: ['someKey.apple'],
@@ -209,6 +209,7 @@ class _TranslationsModelsEn {
 	// Translations
 	late final _TranslationsModelsThemeEn theme = _TranslationsModelsThemeEn._(_root);
 	late final _TranslationsModelsAppTariffSortTypeEn appTariffSortType = _TranslationsModelsAppTariffSortTypeEn._(_root);
+	late final _TranslationsModelsAppReservationStatusEn appReservationStatus = _TranslationsModelsAppReservationStatusEn._(_root);
 }
 
 // Path: screens
@@ -293,6 +294,19 @@ class _TranslationsModelsAppTariffSortTypeEn {
 	Map<String, String> get name => TranslationOverrides.map(_root.$meta, 'models.appTariffSortType.name') ?? {
 		'creationDate': 'Creation date',
 		'price': 'Price',
+	};
+}
+
+// Path: models.appReservationStatus
+class _TranslationsModelsAppReservationStatusEn {
+	_TranslationsModelsAppReservationStatusEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	Map<String, String> get name => TranslationOverrides.map(_root.$meta, 'models.appReservationStatus.name') ?? {
+		'active': 'Active',
+		'cancelled': 'Cancelled',
 	};
 }
 
@@ -430,6 +444,10 @@ class _TranslationsScreensReservationViewEn {
 
 	// Translations
 	String title({required Object id}) => TranslationOverrides.string(_root.$meta, 'screens.reservationView.title', {'id': id}) ?? 'Reservation #${id}';
+	String get creationDateLabel => TranslationOverrides.string(_root.$meta, 'screens.reservationView.creationDateLabel', {}) ?? 'Creation date';
+	String get usernameLabel => TranslationOverrides.string(_root.$meta, 'screens.reservationView.usernameLabel', {}) ?? 'Username';
+	String get cancelButton => TranslationOverrides.string(_root.$meta, 'screens.reservationView.cancelButton', {}) ?? 'Cancel';
+	String get alreadyCancelLabel => TranslationOverrides.string(_root.$meta, 'screens.reservationView.alreadyCancelLabel', {}) ?? 'Already cancelled';
 }
 
 // Path: screens.themeSelect
@@ -697,6 +715,7 @@ class _TranslationsScreensReservationsItemEn {
 	String get startDate => TranslationOverrides.string(_root.$meta, 'screens.reservations.item.startDate', {}) ?? 'Date';
 	String get hours => TranslationOverrides.string(_root.$meta, 'screens.reservations.item.hours', {}) ?? 'Time';
 	String get cost => TranslationOverrides.string(_root.$meta, 'screens.reservations.item.cost', {}) ?? 'Cost';
+	String get status => TranslationOverrides.string(_root.$meta, 'screens.reservations.item.status', {}) ?? 'Status';
 }
 
 // Path: screens.reservationEdit.title
@@ -847,6 +866,8 @@ extension on Translations {
 			case 'models.theme.name.system': return TranslationOverrides.string(_root.$meta, 'models.theme.name.system', {}) ?? 'Automatic';
 			case 'models.appTariffSortType.name.creationDate': return TranslationOverrides.string(_root.$meta, 'models.appTariffSortType.name.creationDate', {}) ?? 'Creation date';
 			case 'models.appTariffSortType.name.price': return TranslationOverrides.string(_root.$meta, 'models.appTariffSortType.name.price', {}) ?? 'Price';
+			case 'models.appReservationStatus.name.active': return TranslationOverrides.string(_root.$meta, 'models.appReservationStatus.name.active', {}) ?? 'Active';
+			case 'models.appReservationStatus.name.cancelled': return TranslationOverrides.string(_root.$meta, 'models.appReservationStatus.name.cancelled', {}) ?? 'Cancelled';
 			case 'screens.splash.loadingMessage': return TranslationOverrides.string(_root.$meta, 'screens.splash.loadingMessage', {}) ?? 'Please wait';
 			case 'screens.signIn.title': return TranslationOverrides.string(_root.$meta, 'screens.signIn.title', {}) ?? 'Sign in';
 			case 'screens.signIn.proceedButton': return TranslationOverrides.string(_root.$meta, 'screens.signIn.proceedButton', {}) ?? 'Log in';
@@ -894,6 +915,7 @@ extension on Translations {
 			case 'screens.reservations.item.startDate': return TranslationOverrides.string(_root.$meta, 'screens.reservations.item.startDate', {}) ?? 'Date';
 			case 'screens.reservations.item.hours': return TranslationOverrides.string(_root.$meta, 'screens.reservations.item.hours', {}) ?? 'Time';
 			case 'screens.reservations.item.cost': return TranslationOverrides.string(_root.$meta, 'screens.reservations.item.cost', {}) ?? 'Cost';
+			case 'screens.reservations.item.status': return TranslationOverrides.string(_root.$meta, 'screens.reservations.item.status', {}) ?? 'Status';
 			case 'screens.reservationEdit.title.add': return TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.title.add', {}) ?? 'Add reservation';
 			case 'screens.reservationEdit.title.edit': return TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.title.edit', {}) ?? 'Edit reservation';
 			case 'screens.reservationEdit.modal.cancelConfirmation.message': return TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.modal.cancelConfirmation.message', {}) ?? 'Are you sure you want to cancel reservation?';
@@ -906,6 +928,10 @@ extension on Translations {
 			case 'screens.reservationEdit.startHoursField.label': return TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.startHoursField.label', {}) ?? 'Start hours';
 			case 'screens.reservationEdit.hoursSelectLabel': return TranslationOverrides.string(_root.$meta, 'screens.reservationEdit.hoursSelectLabel', {}) ?? 'Reservation hours';
 			case 'screens.reservationView.title': return ({required Object id}) => TranslationOverrides.string(_root.$meta, 'screens.reservationView.title', {'id': id}) ?? 'Reservation #${id}';
+			case 'screens.reservationView.creationDateLabel': return TranslationOverrides.string(_root.$meta, 'screens.reservationView.creationDateLabel', {}) ?? 'Creation date';
+			case 'screens.reservationView.usernameLabel': return TranslationOverrides.string(_root.$meta, 'screens.reservationView.usernameLabel', {}) ?? 'Username';
+			case 'screens.reservationView.cancelButton': return TranslationOverrides.string(_root.$meta, 'screens.reservationView.cancelButton', {}) ?? 'Cancel';
+			case 'screens.reservationView.alreadyCancelLabel': return TranslationOverrides.string(_root.$meta, 'screens.reservationView.alreadyCancelLabel', {}) ?? 'Already cancelled';
 			case 'screens.themeSelect.title': return TranslationOverrides.string(_root.$meta, 'screens.themeSelect.title', {}) ?? 'Theme';
 			case 'screens.userSelect.title': return TranslationOverrides.string(_root.$meta, 'screens.userSelect.title', {}) ?? 'Select user';
 			case 'general.actions.ok': return TranslationOverrides.string(_root.$meta, 'general.actions.ok', {}) ?? 'Ok';

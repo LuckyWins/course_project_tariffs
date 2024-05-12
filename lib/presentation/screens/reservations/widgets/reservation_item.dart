@@ -3,6 +3,7 @@ import 'package:course_project/generated/translations.g.dart';
 import 'package:course_project/injection.dart' as di;
 import 'package:course_project/presentation/blocs/blocs.dart';
 import 'package:course_project/presentation/theme/theme.dart';
+import 'package:course_project/presentation/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -132,6 +133,18 @@ class _ReservationItemWidgetState extends State<ReservationItemWidget> {
                         ),
                       ),
                     ),
+                  ],
+                ),
+              ),
+              Text.rich(
+                style: AppTextStyles.body1B(context),
+                TextSpan(
+                  text: '${context.t.screens.reservations.item.status}: ',
+                  children: [
+                    TextSpan(
+                      text: widget.data.status.localName(context),
+                      style: AppTextStyles.body1(context),
+                    )
                   ],
                 ),
               ),

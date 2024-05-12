@@ -39,5 +39,6 @@ class ReservationsCubit extends Cubit<ReservationsState> {
 
   void onLogOut() {
     _filter = null;
+    emit(const ReservationsState.loading());
   }
 }

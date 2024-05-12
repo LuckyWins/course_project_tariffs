@@ -33,5 +33,6 @@ class TariffsCubit extends Cubit<TariffsState> {
 
   void onLogOut() {
     _filter = null;
+    emit(const TariffsState.loading());
   }
 }

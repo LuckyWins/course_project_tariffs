@@ -171,18 +171,29 @@ class GoRouteClass {
                   return defaultPageBuilder(
                     name: state.name,
                     key: state.pageKey,
-                    child: BlocProvider<ReservationEditCubit>(
-                      create: (context) => ReservationEditCubit(
-                        reservationsRepository: di.locator(),
-                        tariffId: initialReservation?.tariffId ??
-                            int.parse(state.uri.queryParameters['tariffId']!),
-                        tariffOwnerId: initialReservation?.tariffOwnerId ??
-                            int.parse(
-                                state.uri.queryParameters['tariffOwnerId']!),
-                        userId: initialReservation?.userId ??
-                            int.tryParse(state.uri.queryParameters['userId']!),
-                        initialReservation: initialReservation,
-                      ),
+                    child: MultiBlocProvider(
+                      providers: [
+                        BlocProvider<ReservationEditCubit>(
+                          create: (context) => ReservationEditCubit(
+                            reservationsRepository: di.locator(),
+                            tariffId: initialReservation?.tariffId ??
+                                int.parse(
+                                    state.uri.queryParameters['tariffId']!),
+                            tariffOwnerId: initialReservation?.tariffOwnerId ??
+                                int.parse(state
+                                    .uri.queryParameters['tariffOwnerId']!),
+                            userId: initialReservation?.userId ??
+                                int.tryParse(
+                                    state.uri.queryParameters['userId']!),
+                            initialReservation: initialReservation,
+                          ),
+                        ),
+                        BlocProvider<UserDataCubit>(
+                          create: (context) => UserDataCubit(
+                            usersRepository: di.locator(),
+                          ),
+                        ),
+                      ],
                       child: ReservationEditScreen(
                         isEdit: initialReservation != null,
                         isAdmin: context.isAdmin,

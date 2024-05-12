@@ -3,6 +3,8 @@ import 'package:course_project/presentation/theme/theme.dart';
 import 'package:course_project/presentation/utils/utils.dart';
 import 'package:flutter/material.dart';
 
+enum DateFieldType { date, time }
+
 class EditItemDateField extends StatefulWidget {
   final DateTime? value;
   final DateTime? lastDate;
@@ -18,6 +20,7 @@ class EditItemDateField extends StatefulWidget {
   final DateTime? initialDate;
   final bool enabled;
   final Widget? prefixIcon;
+  final DateFieldType type;
 
   /// key for scrolling to this widget
   final GlobalKey? scrollableKey;
@@ -39,6 +42,7 @@ class EditItemDateField extends StatefulWidget {
     this.enabled = true,
     this.prefixIcon,
     this.scrollableKey,
+    this.type = DateFieldType.date,
   }) : super(key: scrollableKey);
 
   @override
@@ -150,17 +154,30 @@ class _EditItemDateFieldState extends State<EditItemDateField> {
       );
 
   Future<void> _onTap(BuildContext context) async {
-    final newDate = await Multiplatform.showModalDatePicker(
-      context: context,
-      initialDate: widget.value ?? widget.initialDate ?? DateTime.now(),
-      firstDate: widget.firstDate ??
-          DateTime.now().subtract(const Duration(days: 20000)),
-      lastDate:
-          widget.lastDate ?? DateTime.now().add(const Duration(days: 20000)),
-    );
+    if (widget.type == DateFieldType.date) {
+      final newDate = await Multiplatform.showModalDatePicker(
+        context: context,
+        initialDate: widget.value ?? widget.initialDate ?? DateTime.now(),
+        firstDate: widget.firstDate ??
+            DateTime.now().subtract(const Duration(days: 20000)),
+        lastDate:
+            widget.lastDate ?? DateTime.now().add(const Duration(days: 20000)),
+      );
 
-    if (newDate != null) {
-      widget.onChange(newDate);
+      if (newDate != null) {
+        widget.onChange(newDate);
+      }
+    } else {
+      final newTime = await Multiplatform.showModalTimePicker(
+        context: context,
+        initialDate: widget.value ?? widget.initialDate ?? DateTime.now(),
+      );
+
+      if (newTime != null) {
+        final now = DateTime.now();
+        widget.onChange(DateTime(
+            now.year, now.month, now.day, newTime.hour, newTime.minute));
+      }
     }
   }
 }

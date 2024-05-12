@@ -114,7 +114,7 @@ class Navigation {
   }
 
   /// Navigate to [UserSelectScreen]
-  static Future<AppUser?> userSelect({
+  static Future<AppUser?> toUserSelect({
     int? selectedId,
   }) {
     beforeNavigate();

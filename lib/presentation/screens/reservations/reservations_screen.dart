@@ -3,8 +3,11 @@ import 'package:course_project/generated/translations.g.dart';
 import 'package:course_project/presentation/blocs/blocs.dart';
 import 'package:course_project/presentation/navigation.dart';
 import 'package:course_project/presentation/utils/utils.dart';
+import 'package:course_project/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'widgets/widgets.dart';
 
 class ReservationsScreen extends StatefulWidget {
   const ReservationsScreen({
@@ -34,6 +37,33 @@ class _ReservationsScreenState extends State<ReservationsScreen> {
         appBar: AppBar(
           title: Text(context.t.screens.reservations.title),
         ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+          child: BlocBuilder<ReservationsCubit, ReservationsState>(
+            builder: (context, state) => state.maybeMap(
+              hasData: (state) => ListView.separated(
+                itemCount: state.data.length,
+                itemBuilder: (context, index) => _itemWidget(
+                  state.data[index],
+                ),
+                separatorBuilder: (context, _) => const Divider(),
+              ),
+              orElse: () => const Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  LoadingIndicator(),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+
+  Widget _itemWidget(AppReservation data) => ReservationItemWidget(
+        data,
+        key: Key('reservation#${data.id}'),
+        onItemTap: _onItemTap,
       );
 
   void _onItemTap(AppReservation data) {

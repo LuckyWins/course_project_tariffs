@@ -171,4 +171,13 @@ class Multiplatform {
       );
     }
   }
+
+  static Future<TimeOfDay?> showModalTimePicker({
+    required BuildContext context,
+    required DateTime initialDate,
+  }) =>
+      showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.fromDateTime(initialDate),
+      );
 }

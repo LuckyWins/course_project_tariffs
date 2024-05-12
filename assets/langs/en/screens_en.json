@@ -91,7 +91,12 @@
     }
   },
   "reservations": {
-    "title": "Reservations"
+    "title": "Reservations",
+    "item": {
+      "startDate": "Date",
+      "hours": "Time",
+      "cost": "Cost"
+    }
   },
   "reservationEdit": {
     "title": {
@@ -108,7 +113,17 @@
       "addSuccessfully": "Your reservation has been added successfully",
       "editSuccessfully": "Your reservation has been updated successfully",
       "cancelSuccessfully": "Your reservation has been cancelled successfully"
-    }
+    },
+    "userField": {
+      "label": "User"
+    },
+    "startDateField": {
+      "label": "Date"
+    },
+    "startHoursField": {
+      "label": "Start hours"
+    },
+    "hoursSelectLabel": "Reservation hours"
   },
   "reservationView": {
     "title": "Reservation #{id}"

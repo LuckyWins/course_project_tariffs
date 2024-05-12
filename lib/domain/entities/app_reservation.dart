@@ -56,7 +56,7 @@ class AppReservationEntity with _$AppReservationEntity {
       userId: userId,
       creationDate: DateTime.now(),
       startDate: DateTime(now.year, now.month, now.day, now.hour),
-      hours: 1,
+      hours: 0,
       status: AppReservationStatus.active,
     );
   }

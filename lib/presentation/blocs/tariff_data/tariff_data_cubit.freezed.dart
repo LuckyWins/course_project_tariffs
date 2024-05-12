@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'user_data_cubit.dart';
+part of 'tariff_data_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,23 +15,23 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$UserDataState {
+mixin _$TariffDataState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(AppUser? data) hasData,
+    required TResult Function(AppTariff? data) hasData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(AppUser? data)? hasData,
+    TResult? Function(AppTariff? data)? hasData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(AppUser? data)? hasData,
+    TResult Function(AppTariff? data)? hasData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -57,16 +57,16 @@ mixin _$UserDataState {
 }
 
 /// @nodoc
-abstract class $UserDataStateCopyWith<$Res> {
-  factory $UserDataStateCopyWith(
-          UserDataState value, $Res Function(UserDataState) then) =
-      _$UserDataStateCopyWithImpl<$Res, UserDataState>;
+abstract class $TariffDataStateCopyWith<$Res> {
+  factory $TariffDataStateCopyWith(
+          TariffDataState value, $Res Function(TariffDataState) then) =
+      _$TariffDataStateCopyWithImpl<$Res, TariffDataState>;
 }
 
 /// @nodoc
-class _$UserDataStateCopyWithImpl<$Res, $Val extends UserDataState>
-    implements $UserDataStateCopyWith<$Res> {
-  _$UserDataStateCopyWithImpl(this._value, this._then);
+class _$TariffDataStateCopyWithImpl<$Res, $Val extends TariffDataState>
+    implements $TariffDataStateCopyWith<$Res> {
+  _$TariffDataStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -83,7 +83,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$UserDataStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$TariffDataStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -97,7 +97,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'UserDataState.loading()';
+    return 'TariffDataState.loading()';
   }
 
   @override
@@ -113,7 +113,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(AppUser? data) hasData,
+    required TResult Function(AppTariff? data) hasData,
   }) {
     return loading();
   }
@@ -122,7 +122,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(AppUser? data)? hasData,
+    TResult? Function(AppTariff? data)? hasData,
   }) {
     return loading?.call();
   }
@@ -131,7 +131,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(AppUser? data)? hasData,
+    TResult Function(AppTariff? data)? hasData,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -172,7 +172,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements UserDataState {
+abstract class _Loading implements TariffDataState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -182,12 +182,12 @@ abstract class _$$HasDataImplCopyWith<$Res> {
           _$HasDataImpl value, $Res Function(_$HasDataImpl) then) =
       __$$HasDataImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AppUser? data});
+  $Res call({AppTariff? data});
 }
 
 /// @nodoc
 class __$$HasDataImplCopyWithImpl<$Res>
-    extends _$UserDataStateCopyWithImpl<$Res, _$HasDataImpl>
+    extends _$TariffDataStateCopyWithImpl<$Res, _$HasDataImpl>
     implements _$$HasDataImplCopyWith<$Res> {
   __$$HasDataImplCopyWithImpl(
       _$HasDataImpl _value, $Res Function(_$HasDataImpl) _then)
@@ -202,7 +202,7 @@ class __$$HasDataImplCopyWithImpl<$Res>
       freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as AppUser?,
+              as AppTariff?,
     ));
   }
 }
@@ -213,11 +213,11 @@ class _$HasDataImpl implements _HasData {
   const _$HasDataImpl(this.data);
 
   @override
-  final AppUser? data;
+  final AppTariff? data;
 
   @override
   String toString() {
-    return 'UserDataState.hasData(data: $data)';
+    return 'TariffDataState.hasData(data: $data)';
   }
 
   @override
@@ -241,7 +241,7 @@ class _$HasDataImpl implements _HasData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(AppUser? data) hasData,
+    required TResult Function(AppTariff? data) hasData,
   }) {
     return hasData(data);
   }
@@ -250,7 +250,7 @@ class _$HasDataImpl implements _HasData {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(AppUser? data)? hasData,
+    TResult? Function(AppTariff? data)? hasData,
   }) {
     return hasData?.call(data);
   }
@@ -259,7 +259,7 @@ class _$HasDataImpl implements _HasData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(AppUser? data)? hasData,
+    TResult Function(AppTariff? data)? hasData,
     required TResult orElse(),
   }) {
     if (hasData != null) {
@@ -300,10 +300,10 @@ class _$HasDataImpl implements _HasData {
   }
 }
 
-abstract class _HasData implements UserDataState {
-  const factory _HasData(final AppUser? data) = _$HasDataImpl;
+abstract class _HasData implements TariffDataState {
+  const factory _HasData(final AppTariff? data) = _$HasDataImpl;
 
-  AppUser? get data;
+  AppTariff? get data;
   @JsonKey(ignore: true)
   _$$HasDataImplCopyWith<_$HasDataImpl> get copyWith =>
       throw _privateConstructorUsedError;

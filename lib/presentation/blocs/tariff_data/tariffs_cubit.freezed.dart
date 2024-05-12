@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'user_data_cubit.dart';
+part of 'tariffs_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,23 +15,24 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$UserDataState {
+mixin _$TariffsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(AppUser? data) hasData,
+    required TResult Function(List<AppTariff> data, AppTariffsFilter filter)
+        hasData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(AppUser? data)? hasData,
+    TResult? Function(List<AppTariff> data, AppTariffsFilter filter)? hasData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(AppUser? data)? hasData,
+    TResult Function(List<AppTariff> data, AppTariffsFilter filter)? hasData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -57,16 +58,16 @@ mixin _$UserDataState {
 }
 
 /// @nodoc
-abstract class $UserDataStateCopyWith<$Res> {
-  factory $UserDataStateCopyWith(
-          UserDataState value, $Res Function(UserDataState) then) =
-      _$UserDataStateCopyWithImpl<$Res, UserDataState>;
+abstract class $TariffsStateCopyWith<$Res> {
+  factory $TariffsStateCopyWith(
+          TariffsState value, $Res Function(TariffsState) then) =
+      _$TariffsStateCopyWithImpl<$Res, TariffsState>;
 }
 
 /// @nodoc
-class _$UserDataStateCopyWithImpl<$Res, $Val extends UserDataState>
-    implements $UserDataStateCopyWith<$Res> {
-  _$UserDataStateCopyWithImpl(this._value, this._then);
+class _$TariffsStateCopyWithImpl<$Res, $Val extends TariffsState>
+    implements $TariffsStateCopyWith<$Res> {
+  _$TariffsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -83,7 +84,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$UserDataStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$TariffsStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -97,7 +98,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'UserDataState.loading()';
+    return 'TariffsState.loading()';
   }
 
   @override
@@ -113,7 +114,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(AppUser? data) hasData,
+    required TResult Function(List<AppTariff> data, AppTariffsFilter filter)
+        hasData,
   }) {
     return loading();
   }
@@ -122,7 +124,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(AppUser? data)? hasData,
+    TResult? Function(List<AppTariff> data, AppTariffsFilter filter)? hasData,
   }) {
     return loading?.call();
   }
@@ -131,7 +133,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(AppUser? data)? hasData,
+    TResult Function(List<AppTariff> data, AppTariffsFilter filter)? hasData,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -172,7 +174,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements UserDataState {
+abstract class _Loading implements TariffsState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -182,12 +184,14 @@ abstract class _$$HasDataImplCopyWith<$Res> {
           _$HasDataImpl value, $Res Function(_$HasDataImpl) then) =
       __$$HasDataImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AppUser? data});
+  $Res call({List<AppTariff> data, AppTariffsFilter filter});
+
+  $AppTariffsFilterCopyWith<$Res> get filter;
 }
 
 /// @nodoc
 class __$$HasDataImplCopyWithImpl<$Res>
-    extends _$UserDataStateCopyWithImpl<$Res, _$HasDataImpl>
+    extends _$TariffsStateCopyWithImpl<$Res, _$HasDataImpl>
     implements _$$HasDataImplCopyWith<$Res> {
   __$$HasDataImplCopyWithImpl(
       _$HasDataImpl _value, $Res Function(_$HasDataImpl) _then)
@@ -196,28 +200,49 @@ class __$$HasDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = freezed,
+    Object? data = null,
+    Object? filter = null,
   }) {
     return _then(_$HasDataImpl(
-      freezed == data
-          ? _value.data
+      null == data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as AppUser?,
+              as List<AppTariff>,
+      null == filter
+          ? _value.filter
+          : filter // ignore: cast_nullable_to_non_nullable
+              as AppTariffsFilter,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AppTariffsFilterCopyWith<$Res> get filter {
+    return $AppTariffsFilterCopyWith<$Res>(_value.filter, (value) {
+      return _then(_value.copyWith(filter: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$HasDataImpl implements _HasData {
-  const _$HasDataImpl(this.data);
+  const _$HasDataImpl(final List<AppTariff> data, this.filter) : _data = data;
+
+  final List<AppTariff> _data;
+  @override
+  List<AppTariff> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
 
   @override
-  final AppUser? data;
+  final AppTariffsFilter filter;
 
   @override
   String toString() {
-    return 'UserDataState.hasData(data: $data)';
+    return 'TariffsState.hasData(data: $data, filter: $filter)';
   }
 
   @override
@@ -225,11 +250,13 @@ class _$HasDataImpl implements _HasData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HasDataImpl &&
-            (identical(other.data, data) || other.data == data));
+            const DeepCollectionEquality().equals(other._data, _data) &&
+            (identical(other.filter, filter) || other.filter == filter));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_data), filter);
 
   @JsonKey(ignore: true)
   @override
@@ -241,29 +268,30 @@ class _$HasDataImpl implements _HasData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(AppUser? data) hasData,
+    required TResult Function(List<AppTariff> data, AppTariffsFilter filter)
+        hasData,
   }) {
-    return hasData(data);
+    return hasData(data, filter);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(AppUser? data)? hasData,
+    TResult? Function(List<AppTariff> data, AppTariffsFilter filter)? hasData,
   }) {
-    return hasData?.call(data);
+    return hasData?.call(data, filter);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(AppUser? data)? hasData,
+    TResult Function(List<AppTariff> data, AppTariffsFilter filter)? hasData,
     required TResult orElse(),
   }) {
     if (hasData != null) {
-      return hasData(data);
+      return hasData(data, filter);
     }
     return orElse();
   }
@@ -300,10 +328,13 @@ class _$HasDataImpl implements _HasData {
   }
 }
 
-abstract class _HasData implements UserDataState {
-  const factory _HasData(final AppUser? data) = _$HasDataImpl;
+abstract class _HasData implements TariffsState {
+  const factory _HasData(
+          final List<AppTariff> data, final AppTariffsFilter filter) =
+      _$HasDataImpl;
 
-  AppUser? get data;
+  List<AppTariff> get data;
+  AppTariffsFilter get filter;
   @JsonKey(ignore: true)
   _$$HasDataImplCopyWith<_$HasDataImpl> get copyWith =>
       throw _privateConstructorUsedError;

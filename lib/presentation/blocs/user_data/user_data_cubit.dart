@@ -12,11 +12,16 @@ class UserDataCubit extends Cubit<UserDataState> {
     required this.usersRepository,
   }) : super(const UserDataState.loading());
 
-  Future<void> init(int id) async {
+  Future<void> init(int? id) async {
     emit(const UserDataState.loading());
+
+    if (id == null) {
+      emit(const UserDataState.hasData(null));
+      return;
+    }
 
     final data = await usersRepository.getUser(id);
 
-    emit(UserDataState.hasData(data!));
+    emit(UserDataState.hasData(data));
   }
 }

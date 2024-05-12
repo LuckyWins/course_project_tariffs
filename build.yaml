@@ -31,8 +31,9 @@ targets:
           maps:
             - models.theme.name
             - widgets.mainWrapper.nav
-            - models.appTariffSortType.name
+            - models.appTariffsSortType.name
             - models.appReservationStatus.name
+            - models.appReservationsSortType.name
           pluralization:
             auto: cardinal
             cardinal:

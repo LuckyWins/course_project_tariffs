@@ -2,6 +2,7 @@ import 'package:course_project/domain/domain.dart';
 import 'package:course_project/generated/translations.g.dart';
 import 'package:course_project/presentation/blocs/blocs.dart';
 import 'package:course_project/presentation/navigation.dart';
+import 'package:course_project/presentation/theme/theme.dart';
 import 'package:course_project/presentation/utils/utils.dart';
 import 'package:course_project/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,15 @@ class _ReservationsScreenState extends State<ReservationsScreen> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: Text(context.t.screens.reservations.title),
+          actions: [
+            BlocBuilder<ReservationsCubit, ReservationsState>(
+              builder: (context, state) => state.maybeMap(
+                hasData: (state) => _sortWidget(state.filter),
+                loading: (_) => const LoadingIndicator(),
+                orElse: SizedBox.shrink,
+              ),
+            ),
+          ],
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
@@ -59,6 +69,38 @@ class _ReservationsScreenState extends State<ReservationsScreen> {
           ),
         ),
       );
+
+  Widget _sortWidget(AppReservationsFilter filter) {
+    final values =
+        SortWrapperGenerator.generate(AppReservationsSortType.values);
+    return PopupMenuButton<SortWrapper>(
+      initialValue: SortWrapper<AppReservationsSortType>(
+          asc: filter.asc, sort: filter.sort),
+      onSelected: (value) {
+        context.read<ReservationsCubit>().init(
+              filter: filter.copyWith(
+                asc: value.asc,
+                sort: value.sort,
+              ),
+            );
+      },
+      itemBuilder: (context) => values
+          .map((e) => PopupMenuItem(
+                value: e,
+                child: Text(
+                  '${e.sort.localName(context)} ${e.asc ? "ASC" : "DESC"}',
+                  style: e.asc == filter.asc && e.sort == filter.sort
+                      ? AppTextStyles.body1B(context)
+                      : AppTextStyles.body1(context),
+                ),
+              ))
+          .toList(),
+      child: RotatedBox(
+        quarterTurns: filter.asc ? 2 : 0,
+        child: const Icon(Icons.sort),
+      ),
+    );
+  }
 
   Widget _itemWidget(AppReservation data) => ReservationItemWidget(
         data,

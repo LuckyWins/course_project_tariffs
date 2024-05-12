@@ -6,7 +6,7 @@
       "system": "Automatic"
     }
   },
-  "appTariffSortType": {
+  "appTariffsSortType": {
     "name": {
       "creationDate": "Creation date",
       "price": "Price"
@@ -16,6 +16,12 @@
     "name": {
       "active": "Active",
       "cancelled": "Cancelled"
+    }
+  },
+  "appReservationsSortType": {
+    "name": {
+      "creationDate": "Creation date",
+      "hours": "Hours"
     }
   }
 }

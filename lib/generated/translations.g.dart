@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 88
+/// Strings: 90
 ///
-/// Built on 2024-05-12 at 21:24 UTC
+/// Built on 2024-05-12 at 21:36 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -29,7 +29,7 @@ final _buildConfig = BuildModelConfig(
 	keyMapCase: null,
 	paramCase: CaseStyle.camel,
 	stringInterpolation: StringInterpolation.braces,
-	maps: ['models.theme.name', 'widgets.mainWrapper.nav', 'models.appTariffSortType.name', 'models.appReservationStatus.name'],
+	maps: ['models.theme.name', 'widgets.mainWrapper.nav', 'models.appTariffsSortType.name', 'models.appReservationStatus.name', 'models.appReservationsSortType.name'],
 	pluralAuto: PluralAuto.cardinal,
 	pluralParameter: 'n',
 	pluralCardinal: ['someKey.apple'],
@@ -208,8 +208,9 @@ class _TranslationsModelsEn {
 
 	// Translations
 	late final _TranslationsModelsThemeEn theme = _TranslationsModelsThemeEn._(_root);
-	late final _TranslationsModelsAppTariffSortTypeEn appTariffSortType = _TranslationsModelsAppTariffSortTypeEn._(_root);
+	late final _TranslationsModelsAppTariffsSortTypeEn appTariffsSortType = _TranslationsModelsAppTariffsSortTypeEn._(_root);
 	late final _TranslationsModelsAppReservationStatusEn appReservationStatus = _TranslationsModelsAppReservationStatusEn._(_root);
+	late final _TranslationsModelsAppReservationsSortTypeEn appReservationsSortType = _TranslationsModelsAppReservationsSortTypeEn._(_root);
 }
 
 // Path: screens
@@ -284,14 +285,14 @@ class _TranslationsModelsThemeEn {
 	};
 }
 
-// Path: models.appTariffSortType
-class _TranslationsModelsAppTariffSortTypeEn {
-	_TranslationsModelsAppTariffSortTypeEn._(this._root);
+// Path: models.appTariffsSortType
+class _TranslationsModelsAppTariffsSortTypeEn {
+	_TranslationsModelsAppTariffsSortTypeEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	Map<String, String> get name => TranslationOverrides.map(_root.$meta, 'models.appTariffSortType.name') ?? {
+	Map<String, String> get name => TranslationOverrides.map(_root.$meta, 'models.appTariffsSortType.name') ?? {
 		'creationDate': 'Creation date',
 		'price': 'Price',
 	};
@@ -307,6 +308,19 @@ class _TranslationsModelsAppReservationStatusEn {
 	Map<String, String> get name => TranslationOverrides.map(_root.$meta, 'models.appReservationStatus.name') ?? {
 		'active': 'Active',
 		'cancelled': 'Cancelled',
+	};
+}
+
+// Path: models.appReservationsSortType
+class _TranslationsModelsAppReservationsSortTypeEn {
+	_TranslationsModelsAppReservationsSortTypeEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	Map<String, String> get name => TranslationOverrides.map(_root.$meta, 'models.appReservationsSortType.name') ?? {
+		'creationDate': 'Creation date',
+		'hours': 'Hours',
 	};
 }
 
@@ -864,10 +878,12 @@ extension on Translations {
 			case 'models.theme.name.light': return TranslationOverrides.string(_root.$meta, 'models.theme.name.light', {}) ?? 'Light mode';
 			case 'models.theme.name.dark': return TranslationOverrides.string(_root.$meta, 'models.theme.name.dark', {}) ?? 'Dark mode';
 			case 'models.theme.name.system': return TranslationOverrides.string(_root.$meta, 'models.theme.name.system', {}) ?? 'Automatic';
-			case 'models.appTariffSortType.name.creationDate': return TranslationOverrides.string(_root.$meta, 'models.appTariffSortType.name.creationDate', {}) ?? 'Creation date';
-			case 'models.appTariffSortType.name.price': return TranslationOverrides.string(_root.$meta, 'models.appTariffSortType.name.price', {}) ?? 'Price';
+			case 'models.appTariffsSortType.name.creationDate': return TranslationOverrides.string(_root.$meta, 'models.appTariffsSortType.name.creationDate', {}) ?? 'Creation date';
+			case 'models.appTariffsSortType.name.price': return TranslationOverrides.string(_root.$meta, 'models.appTariffsSortType.name.price', {}) ?? 'Price';
 			case 'models.appReservationStatus.name.active': return TranslationOverrides.string(_root.$meta, 'models.appReservationStatus.name.active', {}) ?? 'Active';
 			case 'models.appReservationStatus.name.cancelled': return TranslationOverrides.string(_root.$meta, 'models.appReservationStatus.name.cancelled', {}) ?? 'Cancelled';
+			case 'models.appReservationsSortType.name.creationDate': return TranslationOverrides.string(_root.$meta, 'models.appReservationsSortType.name.creationDate', {}) ?? 'Creation date';
+			case 'models.appReservationsSortType.name.hours': return TranslationOverrides.string(_root.$meta, 'models.appReservationsSortType.name.hours', {}) ?? 'Hours';
 			case 'screens.splash.loadingMessage': return TranslationOverrides.string(_root.$meta, 'screens.splash.loadingMessage', {}) ?? 'Please wait';
 			case 'screens.signIn.title': return TranslationOverrides.string(_root.$meta, 'screens.signIn.title', {}) ?? 'Sign in';
 			case 'screens.signIn.proceedButton': return TranslationOverrides.string(_root.$meta, 'screens.signIn.proceedButton', {}) ?? 'Log in';

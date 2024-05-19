@@ -199,7 +199,7 @@ class GoRouteClass {
                                     .uri.queryParameters['tariffOwnerId']!),
                             userId: initialReservation?.userId ??
                                 int.tryParse(
-                                    state.uri.queryParameters['userId']!),
+                                    state.uri.queryParameters['userId'] ?? ''),
                             initialReservation: initialReservation,
                           ),
                         ),

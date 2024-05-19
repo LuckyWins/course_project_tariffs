@@ -13,10 +13,11 @@ class TariffsRepositoryImpl extends TariffsRepository {
   Future<List<AppTariff>> getTariffsList(AppTariffsFilter filter) =>
       db.appTariffs.buildQuery<AppTariff>(
         filter: FilterGroup.and([
-          FilterCondition.equalTo(
-            property: 'ownerId',
-            value: filter.ownerId,
-          ),
+          if (filter.ownerId != null)
+            FilterCondition.equalTo(
+              property: 'ownerId',
+              value: filter.ownerId,
+            ),
           if (filter.titleQuery.isNotNullOrBlank)
             FilterCondition.contains(
               property: 'title',

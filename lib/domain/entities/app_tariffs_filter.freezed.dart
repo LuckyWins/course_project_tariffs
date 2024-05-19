@@ -20,7 +20,7 @@ AppTariffsFilter _$AppTariffsFilterFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppTariffsFilter {
-  int get ownerId => throw _privateConstructorUsedError;
+  int? get ownerId => throw _privateConstructorUsedError;
   String? get titleQuery => throw _privateConstructorUsedError;
   DateTime? get creationDate => throw _privateConstructorUsedError;
   bool get asc => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $AppTariffsFilterCopyWith<$Res> {
       _$AppTariffsFilterCopyWithImpl<$Res, AppTariffsFilter>;
   @useResult
   $Res call(
-      {int ownerId,
+      {int? ownerId,
       String? titleQuery,
       DateTime? creationDate,
       bool asc,
@@ -59,17 +59,17 @@ class _$AppTariffsFilterCopyWithImpl<$Res, $Val extends AppTariffsFilter>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ownerId = null,
+    Object? ownerId = freezed,
     Object? titleQuery = freezed,
     Object? creationDate = freezed,
     Object? asc = null,
     Object? sort = null,
   }) {
     return _then(_value.copyWith(
-      ownerId: null == ownerId
+      ownerId: freezed == ownerId
           ? _value.ownerId
           : ownerId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       titleQuery: freezed == titleQuery
           ? _value.titleQuery
           : titleQuery // ignore: cast_nullable_to_non_nullable
@@ -99,7 +99,7 @@ abstract class _$$AppTariffsFilterImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int ownerId,
+      {int? ownerId,
       String? titleQuery,
       DateTime? creationDate,
       bool asc,
@@ -117,17 +117,17 @@ class __$$AppTariffsFilterImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ownerId = null,
+    Object? ownerId = freezed,
     Object? titleQuery = freezed,
     Object? creationDate = freezed,
     Object? asc = null,
     Object? sort = null,
   }) {
     return _then(_$AppTariffsFilterImpl(
-      ownerId: null == ownerId
+      ownerId: freezed == ownerId
           ? _value.ownerId
           : ownerId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       titleQuery: freezed == titleQuery
           ? _value.titleQuery
           : titleQuery // ignore: cast_nullable_to_non_nullable
@@ -152,7 +152,7 @@ class __$$AppTariffsFilterImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AppTariffsFilterImpl extends _AppTariffsFilter {
   const _$AppTariffsFilterImpl(
-      {required this.ownerId,
+      {this.ownerId,
       this.titleQuery,
       this.creationDate,
       this.asc = true,
@@ -163,7 +163,7 @@ class _$AppTariffsFilterImpl extends _AppTariffsFilter {
       _$$AppTariffsFilterImplFromJson(json);
 
   @override
-  final int ownerId;
+  final int? ownerId;
   @override
   final String? titleQuery;
   @override
@@ -216,7 +216,7 @@ class _$AppTariffsFilterImpl extends _AppTariffsFilter {
 
 abstract class _AppTariffsFilter extends AppTariffsFilter {
   const factory _AppTariffsFilter(
-      {required final int ownerId,
+      {final int? ownerId,
       final String? titleQuery,
       final DateTime? creationDate,
       final bool asc,
@@ -227,7 +227,7 @@ abstract class _AppTariffsFilter extends AppTariffsFilter {
       _$AppTariffsFilterImpl.fromJson;
 
   @override
-  int get ownerId;
+  int? get ownerId;
   @override
   String? get titleQuery;
   @override

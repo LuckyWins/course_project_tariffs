@@ -11,13 +11,15 @@ class TariffsCubit extends Cubit<TariffsState> {
   AppTariffsFilter? _filter;
 
   late int _userId;
+  late bool _isAdmin;
 
   TariffsCubit({
     required this.tariffsRepository,
   }) : super(const TariffsState.loading());
 
-  void setUserId(int id) {
+  void setUser(int id, UserRole role) {
     _userId = id;
+    _isAdmin = role == UserRole.admin;
   }
 
   Future<void> init({
@@ -25,7 +27,11 @@ class TariffsCubit extends Cubit<TariffsState> {
   }) async {
     emit(const TariffsState.loading());
 
-    _filter = filter ?? _filter ?? AppTariffsFilter.empty(_userId);
+    _filter = filter ??
+        _filter ??
+        (_isAdmin
+            ? AppTariffsFilter.emptyAdmin(_userId)
+            : AppTariffsFilter.emptyUser());
     final data = await tariffsRepository.getTariffsList(_filter!);
 
     emit(TariffsState.hasData(data, _filter!));

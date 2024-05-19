@@ -36,7 +36,7 @@ class RequestUtil {
 
         break;
       case SignUpFailure:
-        final failure = obj as SignInFailure;
+        final failure = obj as SignUpFailure;
         message = failure.message;
 
         break;
